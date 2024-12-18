@@ -1,6 +1,6 @@
 from aqt.qt import *
 from aqt import mw
-from .config import config, save_config
+from .config import get_config, update_config
 
 class ConfigWindow(QDialog):
     def __init__(self, parent):
@@ -25,7 +25,7 @@ class ConfigWindow(QDialog):
         if not mw.col:
             return
         
-        global config
+        config = get_config()
 
         layout = QVBoxLayout()
 
@@ -77,7 +77,7 @@ class ConfigWindow(QDialog):
         # Button actions
         def save_action():
             config["deck"] = deckDropdown.currentText()
-            save_config()
+            update_config(config)
             self.close()
 
         saveButton.clicked.connect(save_action)

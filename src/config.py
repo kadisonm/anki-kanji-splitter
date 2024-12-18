@@ -5,6 +5,7 @@ config = {
 }
 
 def save_config() -> None:
+    print(config)
     mw.addonManager.writeConfig(__name__, config)
 
 def load_config():
@@ -19,3 +20,10 @@ def load_config():
     else:
         save_config()
 
+def get_config() -> dict:
+    return config 
+
+def update_config(new_config: dict) -> None:
+    global config
+    config.update(new_config)
+    save_config()
