@@ -1,7 +1,7 @@
 from aqt import mw
 
 config = {
-    'deck_id': "0",
+    'deck_id': 0,
 }
 
 def save_config() -> None:
@@ -12,8 +12,6 @@ def load_config():
     global config
 
     foundConfig = mw.addonManager.getConfig(__name__)
-
-    print(foundConfig)
 
     if foundConfig:
         config = foundConfig
