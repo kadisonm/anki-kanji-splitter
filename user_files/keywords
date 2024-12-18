@@ -1,0 +1,3024 @@
+#
+#                           K R T K F I L E
+#
+# Adapted from James W. Heisig's Remembering the Kanji series of books.
+# Credit for this file belongs to Heisig.
+#
+# This is the data file used for associating an english keyword to certain
+# kanji.
+#
+# The format of the file is as follows:
+# 
+# (a) all lines starting with a # are comments
+# (b) all other lines identify a kanji and a list of keywords that map to that
+# kanji. The elements are tab delimited.
+#
+# Originally from: https://github.com/mcho421/pkanji/blob/master/kRTKfile
+#
+°ì	one
+Æó	two
+»°	three
+»Í	four
+¸Ş	five
+Ï»	six
+¼·	seven
+È¬	eight
+¶å	nine
+½½	ten
+¸ı	mouth
+Æü	day
+·î	month
+ÅÄ	rice field
+ÌÜ	eye
+¸Å	old
+¸ã	i
+ËÁ	risk
+Êş	companion
+ÌÀ	bright
+¾§	chant
+¾½	sparkle
+ÉÊ	goods
+Ï¤	spine
+¾»	prosperous
+Áá	early
+°°	rising sun
+À¤	generation
+°ß	stomach
+Ã¶	nightbreak
+ÃÀ	gall bladder
+ÏË	span
+±ú	concave
+ÆÌ	convex
+µì	olden times
+¼«	oneself
+Çò	white
+É´	hundred
+Ãæ	in
+Àé	thousand
+Àå	tongue
+¾£	measuring box
+¾º	rise up
+´İ	round
+À£	measurement
+Àì	specialty
+Çî	dr
+Àê	fortune telling
+¾å	above
+²¼	below
+Âî	eminent
+Ä«	morning
+Âş	only
+³­	shellfish
+Äç	upright
+°÷	employee
+¸«	see
+»ù	newborn babe
+¸µ	beginning
+ÊÇ	page
+´è	stubborn
+ËŞ	mediocre
+Éé	defeat
+Ëü	ten thousand
+¶ç	phrase
+È©	texture
+½Ü	decameron
+¼Û	ladle
+Åª	bull's eye
+¼ó	neck
+²µ	fishguts
+Íğ	riot
+Ä¾	straightaway
+¶ñ	tool
+¿¿	true
+¹©	craft
+º¸	left
+±¦	right
+Í­	possess
+ÏÅ	bribe
+¹×	tribute
+¹à	paragraph
+Åá	sword
+¿Ï	blade
+ÀÚ	cut
+¾¤	seduce
+¾¼	shining
+Â§	rule
+Éû	vice
+ÊÌ	separate
+Ãú	street
+Ä®	village
+²Ä	can
+Äº	place on the head
+»Ò	child
+¹¦	cavity
+Î»	complete
+½÷	woman
+¹¥	fond
+Ç¡	likeness
+Êì	mama
+´Ó	pierce
+·»	elder brother
+¹î	overcome
+¾®	little
+¾¯	few
+Âç	large
+Â¿	many
+Í¼	evening
+¼®	eventide
+³°	outside
+Ì¾	name
+ÀĞ	stone
+¾Ó	resemblance
+¾Ë	nitrate
+ºÕ	smash
+º½	sand
+ºï	plane
+¸÷	ray
+ÂÀ	plump
+´ï	utensil
+½­	stinking
+Ì¯	exquisite
+¾Ê	focus
+¸ü	thick
+´ñ	strange
+Àî	stream
+½£	state
+½ç	obey
+¿å	water
+É¹	icicle
+±Ê	eternity
+Àô	spring
+¸¶	meadow
+´ê	petition
+±Ë	swim
+¾Â	marsh
+²­	open sea
+¹¾	creek
+½Á	soup
+Ä¬	tide
+¸»	source
+³è	lively
+¾Ã	extinguish
+¶·	but of course
+²Ï	river
+Çñ	overnight
+¸Ğ	lake
+Â¬	fathom
+ÅÚ	soil
+ÅÇ	spit
+°µ	pressure
+ºë	cape
+³À	hedge
+·½	square jewel
+Éõ	seal
+³¶	horizon
+»û	buddhist temple
+»ş	time
+¶Ñ	level
+²Ğ	fire
+±ê	inflammation
+ÈÑ	anxiety
+Ã¸	thin
+Åô	lamp
+Èª	farm
+ºÒ	disaster
+³¥	ashes
+ÅÀ	spot
+¾È	illuminate
+µû	fish
+µù	fishing
+Î¤	ri
+¹õ	black
+ËÏ	black ink
+¸ñ	carp
+ÎÌ	quantity
+ÎÒ	rin
+Ëä	bury
+Æ±	same
+Æ¶	den
+Æ¹	trunk
+¸ş	yonder
+¾°	esteem
+»ú	character
+¼é	guard
+´°	perfect
+Àë	proclaim
+¾¬	wee hours
+°Â	relax
+±ã	banquet
+´ó	draw near
+ÉÙ	wealth
+Ãù	savings
+ÌÚ	tree
+ÎÓ	grove
+¿¹	forest
+·Ë	japanese judas tree
+Çğ	oak
+ÏÈ	frame
+¾¿	treetops
+Ãª	shelf
+°É	apricot
+¶Í	paulownia
+¿¢	plant
+¸Ï	wither
+ËÑ	crude
+Â¼	town
+Áê	inter
+´ù	desk
+ËÜ	book
+»¥	tag
+Îñ	calendar
+°Æ	plan
+Áç	parch
+Ì¤	not yet
+Ëö	extremity
+Ë÷	splash
+Ì£	flavor
+Ëå	younger sister
+¼ë	vermilion
+³ô	stocks
+¼ã	young
+Áğ	grass
+¶ì	suffering
+´²	tolerant
+Çö	dilute
+ÍÕ	leaf
+ÌÏ	imitation
+Çù	vague
+Êè	grave
+Êë	livelihood
+Ëì	membrane
+ÉÄ	seedling
+Ãû	portent
+Åí	peach tree
+Ä¯	stare
+¸¤	dog
+¾õ	status quo
+ÌÛ	silence
+Á³	sort of thing
+²®	reed
+¼í	hunt
+Ç­	cat
+µí	cow
+ÆÃ	special
+¹ğ	revelation
+Àè	before
+Àö	wash
+²ğ	jammed in
+³¦	world
+Ãã	tea
+¹ç	fit
+Åã	pagoda
+²¦	king
+¶Ì	jewel
+Êõ	treasure
+¼î	pearl
+¸½	present
+¶¸	lunatic
+¹Ä	emperor
+Äè	display
+Á´	whole
+Àò	plug
+Íı	logic
+¼ç	lord
+Ãí	pour
+Ãì	pillar
+¶â	gold
+Á­	pig iron
+È­	bowl
+Æ¼	copper
+Äà	angling
+¿Ë	needle
+ÌÃ	inscription
+ÄÃ	tranquilize
+Æ»	road way
+Æ³	guidance
+ÄÔ	crossing
+¿×	swift
+Â¤	create
+Ç÷	urge
+Æ¨	escape
+ÊÕ	environs
+½ä	patrol
+¼Ö	car
+Ï¢	take along
+µ°	rut
+Í¢	transport
+Á°	in front
+³Æ	each
+³Ê	status
+Î¬	abbreviation
+µÒ	guest
+³Û	forehead
+²Æ	summer
+½è	dispose
+¾ò	twig
+Íî	fall
+¾é	superfluous
+·³	army
+µ±	radiance
+±¿	carry
+´§	crown
+Ì´	dream
+¹£	pit
+¹â	tall
+µı	receive
+½Î	cram school
+½Ï	mellow
+Äâ	pavilion
+µş	capital
+ÎÃ	refreshing
+·Ê	scenery
+·ß	whale
+¼Ë	cottage
+¼ş	circumference
+½µ	week
+»Î	gentleman
+µÈ	good luck
+ÁÔ	robust
+Áñ	villa
+Çä	sell
+³Ø	study
+³Ğ	memorize
+±É	flourish
+½ñ	write
+ÄÅ	haven
+ËÒ	breed
+¹¶	aggression
+ÇÔ	failure
+Ëç	sheet of
+¸Î	happenstance
+·É	awe
+¸À	say
+·Ù	admonish
+·×	plot
+¹ö	prison
+Äû	revise
+Æ¤	chastise
+·±	instruction
+¾Û	imperial edict
+µÍ	packed
+ÏÃ	tale
+±Ó	recitation
+»í	poem
+¸ì	word
+ÆÉ	read
+Ä´	tune
+ÃÌ	discuss
+Âú	consent
+Í¡	rebuke
+¼°	style
+»î	test
+Æõ	II
+°è	range
+Â±	burglar
+ºÏ	plantation
+ºÜ	load
+ÌĞ	overgrown
+À®	turn into
+¾ë	castle
+À¿	sincerity
+°Ò	intimidate
+ÌÇ	destroy
+¸º	dwindle
+»·	scaffold
+Á¬	coin
+Àõ	shallow
+»ß	stop
+Êâ	walk
+¾Ä	ford
+ÉÑ	repeatedly
+¹Î	agreement
+´ë	undertake
+Îò	curriculum
+Éğ	warrior
+Éê	levy
+Àµ	correct
+¾Ú	evidence
+À¯	politics
+Äê	determine
+¾û	lock
+Áö	run
+Ä¶	transcend
+Éë	proceed
+±Û	surpass
+À§	just so
+Âê	topic
+Äé	dike
+·ú	build
+±ä	prolong
+ÃÂ	nativity
+ÁÃ	cornerstone
+Ì»	bridegroom
+°á	garment
+ºÛ	tailor
+Áõ	attire
+Î¢	back
+²õ	demolition
+°¥	pathetic
+±ó	distant
+±î	monkey
+½é	first time
+ÉÛ	linen
+ÈÁ	sail
+Éı	hanging scroll
+Ë¹	cap
+Ëë	curtain
+ËÚ	canopy
+¶Ó	brocade
+»Ô	market
+»Ğ	elder sister
+ÇÙ	lungs
+ÂÓ	sash
+ÂÚ	stagnate
+»É	thorn
+À©	system
+À½	made in
+Å¾	revolve
+·İ	technique
+±«	rain
+±À	cloud
+ÆŞ	cloudy weather
+Íë	thunder
+Áú	frost
+Åß	winter
+Å·	heavens
+¶¶	bridge
+ÕÈ	attractive
+Î©	stand up
+µã	cry
+¾Ï	badge
+¶¥	vie
+Äë	sovereign
+Æ¸	juvenile
+Æ·	pupil
+¾â	bell
+¾¦	make a deal
+Ãä	legitimate wife
+Å¬	suitable
+Å©	drip
+Å¨	enemy
+Ò¸	spoon
+ËÌ	north
+ÇØ	stature
+Èæ	compare
+º«	descendants
+³§	all
+º®	mix
+³é	thirst
+±Ú	audience
+³ì	brown
+³å	hoarse
+»İ	delicious
+»é	fat
+°í	i (one)
+Ëè	every
+ÉÒ	cleverness
+Çß	plum
+³¤	sea
+¸ğ	beg
+´¥	drought
+Ê¢	abdomen
+Ê£	duplicate
+·ç	lack
+¿á	blow
+¿æ	cook
+²Î	song
+Æğ	soft
+¼¡	next
+°ñ	briar
+»ñ	assets
+»Ñ	figure
+»ğ	consult with
+Çå	compensation
+Çİ	cultivate
+Ë¶	divide
+²»	sound
+°Å	darkness
+±¤	rhyme
+¼±	discriminating
+¶À	mirror
+¶­	boundary
+Ë´	deceased
+ÌÕ	blind
+ÌÑ	delusion
+¹Ó	laid waste
+Ë¾	ambition
+Êı	direction
+Ë¸	disturb
+Ë·	boy
+Ë§	perfume
+ËÃ	obese
+Ë¬	call on
+Êü	set free
+·ã	violent
+Ã¦	undress
+Àâ	rumor	explanation
+±Ô	pointed
+Á¾	formerly
+Áı	increase
+Â£	presents
+Åì	east
+Åï	ridgepole
+Åà	frozen
+Ç¥	pregnancy
+Äî	courts
+À÷	dye
+Ç³	burn
+ÉĞ	vip
+ºĞ	year end
+¸©	prefecture
+ÆÊ	horse chestnut
+ÃÏ	ground
+ÃÓ	pond
+Ãî	insect
+·Ö	lightning bug
+¼Ø	snake
+Æú	rainbow
+Ä³	butterfly
+ÆÈ	single
+»½	silkworm
+É÷	wind
+¸Ê	self
+µ¯	rouse
+ÈŞ	queen
+²ş	reformation
+µ­	scribe
+Êñ	wrap
+Ë¦	placenta
+Ë¤	cannon
+Ë¢	bubbles
+µµ	tortoise
+ÅÅ	electricity
+Îµ	dragon
+Âì	waterfall
+ÆÚ	pork
+Ãà	pursue
+¿ë	consummate
+²È	house
+²Ç	marry into
+¹ë	overpowering
+Ä²	intestines
+¾ì	location
+Åò	hot water
+ÍÓ	sheep
+Èş	beauty
+ÍÎ	ocean
+¾Ü	detailed
+Á¯	fresh
+Ã£	accomplished
+Á¢	envious
+º¹	distinction
+Ãå	don
+Í£	solely
+¾Ç	char
+¾Ì	reef
+½¸	gather
+½Ú	quasi
+¿Ê	advance
+»¨	miscellaneous
+»ó	feminine	female
+½à	semi
+Ê³	stirred up
+Ã¥	rob
+³Î	assurance
+¸á	noon
+µö	permit
+´¿	delight
+¸¢	authority
+´Ñ	outlook
+±©	feathers
+½¬	learn
+Íâ	the following
+ÍË	weekday
+Âõ	laundry
+Û©	sayeth
+º¤	quandary
+¸Ç	harden
+¹ñ	country
+ÃÄ	group
+°ø	cause
+°ù	matrimony
+±à	park
+²ó	times
+ÃÅ	podium
+Å¹	store
+¸Ë	warehouse
+Äí	courtyard
+Ä£	government office
+¾²	bed
+Ëã	hemp
+Ëá	grind
+¿´	heart
+Ëº	forget
+Ç¦	endure
+Ç§	acknowledge
+´÷	mourning
+»Ö	intention
+»ï	document
+Ãé	loyalty
+¶ú	shish kebab
+´µ	afflicted
+»×	think
+²¸	grace
+±ş	apply
+°Õ	idea
+ÁÛ	concept
+Â©	breath
+·Æ	recess
+·Ã	favor
+¶²	fear
+ÏÇ	beguile
+´¶	emotion
+Í«	melancholy
+²É	widow
+Ë»	busy
+±Ù	ecstasy
+¹±	constancy
+Åé	lament
+¸ç	enlightenment
+Éİ	dreadful
+¹²	disconcerted
+²ù	repent
+Áş	hate
+´·	accustomed
+Ìû	pleasure
+ÂÆ	lazy
+¿µ	humility
+´¸	remorse
+²±	recollection
+Êé	pining
+Åº	annexed
+É¬	invariably
+Èç	ooze
+¼ê	hand
+´Ç	watch over
+Ëà	chafe
+²æ	ego
+µÁ	righteousness
+µÄ	deliberation
+µ¾	sacrifice
+Ëõ	rub
+Êú	embrace
+Åë	board
+¾¶	extract
+¹³	confront
+Èã	criticism
+¾·	beckon
+Âó	clear (the land)
+Çï	clap
+ÂÇ	strike
+¹´	arrest
+¼Î	discard
+²ı	kidnap
+Å¦	pinch
+Ä©	challenge
+»Ø	finger
+»ı	hold
+³ç	fasten
+´ø	brandish
+¿ä	conjecture
+ÍÈ	hoist
+Äó	propose
+Â»	damage
+½¦	pick up
+Ã´	shouldering
+µò	foothold
+ÉÁ	sketch
+Áà	maneuver
+ÀÜ	touch
+·Ç	put up (a notice)
+³İ	hang
+¸¦	polish
+²ü	commandment
+³£	contraption
+É¡	nose
+·º	punish
+·¿	mould
+ºÍ	genius
+ºâ	property
+ºà	lumber
+Â¸	suppose
+ºß	exist
+Çµ	from
+·È	portable
+µÚ	reach out
+µÛ	suck
+°·	handle
+¾æ	length
+»Ë	history
+Íù	officer
+¹¹	grow late
+¹Å	stiff
+Ëô	or again
+ÁĞ	pair
+·¬	mulberry
+ÀÉ	vessels
+¸î	safeguard
+³Í	seize
+ÅÛ	guy
+ÅÜ	angry
+Í§	friend
+È´	slip out
+Åê	throw
+Ë×	drown
+Àß	establishment
+·â	beat
+³Ì	husk
+»Ù	branch
+µ»	skill
+»Ş	bough
+»è	limb
+·Ô	stalk
+²ø	suspicious
+·Ú	lightly
+½Ç	uncle
+ÆÄ	coach
+¼ä	loneliness
+½Ê	graceful
+È¿	anti
+ºä	slope
+ÈÄ	plank
+ÊÖ	return
+ÈÎ	marketing
+ÄŞ	claw
+ÂÅ	gentle
+Æı	milk
+Éâ	floating
+¾­	leader
+¾©	exhort
+ºÎ	pick
+ºÚ	vegetable
+¼õ	accept
+¼ø	impart
+°¦	love
+Ê§	pay
+¹­	wide
+³È	broaden
+¹Û	mineral
+ÊÛ	valve
+Íº	masculine	male
+Âæ	pedestal
+ÂÕ	neglect
+¼£	reign
+»Ï	commence
+ÂÛ	womb
+Áë	window
+µî	gone
+Ë¡	method
+²ñ	meeting
+»ê	climax
+¼¼	room
+Åş	arrival
+Ã×	doth
+¸ß	mutually
+´ş	abandon
+°é	bring up
+Å±	remove
+½¼	allot
+½Æ	gun
+Î²	sulphur
+Î®	current
+°ô	license
+º¶	tempt
+½Ğ	exit
+»³	mountain
+ÀÛ	bungling
+´ä	boulder
+Ãº	charcoal
+´ô	branch off
+Æ½	mountain peak	mountain pass
+Êø	crumble
+Ì©	secrecy
+Ìª	honey
+Íò	storm
+ºê	promontory
+Æş	enter
+¹ş	crowded
+Ê¬	part
+ÉÏ	poverty
+ÈÒ	partition
+¸ø	public
+¾¾	pine tree
+²§	venerable old man
+¾Ù	sue
+Ã«	valley
+Íá	bathe
+ÍÆ	contain
+ÍÏ	melt
+Íß	longing
+Íµ	abundant
+±ô	lead (metal)
+±è	run alongside
+¾Ş	prize
+ÅŞ	party
+Æ²	public chamber	hall
+¾ï	usual
+¾Ø	skirt
+¾¸	manipulate
+Èé	pelt
+ÇÈ	waves
+ÇÌ	old woman
+Èä	expose
+ÇË	rend
+Èï	incur
+»Ä	remainder
+½Ş	martyrdom
+¼ì	particularly
+¿£	augment
+Îó	file
+Îö	split
+Îõ	ardent
+»à	death
+Áò	interment
+½Ö	wink
+¼ª	ear
+¼è	take
+¼ñ	gist
+ºÇ	utmost
+»£	snapshot
+ÃÑ	shame
+¿¦	post
+À»	holy
+´º	daring
+Ä°	listen
+²û	pocket
+Ëı	ridicule
+Ì¡	loose
+Çã	buy
+ÃÖ	placement
+È³	penalty
+Ç«	rather
+Âù	voiced
+´Ä	ring
+´Ô	send back
+É×	husband
+ÉŞ	aid
+·Ì	mountain stream
+µ¬	standard
+ÂØ	exchange
+»¿	approve
+Àø	submerge
+¼º	lose
+Å´	iron
+Å³	transfer	alternate
+¿Ã	retainer
+É±	princess
+Â¢	storehouse
+Â¡	entrails
+¸­	intelligent
+·ø	strict
+Î×	look to
+Í÷	perusal
+µğ	gigantic
+µñ	repel
+ÎÏ	power
+ÃË	male	man
+Ï«	labor
+Êç	recruit
+Îô	inferiority
+¸ù	achievement
+´«	persuade
+ÅØ	toil
+Îå	encourage
+²Ã	add
+²ì	congratulations
+²Í	erect
+ÏÆ	armpit
+¶¼	threaten
+¶¨	co
+¹Ô	going
+Î§	rhythm
+Éü	restore
+ÆÀ	gain
+½¾	accompany
+ÅÌ	junior
+ÂÔ	wait
+±ı	journey
+À¬	subjugate
+·Â	diameter
+Èà	he
+Ìò	duty
+ÆÁ	benevolence
+Å°	penetrate
+Ä§	indications
+Ä¨	penal
+Èù	delicate
+³¹	boulevard
+¹Õ	equilibrium
+¹Æ	draft
+²Ô	earnings
+Äø	extent
+ÀÇ	tax
+ÃÕ	immature
+ÏÂ	harmony
+°Ü	shift
+ÉÃ	second
+½©	autumn
+½¥	distress
+»ä	private
+Ãá	regularity
+Èë	secret
+¾Î	appellation
+Íø	profit
+Íü	pear tree
+³Ï	harvest
+Êæ	ear (of a plant)
+°ğ	rice plant
+¹á	incense
+µ¨	seasons
+°Ñ	committee
+½¨	excel
+Æ©	transparent
+Í¶	entice
+¹ò	cereals
+¶İ	germ
+ÊÆ	rice
+Ê´	flour
+Ç´	sticky
+Î³	grains
+¾Ñ	cosmetics
+ÌÂ	astray
+¿è	chic
+ÎÈ	provisions
+µÆ	chrysanthemum
+±ü	core
+¿ô	number
+Ï°	watchtower
+Îà	sort
+¼¿	lacquer
+ÍÍ	esq
+µá	request
+µå	ball
+µß	salvation
+Ãİ	bamboo
+¾Ğ	laugh
+³Ş	bamboo hat
+ºû	bamboo grass
+¶Ú	muscle
+È¢	box
+É®	writing brush
+Åû	cylinder
+Åù	etc
+»»	calculate
+Åú	solution
+ºö	scheme
+Êí	register
+ÃÛ	fabricate
+¿Í	person
+º´	assistant
+Ã¢	however
+½»	dwell
+°Ì	rank
+Ãç	go between
+ÂÎ	body
+Íª	permanence	remote
+·ï	affair
+»Å	attend
+Â¾	other
+Éú	prostrated
+ÅÁ	transmit
+Ê©	buddha
+µÙ	rest
+²¾	sham	provisional
+Çì	chief
+Â¯	vulgar
+¿®	faith
+²Â	excellent
+°Í	reliant
+Îã	example
+¸Ä	individual
+·ò	healthy
+Â¦	side
+»ø	waiter
+Ää	halt
+ÃÍ	price
+Êï	emulate
+Åİ	overthrow
+Äå	spy
+ÁÎ	buddhist priest
+²¯	hundred million
+µ·	ceremony
+½ş	reparation
+Àç	hermit
+ºÅ	sponsor
+¿Î	humanity
+Éî	scorn
+»È	use
+ÊØ	convenience
+ÇÜ	double
+Í¥	tenderness
+È²	fell
+½É	inn
+½ı	wound
+Êİ	protect
+Ë«	praise
+·æ	greatness
+ÉÕ	adhere
+Éä	token
+ÉÜ	borough	municipality
+Ç¤	responsibility
+ÄÂ	fare
+Âå	substitute
+ÂŞ	sack
+Âß	lend
+²½	change
+²Ö	flower
+²ß	freight
+·¹	lean
+²¿	what
+²Ù	baggage
+½Ó	sagacious
+Ëµ	bystander
+µ×	long time
+À¦	furrow
+¼ü	captured
+Æâ	inside
+Êº	third class
+ÊÁ	design
+Æù	meat
+Éå	rot
+ºÂ	squat	sit
+Â´	graduate
+»±	umbrella
+Ìè	monme
+°Ê	by means of
+»÷	becoming	similar
+Ê»	join
+´¤	tile
+ÉÓ	flower pot
+µÜ	shinto shrine
+±Ä	occupation
+Á±	virtuous
+Ç¯	year
+Ìë	night
+±Õ	fluid
+ÄÍ	hillock
+Ê¾	cash
+ÊÀ	abuse
+´­	yell
+´¹	interchange
+Í»	dissolve
+»Ü	alms
+Àû	rotation
+Í·	play
+Î¹	trip
+ÌŞ	not
+Êª	thing
+°×	easy
+»ò	grant
+Ç¢	urine
+Æô	nun
+Å¥	mud
+Ê½	fence
+Íú	footgear
+²°	roof
+°®	grip
+¶ş	yield
+·¡	dig
+ËÙ	ditch
+µï	reside
+¿ø	set
+ÁØ	stratum
+¶É	bureau
+ÃÙ	slow
+Ï³	leak
+ºş	printing
+¼Ü	shaku
+¿Ô	exhaust
+Âô	swamp
+Ìõ	translate
+Âò	choose
+Ãë	daytime
+¸Í	door
+¸ª	shoulder
+Ë¼	tassel
+Àğ	fan
+Ï§	hearth
+Ìá	re
+ÎŞ	tears
+¸Û	employ
+¸Ü	look back
+·¼	disclose
+¼¨	show
+Îé	salute	salutation
+¾Í	auspicious
+½Ë	celebrate
+Ê¡	blessing
+»ã	welfare
+¼Ò	company
+»ë	inspection
+Æà	nara
+°Ó	military officer
+°Ö	consolation
+´¾	goodwill
+¶Ø	prohibition
+¶ß	collar
+½¡	religion
+¿ò	adore
+º×	ritual
+»¡	guess
+»¤	grate
+Í³	wherefore
+Ãê	pluck
+Ìı	oil
+Âµ	sleeve
+Ãè	mid air
+ÆÏ	deliver
+Å«	flute
+¼´	axis
+¹Ã	armor
+²¡	push
+Ì¨	headland
+ÁŞ	insert
+¿½	speaketh
+¿­	expand
+¿À	gods
+ÁÜ	search
+²Ì	fruit
+²Û	candy	confectionary
+²İ	chapter
+Íç	naked
+¶Ô	axe
+ÀÏ	chop
+½ê	place
+µ§	pray
+¶á	near
+ÀŞ	fold
+Å¯	philosophy
+ÀÂ	departed
+ÀÀ	vow
+»Ã	temporarily
+Á²	steadily
+ÃÇ	severance
+¼Á	substance
+ÀÍ	reject
+ÁÊ	accusation
+ºò	yesterday
+º¾	lie
+ºî	make
+Àã	snow
+Ï¿	record
+¿Ò	inquire
+µŞ	hurry
+²º	calm
+¿¯	encroach
+¿»	immersed
+¿²	lie down
+ÉØ	lady
+Áİ	sweep
+Åö	hit
+Áè	contend
+¾ô	clean
+»ö	matter
+Åâ	t'ang
+Åü	sugar
+¹¯	ease	sane
+Âá	apprehend
+°Ë	italy
+·¯	old boy
+·²	flock
+ÂÑ	proof
+¼û	demand
+¼ô	confucian
+Ã¼	edge
+Î¾	both
+Ëş	full
+²è	brush stroke
+»õ	tooth
+¶Ê	bend
+Áâ	cadet
+Áø	encounter
+Áæ	rowing
+Áå	vat
+ÅÍ	big dipper
+ÎÁ	fee
+²Ê	department
+¿Ş	map
+ÍÑ	utilize
+ÍÇ	commonplace	comfortable
+È÷	equip
+ÀÎ	once upon a time
+ºø	confused
+¼Ú	borrow
+ÀË	pity
+Á¼	set aside
+»¶	scatter
+Æû	twenty
+½î	commoner
+¼×	intercept
+ÀÊ	seat
+ÅÙ	degrees
+ÅÏ	transit
+ËÛ	bustle
+Ê®	erupt
+Ê¯	tomb
+Ê°	aroused
+¾Æ	bake
+¶Ç	daybreak
+È¾	half
+È¼	consort
+ÈÊ	paddy ridge
+È½	judgment
+·ô	ticket
+´¬	scroll
+·÷	sphere
+¾¡	victory
+Æ£	wisteria
+Æ¥	mimeograph	facsimile
+ÊÒ	one sided
+ÈÇ	printing block
+Ç·	of
+Ë³	destitution
+¼Ç	turf
+ÉÔ	negative
+Èİ	negate
+ÇÕ	cupfuls
+Ìğ	dart
+¶º	rectify
+Â²	tribe
+ÃÎ	know
+ÃÒ	wisdom
+Ì·	halberd
+½À	tender
+Ì³	task
+Ì¸	fog
+ÈÉ	squad
+µ¢	homecoming
+µİ	bow
+°ú	pull
+Ä¤	condolences
+¹°	vast
+¶¯	strong
+¼å	weak
+Ê¨	seethe
+Èñ	expense
+Âè	no
+Äï	younger brother
+¹ª	adroit
+¹æ	nickname
+µà	decay
+¸Ø	boast
+±ø	dirty
+Í¿	bestow
+¼Ì	copy
+¿È	somebody
+¼Í	shoot
+¼Õ	apologize
+Ï·	old man
+¹Í	consider
+¹§	filial piety
+¶µ	teach
+¹é	torture
+¼Ô	someone
+¼Ñ	boil
+Ãø	renowned
+½ğ	signature
+½ë	sultry
+½ô	various
+Ãö	boar
+½í	strand
+ÅÒ	gamble
+¶®	gorge
+¶¹	cramped
+¶´	sandwiched
+ÄÉ	chase
+»Õ	expert
+¿ã	commander
+´±	bureaucrat
+´½	coffin
+´É	pipe
+Éã	father
+¸ò	mingle
+¸ú	merit
+³Ó	contrast
+¹»	exam
+Â­	leg
+Â¥	stimulate
+µ÷	long distance
+Ï©	path
+Ïª	dew
+Ä·	hop
+Ìö	leap
+Á©	tread
+Æ§	step
+¹ü	skeleton
+³ê	slippery
+¿ñ	marrow
+²Ò	calamity
+±²	whirlpool
+²á	overdo
+ºå	heights
+°¤	africa
+ºİ	occasion
+¾ã	hinder
+¿ï	follow
+Çæ	obeisance	auxiliary
+ÍÛ	sunshine
+ÄÄ	exhibit	line up
+ËÉ	ward off
+Éí	affixed
+±¡	inst
+¿Ø	camp
+Ââ	regiment
+ÄÆ	crash
+¹ß	descend
+³¬	storey
+ÊÅ	highness
+ÎÙ	neighboring
+³Ö	isolate
+±£	conceal
+ÂÄ	degenerate
+´Ù	collapse
+·ê	hole
+¶õ	empty
+¹µ	withdraw
+ÆÍ	stab
+µæ	research
+Ãâ	plug up
+Àà	stealth
+·¦	depression
+ºñ	squeeze
+ÍÒ	kiln
+µç	hard up
+Ãµ	grope
+¿¼	deep
+µÖ	hill
+³Ù	point
+Ê¼	soldier
+ÉÍ	seacoast
+»å	thread
+¿¥	weave
+Á¶	darning
+½Ì	shrink
+ÈË	luxuriant
+½Ä	vertical
+Àş	line
+Äù	tighten
+°İ	fiber
+Íå	gauze
+Îı	practice
+½ï	thong
+Â³	continue
+³¨	picture
+Åı	overall
+¹Ê	strangle
+µë	salary
+Íí	entwine
+·ë	tie
+½ª	end
+µé	class
+µª	chronicle
+¹È	crimson
+Ç¼	settlement
+ËÂ	spinning
+Ê¶	distract
+¾Ò	introduce
+·Ğ	sutra
+¿Â	sire
+Ìó	promise
+ºÙ	dainty
+Îß	accumulate
+º÷	cord
+Áí	general
+ÌÊ	cotton
+¸¨	silk
+·«	winding
+·Ñ	inherit
+ÎĞ	green
+±ï	affinity
+ÌÖ	netting
+¶Û	tense
+»ç	purple
+Çû	truss
+Æì	straw rope
+ÍÄ	infancy
+¸å	behind
+Í©	seclude	faint
+´ö	how many
+µ¡	mechanism
+¸¼	mysterious
+ÃÜ	livestock
+Ãß	amass
+¸¹	bowstring
+ÍÊ	hug
+¼¢	nourishing
+»ü	mercy
+¼§	magnet
+·Ï	lineage
+·¸	person in charge
+Â¹	grandchild
+·ü	suspend
+µÑ	instead
+µÓ	skids	shins
+²·	wholesale
+¸æ	honorable
+Éş	clothing
+Ì¿	fate
+Îá	orders
+Îí	zero
+Îğ	age
+Îä	cool
+ÎÎ	jurisdiction
+Îë	small bell
+Í¦	courage
+ÄÌ	traffic
+ÍÙ	jump
+µ¿	doubt
+µ¼	mimic
+¶Å	congeal
+ÈÏ	pattern
+ÈÈ	crime
+Ìñ	unlucky
+´í	dangerous
+°¸	address
+ÏÓ	arm
+±ñ	garden
+±å	grudge
+Ìø	willow
+Íñ	egg
+Î±	detain
+ËÇ	trade
+°õ	stamp
+¶½	entertain
+ÆÓ	sign of the bird
+¼ò	sake
+¼à	bartending
+¹Ú	fermentation
+¹ó	cruel
+½·	repay
+Íï	dairy products
+¿İ	vinegar
+¿ì	drunk
+ÇÛ	distribute
+»À	acid
+Í±	furthermore	waver
+Âº	revered
+Æ¦	beans
+Æ¬	head
+Ã»	short
+Ë­	bountiful
+¸İ	drum
+´î	rejoice
+¼ù	timber trees
+»®	dish
+·ì	blood
+Ëß	basin
+ÌÁ	alliance
+Åğ	steal
+²¹	warm
+´Æ	oversee
+Íô	overflow
+´Õ	specimen
+ÌÔ	fierce
+À¹	boom
+±ö	salt
+¶ä	silver
+º¨	regret	resentment
+º¬	root
+Â¨	instant
+¼ß	baron
+Àá	node
+Âà	retreat
+¸Â	limit
+´ã	eyeball
+ÎÉ	good
+Ï¯	melodious
+Ï²	wandering
+Ì¼	daughter
+¿©	eat
+ÈÓ	meal
+°û	drink
+µ²	hungry
+²î	starve
+¾ş	decorate
+´Û	bldg
+ÍÜ	foster
+Ë°	sated
+´û	previously
+³µ	outline
+³´	rue
+Ê¿	even
+¸Æ	call
+ÄÚ	two mat area
+É¾	evaluate
+´¢	reap
+´õ	hope
+¶§	villain
+¶»	bosom
+Î¥	detach
+»¦	kill
+½ã	genuine
+Æß	dull
+¿É	spicy
+¼­	resign
+°´	catalpa
+ºË	superintend
+ÊÉ	wall
+Èò	evade
+¿·	new
+¿Å	fuel	firewood
+¿Æ	parent
+¹¬	happiness
+¼¹	tenacious
+Êó	report
+¶«	shout
+µê	twist
+¼ı	income
+ÈÜ	lowly
+Èê	tombstone
+Î¦	land
+ËÓ	intimate
+Àª	forces
+Ç®	heat
+É©	diamond
+ÎÍ	mausoleum
+°ç	sign of the hog
+³Ë	nucleus
+¹ï	engrave
+³º	above stated
+³¯	censure
+½Ò	mention
+½Ñ	art
+´¨	cold
+¾ú	brew
+¾ù	defer
+¾í	lot
+¾î	lass
+ÆÇ	poison
+ÁÇ	elementary
+Çş	barley
+ÀÄ	blue
+Àº	refined
+ÀÁ	solicit
+¾ğ	feelings
+À²	clear up
+À¶	pure
+ÀÅ	quiet
+ÀÕ	blame
+ÀÓ	exploits
+ÀÑ	volume
+ºÄ	bond
+ÄÒ	pickling
+É½	surface
+É¶	bag
+·é	undefiled
+·À	pledge
+µÊ	consume
+³²	harm
+³í	control
+³ä	proportion
+·û	constitution
+À¸	life
+À±	star
+À«	surname
+À­	sex
+À·	animal sacrifice
+»º	products
+Î´	hump
+Êö	summit
+Ë¥	sew
+ÇÒ	worship
+¼÷	longevity
+Ãò	casting
+ÀÒ	enroll
+½Õ	springtime
+ÄØ	camellia
+ÂÙ	peaceful
+ÁÕ	play music
+¼Â	reality
+Êô	observance	dedicate
+Êğ	stipend
+ËÀ	rod
+¶à	discreet
+¶Ğ	diligence
+´Á	sino
+Ã²	sigh
+Æñ	difficult
+²Ú	splendor
+¿â	droop
+¿ç	drowsy
+¿î	spindle
+¾è	ride
+¾ê	surplus
+º£	now
+´Ş	include
+¶ã	versify
+Ç°	wish
+¶×	harp
+±¢	shade
+Í½	beforehand
+½ø	preface
+ÍÂ	deposit
+Ìî	plains
+·ó	concurrently
+·ù	dislike
+³ù	sickle
+¸¬	self effacing
+Î÷	bargain
+À¾	west
+²Á	value
+Í×	need
+¹ø	loins
+É¼	ballot
+Éº	drift
+É¸	signpost
+·ª	chestnut
+Á«	transition
+Ê¤	capsize
+±ì	smoke
+Æî	south
+Æï	camphor tree
+¸¥	offering
+Ìç	gates
+Ìä	question
+±Ü	review
+È¶	clique
+´Ö	interval
+´Ê	simplicity
+³«	open
+ÊÄ	closed
+³Õ	tower
+´×	leisure
+Ê¹	hear
+½á	wet
+Íó	column
+Æ®	fight
+ÁÒ	godown
+ÁÏ	genesis
+Èó	un
+ÇĞ	haiku
+ÇÓ	repudiate
+Èá	sad
+ºá	guilt
+ÇÚ	comrade
+Èâ	front door
+¸ô	marquis
+¸õ	climate
+·è	decide
+²÷	cheerful
+°Î	admirable
+°ã	difference
+°Ş	horizontal
+±Ò	defense
+´Ú	korea
+´³	dry
+´Î	liver
+´©	publish
+´À	sweat
+¸®	flats
+´ß	beach
+´´	tree trunk
+°ò	potato
+±§	eaves
+Í¾	too much
+½ü	exclude
+½ù	gradually
+½ö	confer
+ÅÓ	route
+¼Ğ	diagonal
+ÅÉ	paint
+Â«	bundle
+Íê	trust
+À¥	rapids
+Ä¼	imperial order
+ÁÂ	alienate
+Â®	quick
+À°	organize
+·õ	sabre	saber
+¸±	precipitous
+¸¡	examination
+·ğ	frugal
+½Å	heavy
+Æ°	move
+·®	meritorious deed
+Æ¯	work
+¼ï	species
+¾×	collide
+·°	fragrant
+ÉÂ	ill
+ÃÔ	stupid
+Å÷	pox
+¾É	symptoms
+¼À	rapidly
+Î¡	diarrhea
+Èè	exhausted	tired
+±Ö	epidemic
+ÄË	pain
+ÊÊ	mannerism
+Æ¿	hide
+¾¢	artisan
+°å	doctor
+É¤	equal
+¶è	ward
+¿õ	hinge
+²¥	assault
+²¤	europe
+ÍŞ	repress
+¶Ä	face up
+·Ş	welcome
+ÅĞ	ascend
+À¡	lucidity
+È¯	discharge
+ÇÑ	abolish
+Î½	colleague
+ÎÀ	dormitory
+ÎÅ	heal
+Ä¦	carve
+·Á	shape
+±Æ	shadow
+¿ù	cedar
+ºÌ	coloring
+¾´	patent
+É§	lad
+´é	face
+¿Ü	ought
+ËÄ	swell
+»²	nonplussed	visit
+»´	wretched
+½¤	discipline
+ÄÁ	rare
+¿Ç	check up
+Ê¸	sentence
+ÂĞ	vis a vis
+Ìæ	family crest
+²ã	mosquito
+ÀÆ	adjusted
+ºŞ	dose
+ºÑ	finish
+ºØ	purification
+½Í	solemn
+Îİ	bases
+³Ú	music
+Ìô	medicine
+Î¨	ratio
+½Â	astringent
+Àİ	vicarious
+±û	center
+±Ñ	england
+±Ç	reflect
+ÀÖ	red
+¼Ï	pardon
+ÊÑ	unusual
+À×	tracks
+ÈÚ	barbarian
+Îø	romance
+ÏÑ	gulf
+²«	yellow
+²£	sideways
+ÇÄ	grasp
+¿§	color
+Àä	discontinue
+±ğ	glossy
+Èî	fertilizer
+´Å	sweet
+º°	navy blue
+Ë¿	so and so
+ËÅ	conspire
+ÇŞ	mediator
+µ½	deceit
+´ı	chess piece
+´ú	national flag
+´ü	period
+¸ë	go
+´ğ	fundamentals
+¿Ó	tremendously
+´ª	intuition
+´®	withstand
+µ®	precious
+°ä	bequeath
+¸¯	dispatch
+Éñ	dance
+Ìµ	nothingness
+ÁÈ	association
+ÁÆ	coarse
+ÁÅ	tariff
+ÁÄ	ancestor
+ÁË	thwart
+ºº	investigate
+½õ	help
+µ¹	best regards
+¾ö	tatami mat
+ÊÂ	row
+Éá	universal
+Éè	musical score
+¼¾	damp
+¸²	appear
+Á¡	slender
+Îî	spirits
+¶È	business	profession
+ËĞ	slap
+ËÍ	me
+¶¦	together
+¶¡	submit
+°Û	uncommon
+Íã	wing
+¹¿	deluge
+¹Á	harbor
+Ë½	outburst
+Çú	bomb
+¶³	respect
+Áª	elect
+ÅÂ	mr
+°æ	well
+°Ï	surround
+¹Ì	till
+°¡	asia
+°­	bad
+±ß	circle
+³Ñ	angle
+¿¨	contact
+²ò	unravel
+ºÆ	again
+¹Ö	lecture
+¹Ø	subscription
+¹½	posture
+¹Â	gutter
+ÏÀ	argument
+ÎÑ	ethics
+ÎØ	wheel
+ÊĞ	partial
+Ê×	everywhere
+ÊÔ	compilation
+ºı	tome
+Åµ	code
+»á	family name
+»æ	paper
+º§	marriage
+Äã	lower
+Äñ	resist
+Äì	bottom
+Ì±	people
+Ì²	sleep
+Êá	catch
+±º	bay
+³÷	bulrush
+ÊŞ	shop
+Êä	supplement
+Å¡	residence
+³Ô	enclosure
+·´	county
+¹Ù	outskirts
+Éô	section
+ÅÔ	metropolis
+Í¹	mail
+Ë®	home country
+¶¿	home town
+¶Á	echo
+Ïº	son
+Ï­	corridor
+½â	shield
+½Û	sequential
+ÇÉ	faction
+Ì®	vein
+½°	masses
+Äş	parcel post
+ÃÊ	grade
+ÃÃ	forge
+¹¡	empress
+¸¸	phantasm
+»Ê	director
+»Ç	pay respects
+»ì	parts of speech
+»ô	domesticate
+»Ì	heir
+½®	boat
+Çõ	liner
+¹Ò	navigate
+ÈÌ	carrier
+È×	tray
+ÈÂ	conveyor
+Á¥	ship
+´Ï	warship
+Äú	rowboat
+±»	melon
+¸Ì	arc
+¸É	orphan
+Ëú	cocoon
+±×	benefit
+²Ë	spare time
+Éß	spread
+Íè	come
+µ¤	spirit
+µ¥	vapor
+Èô	fly
+ÄÀ	sink
+ºÊ	wife
+¿ê	decline
+Ãï	inmost
+ÌÌ	mask
+³×	leather
+·¤	shoes
+ÇÆ	hegemony
+À¼	voice
+¸â	give
+¸ä	recreation
+¸í	mistake
+¾ø	steam
+¾µ	acquiesce
+È¡	bin
+¶Ë	poles
+²ç	tusk
+²ê	bud
+¼Ù	wicked
+²í	gracious
+¼á	explanation	interpretation
+ÈÖ	turn
+¿³	hearing
+Ëİ	flip
+ÈÍ	clan
+ÌÓ	fur
+Ì×	decrease
+Èø	tail
+Âğ	home
+Â÷	consign
+°Ù	do
+µ¶	falsehood
+Ä¹	long
+Ä¥	lengthen
+Ä¢	notebook
+Ä±	dilate
+È±	hair of the head
+Å¸	unfold
+ÁÓ	miss
+Áã	nest
+Ã±	simple
+Àï	war
+Áµ	zen
+ÃÆ	bullet
+ºù	cherry tree
+½Ã	animal
+Ç¾	brain
+Çº	trouble
+¸·	stern
+º¿	chain
+µó	raise
+ÍÀ	reputation
+ÎÄ	game hunting
+Ä»	bird
+ÌÄ	chirp
+Äá	crane
+±¨	crow
+ÄÕ	vine
+È·	pigeon
+·Ü	chicken
+Åç	island
+ÃÈ	warmth
+É²	beautiful woman
+±ç	abet
+´Ë	slacken
+Â°	belong
+¾ü	entrust
+¶ö	accidentally
+¶ø	interview
+¶ò	foolish
+¶ù	corner
+µÕ	inverted
+Áº	model
+²¬	mount
+¹İ	steel
+¹Ë	hawser
+¹ä	sturdy
+´Ì	tin can
+Æ«	pottery
+ÍÉ	swing
+ÍØ	noh chanting
+½¢	concerning
+º©	sociable
+º¦	groundbreaking
+ÌÈ	excuse
+°ï	deviate	elude
+ÈÕ	nightfall
+ÊÙ	exertion
+¾İ	elephant
+Áü	statue
+ÇÏ	horse
+¶ğ	pony
+¸³	verification
+µ³	equestrian
+Ãó	stop over	parking
+¶î	drive
+±Ø	station
+Áû	boisterous
+ÂÌ	burdensome
+¶Ã	wonder
+ÆÆ	fervent
+Æ­	inflation
+¸×	tiger
+Îº	captive
+Éæ	skin
+µõ	void
+µº	frolic
+¶ó	uneasiness
+Î¸	prudence
+·à	drama
+µÔ	tyrannize
+¼¯	deer
+Á¦	recommend
+·Ä	jubilation
+Îï	lovely
+·§	bear
+Ç½	ability
+ÂÖ	attitude
+ÆÒ	sign of the tiger
+±é	performance
+Ã¤	sign of the dragon
+¿«	embarrass
+¿Ì	quake
+¿¶	shake
+¿±	with child
+¿°	lips
+ÇÀ	agriculture
+Ç»	concentrated
+Á÷	escort	send off
+´Ø	connection
+ºé	blossom
+µ´	ghost
+½¹	ugly
+º²	soul
+Ëâ	witch
+Ì¥	fascination
+²ô	clod
+½±	attack
+³Å	menacing	upbraid
+Ä¿	majestic plural
+Ê·	atmosphere
+²Õ	item
+Ï£	tempering
+½å	abide by
+Èí	quit
+ÆÖ	barracks
+³î	moreover
+Áô	seaweed
+Îì	slave
+Ìş	healing
+Ã°	rust colored	cinnabar
+³ã	lagoon
+±¯	sign of the cow
+±¬	sign of the hare
+Ì¦	sign of the snake
+º¡	this here
+¼Æ	brushwood
+ºÖ	fort
+º³	whit
+É¦	beard
+Íş	crystal
+¶Ù	fowl
+¸é	apple
+Îù	sympathize with
+ÎÕ	phosphorus
+ÎÛ	camelopard
+ÎÚ	scaled
+±â	encompassing
+°Ã	hermitage
+±æ	shrouded
+²¶	myself
+Ø¢	make amends
+½Ù	steed
+½Ô	steep
+½×	complete a job
+±±	mortar
+çÏ	father in law
+ÁÍ	mouse
+ïØ	bore
+ÔÌ	break
+çÛ	small craft
+ºÔ	rhinoceros
+»©	lunar month
+ÀÔ	spinal column
+Æí	rice field footpath
+ÄÖ	mend
+¼¤	let it be
+¼¥	imperial seal
+³»	suit of armor
+³®	triumph
+ÍÅ	bewitched
+Íà	irrigate
+Æİ	quaff
+Ç£	leek
+äŞ	lottery
+Øò	penitential
+çí	hay
+¿÷	chick
+¿ö	scurry
+Ìà	understandably
+·Î	training
+ÒÍ	immense
+ºÓ	grab
+°¿	a
+»Â	chop off
+ÅÆ	rabbit
+Ìé	est
+¶Æ	lofty
+ÇÃ	comma design
+Êã	offspring
+É¥	critters
+èÁ	violet
+ÒØ	mandala
+¶Ò	towel
+±¾	quote
+ËÎ	augury
+¶¬	heaven high
+Çü	shalt
+ÏÁ	yamato
+¶¢	chivalry
+·ñ	fed up
+¸ó	comely
+²ä	abrupt
+ÄÑ	work a field
+Îâ	minstrel
+»Æ	animal offspring
+µØ	foe
+²À	look after
+¶Ï	trifle
+ÊÈ	biased
+ÌÙ	make a profit
+¸ö	bliss
+¶£	emigrant
+Î·	partner
+´ì	performing artist
+´¦	integrity
+¶æ	mate
+Ëù	as is
+Í¤	adjutant
+Ëó	fork in a road
+ÍÃ	hire
+¼Å	memorial
+æû	dried meat
+Ğæ	my son
+Ğö	make do
+À¨	nifty
+ºã	sharp
+Ãü	wilt
+Î¿	pull through
+Ìê	metallurgy
+ÑÛ	stately
+Âü	kite
+Æä	lull
+½È	earlybird
+Ë±	phoenix
+Î­	slaughter
+Ñë	moment
+Çí	peel off
+Äæ	shave
+Æ÷	aroma
+¸û	flexed
+±Ş	despondent
+´ç	wild goose
+´æ	counterfeit
+¿ß	kitchen
+Ğ¼	insinuate
+¾¥	scout
+ÓŞ	derision
+Òë	reprehend
+Óñ	whisper
+Ãı	chatter
+°ö	windpipe
+²Ş	quarrel
+±½	gossip
+³±	cough
+·ö	clamor
+¹¢	throat
+ÂÃ	saliva
+Ã¡	bash
+±³	fib
+Âï	peck at
+¼ö	curse
+ËÊ	barking
+Äß	dangle
+³ú	chew
+³ğ	within my ability
+Ê­	sides of the mouth
+µÉ	stammer
+È¸	spin a tale
+Á¹	miso
+±´	pop song
+¼¸	scold
+Í¸	city walls
+Êò	dumbfounded
+¶ô	ingest
+¾ı	clay
+º¥	authochthonous
+ÂÏ	piled high
+¹è	dugout
+¹¤	blemish
+Ã³	flat
+ÉÖ	wharf
+Å¶	stuff up
+±á	dam
+ÅÈ	railing
+±Å	suckling infant
+´¯	violate
+ÅÊ	jealous
+Õ¹	handmaiden
+Õ¶	well finished
+¾«	harlot
+µ¸	courtesan
+°£	fair
+ÌÅ	niece
+¼»	envy
+ÄÜ	mistress
+±¸	aged woman
+¸È	mother in law
+°¹	young miss
+´ò	overjoyed
+ÕÔ	expecting
+»Ú	assiduous
+Í¨	soothe
+¶÷	imply
+¹¨	extensive
+Ï´	jail
+ºÉ	block up
+Á×	sung dynasty
+¼µ	venison
+ÅË	butchering
+Õû	fart
+¶ı	rubbish
+¿¬	buttocks
+¼È	frequently
+»Ó	corpse
+Ö¢	folding screen
+¿ó	high reaching
+ÖÅ	rugged mountains
+²å	high mountain
+³³	bluffs
+Îæ	mountaintop
+ÖÈ	fit into
+º·	rocky
+Ä¡	quire
+È¨	banner
+Öğ	pennant
+Êù	cleaver
+³Ç	licensed quarters
+Èß	overhang
+Âë	hawk
+¾±	shire
+ÉÀ	tomb sanctuary
+¶°	strengthen
+Ìï	more and more
+ÃĞ	loosen
+´¡	rice gruel
+ÈÔ	lathe
+Æµ	bump into
+Ê±	disguise
+Î«	pillage
+°§	shove
+ÄÏ	clutch
+Æè	impress
+Ç±	wrenching
+Áß	scratch
+Àñ	assortment
+¿¡	wipe
+Â·	muster
+»«	deal with
+³É	churn up
+À¢	rubbing
+°Ä	press down on
+Âª	nab
+»¢	imminent
+ÇÅ	disseminate
+Í¬	interpretation
+Âñ	receptable
+Êû	dedicate
+Ç²	twirl
+Äò	counter for tools
+¾ñ	commotion
+Ä½	make headway
+Éï	petting
+»µ	sprinkle
+Å§	outstanding
+¾¹	spoils
+Ù±	gouge out
+¶±	wince
+°Ô	ponder
+¹û	infatuation
+Îç	quickwitted
+Æ×	considerate
+Æ´	yearn
+³æ	as if
+²ú	enlarge
+Äğ	respect for elders
+Í¯	bubble up
+ßº	canal
+Ş«	glistening
+Şæ	bounding main
+Şû	gargle
+½§	continent
+Ş­	swirling waters
+Şú	seep
+Ş¯	rinse
+İô	douse
+Ş¥	teardrops
+ŞÕ	gushing
+º»	grains of sand
+ÆÂ	blaspheme
+°ü	lewd
+ÎÂ	roofbeam
+ÅÃ	sediment
+ÈÅ	widespread
+Íì	old kyoto
+Æò	thou
+¹÷	filter
+ÉÎ	on the verge of
+¹ê	moat
+È®	spray
+Å®	drowning
+Ì«	port
+ÎÔ	solitude
+¹À	abounding
+Äõ	water's edge
+¹ã	large goose
+´Ã	souse
+°î	brimming
+ÂÁ	cleanse
+Ã¹	inundate
+½ß	immaculate
+ÄÙ	defile
+°¯	moisten
+Æç	rough seas
+µâ	draw water
+ÆÔ	river pool
+Î¯	cumulation
+Ş¼	abyss
+ÆÙ	chaos
+ÈÆ	pan
+ßÉ	strainer
+Ç¨	drench
+Íä	eddy
+Şº	fabrication
+³ø	cauldron
+Éà	hatchet
+Ìì	grandpa
+àÑ	sly
+àĞ	indecent
+àÄ	cunning
+Ã¬	racoon dog
+Ïµ	wolf
+Çâ	flustered
+¶é	pup
+¸Ñ	fox
+¹ı	a un
+ÁÀ	aim at
+»â	lion
+àÁ	baboon
+è¾	tobacco
+çı	jasmine
+è½	hawthorn
+çõ	strawberry
+Çë	bush clover
+éº	technique [old]
+Æå	trim
+Ì¬	straw raincoat
+°à	numb
+Âİ	moss
+Æ¢	prodigal
+ÊÃ	cover over
+Ì¢	tendril
+Ï¡	lotus
+Éç	lotus flower
+ÍÖ	lotus blossom
+Íö	orchid
+°²	hollow reed
+½ò	yam
+¾Ô	iris
+¾Ö	banana
+¿Ä	wick
+¶¾	buckwheat
+Éù	butterbur
+Íõ	indigo
+²Ø	eggplant
+²×	bullying
+°ş	behind the scenes
+Ë©	wormwood
+³©	mustard
+Ë¨	germinate
+Éò	grape
+Æº	grape vine
+ÁÉ	resurrect
+ÈÙ	grow wild
+Îê	cocklebur
+¸Ö	rush mat
+ÌØ	darken
+³ı	grassy reed
+ÇÎ	plantain
+´£	mow
+³¸	lid
+Ç¬	onion
+ÊÎ	revile
+°ª	hollyhock
+Éø	shingling
+¼É	stamen
+Âû	mushroom
+¼¬	sowing
+¶Ü	parsley
+ÆÑ	thatching
+³ë	kudzu
+Áó	pale blue
+ÏÎ	straw
+Éó	turnip
+½ó	sweet potato
+Ìù	quack
+ÉÇ	garlic
+ÏÏ	bracken
+±¶	grow plentiful
+°«	madder red
+´Ğ	candle rush
+½¯	collector
+¿û	sedge
+°±	ditch reed
+íì	way
+Ã©	track down
+Çç	crawl
+±ª	detour
+ÆÛ	elude
+°©	tryst
+ÍÚ	far off
+ÎË	remote
+É¯	pressing
+Ëø	until
+Â½	modest
+¿à	standstill
+°ê	cultured
+Å¢	courtesy
+·ä	chink
+·¨	nook
+Øá	possessed
+¼æ	attract
+¼½	without exception
+¹ú	instantaneously
+ÁÚ	firstborn son
+Ìü	in the nick of time
+½ú	sensitive
+Úå	overarching
+¿¸	progress
+Û£	equivocal
+Úğ	aglow
+Úô	halo
+Úö	glitter
+Úİ	dry weather
+Úç	clear skies
+Úï	morrow
+»¯	bleaching
+Ëæ	obscure
+¹¸	limpid
+Çø	air out
+½ì	dawn
+¹·	elevate
+²¢	effulgent
+ºª	dusk
+³¢	last day of the month
+¿Õ	kidney
+¸Ô	thigh
+Ç¿	pus
+ç¥	viscera
+æù	bladder
+æõ	embryo
+æê	anus
+²²	cowardice
+É¨	knee
+ÀÈ	fragile
+Ï¾	rib
+Éª	elbow
+¹Ğ	body cavity
+Á£	gland
+¼ğ	tumor
+Á·	dining tray
+¹Ï	armrest
+¸Õ	uncivilized
+Éö	maple tree
+Ëí	pillow
+ÍÌ	purple willow
+Ìº	oriental elm
+¿º	hazel
+¶û	comb
+ÄÈ	wooden hammer
+¾Á	mallet
+Äô	ladder
+°Ø	chair
+³Á	persimmon
+´»	citrus tree
+·å	girder
+¹º	picket
+É¢	holly
+Í®	citron
+ÏĞ	wooden bowl
+ÄÎ	hemlock
+Ëï	spindle tree
+ºç	sacred shinto tree
+³ß	evergreen oak
+Ëê	chinese black pine
+Æê	japanese oak
+µÌ	mandarin orange
+É°	japanese cypress
+À³	roost
+À´	nestle
+¹¼	spiny
+µË	bellflower
+ÅÎ	temple grove
+ÇÇ	grain rake
+³á	oar
+µÏ	wooden pestle
+¾ó	cane
+ÄÇ	sweet oak
+Ã®	barrel
+ºô	palisade
+Ï¦	turret
+³à	sturdy oak
+¼İ	wooden ladle
+Íû	damson
+ÌÉ	raw cotton
+½İ	escutcheon
+±İ	hackberry
+³ò	birch
+Áä	lance
+ÄÓ	wild mulberry
+º­	bale
+Èú	loquat
+Èõ	downspout
+Üò	sled
+ÜÑ	enjoyment
+ÛÙ	bookmark
+Ü¿	coconut tree
+ÃÉ	sandalwood
+Ãô	plotosid
+ÄĞ	zelkova
+¿ú	cryptomeria
+ÉË	copious
+²³	bucket
+ÂÊ	ellipse
+Üé	star anise
+İÜ	furball
+à¢	twinkle
+ßù	watchfire
+ßÙ	torch
+Ê²	kindle
+µä	moxa
+¿¤	candlelight
+Àú	fanning
+Çá	soot
+Îû	firing
+»¸	dazzling
+¼Ş	refulgent
+ßà	branding
+±ë	flames
+ÍĞ	fuse metal
+Àù	roast
+Ë£	stew
+¸£	tug
+ÌÆ	female animal
+²´	male animal
+àö	precious stone
+ÎÖ	chime
+ÎÜ	marine blue
+ÈÃ	speckled
+Î°	lapis lazuli
+Ï®	tinker with
+º¼	burnish
+Âö	hone
+»¹	coral
+¸ê	coral reef
+¿ğ	fortunate
+·¾	silicon
+¶ê	jet
+±Í	crystal stone
+´á	toy
+Îè	tinkling
+°Ú	apprehensive
+É­	lastly
+·Í	paddy field ridge
+áÚ	itch
+áâ	phlegm
+¿¾	measles
+¼¦	hemorrhoids
+´â	cancer
+Áé	lose weight
+º¯	scar
+áã	paralysis
+âÈ	apple of the eye
+âÁ	dizzy
+ÎÆ	obvious
+Èı	eyebrow
+ğµ	pheasant
+¶ë	carpenter's square
+ÈØ	crag
+Äö	grapnel
+ÊË	blue green
+¸§	inkstone
+ÅÖ	grindstone
+ÏÒ	teacup
+³·	obstacle
+ÀÙ	illustrious
+°ë	rocky beach
+Å×	whetstone
+±°	mill
+µú	fend off
+Åø	beseech
+Í´	ancestral tablet
+µÀ	local god
+Çª	ancestral shrine
+Ï½	salarium
+Ä÷	felicitation
+Çé	balancing scales
+µĞ	millet
+ÆÅ	bald
+Ì­	bear fruit
+É£	crabgrass
+¾÷	bumper crop
+ÎÇ	imperial authority
+µ©	sparse
+ËÔ	obeisant
+±®	peep
+ºõ	tight
+·¢	cavern
+Àü	drill
+³ö	kitchen stove
+Ã¨	longness
+ñ¥	rustling
+ãë	outpost
+Ì÷	repose
+¾ª	concubine
+¶Ş	lapel
+¿ş	hem
+°Á	lined kimono
+¸Ó	pleated skirt
+²¨	sliding door
+ãù	chinese panpipe
+Èµ	raft
+Îü	bamboo blinds
+Ã½	rattan box
+´È	pole
+ÊÏ	spatula
+Çó	foil
+¿Ú	wardrobe
+Àı	arrow shaft
+ÃŞ	ancient harp
+Ï¶	cage
+¼Ä	slender bamboo
+È¤	chopsticks
+»¼	redaction
+¼³	bamboo cane
+Ì§	winnowing fan
+µè	backpack
+ÊÓ	livraison
+È¦	should
+Èö	winnow
+Çô	settlings
+Áì	lees
+¸Ò	paste
+Ìâ	unhulled rice
+¹Ç	rice bran
+Êµ	excrement
+°À	foxtail millet
+·Ò	link up
+åÅ	twine
+å°	carpet yarn
+å«	ties
+Èì	scarlet
+Áî	synthesis
+É³	string
+¹É	chinstrap
+Å»	summarize
+°¼	gorgeous
+½«	embroidery
+Äİ	pongee
+åº	ornate
+°½	damask
+¸¾	catgut
+Ã¾	come apart at the seams
+¼Ê	stripe
+¼ú	gimp
+¼Ó	gossamer
+ÂÉ	rudder
+¸¿	gunwale
+Îş	strung together
+Áï	attentive
+æÛ	summons
+Ã¿	addiction
+Ìí	exclamation
+ÇÂ	flea
+³ª	crab
+ÃÁ	protein
+ê¯	hibernation
+Çè	housefly
+µÂ	ant
+Ëª	bee
+Ï¹	wax
+²Ü	shrimp
+Âı	octopus
+Íæ	screw
+Àæ	cicada
+³¿	frog
+²ë	moth
+Èº	clam
+ÉÈ	leech
+³Â	oyster
+·Ó	ruled lines
+ÇÍ	insult
+·¶	stole
+ºÀ	monk's sash
+Â×	accept humbly
+Ù£	incision
+ºÈ	i wonder
+ëÎ	counsel
+ëÙ	polite
+½²	vendetta
+´Ò	remonstrate
+Ææ	riddle
+ÎÊ	verify
+»¾	compliment
+Ã¯	who?
+¿Ö	query
+·í	split up
+·Ø	visit a shrine
+Äü	give up
+Á§	elucidate
+ÂÂ	prevarication
+µÃ	familiarity
+Éµ	fallible
+ÏÍ	beg pardon
+¿Û	advise
+¸Á	proverb
+Èğ	slander
+°â	so called
+Äµ	secret agent
+Ãğ	footnote
+ì¢	parable
+¹ì	rumble
+Êå	reinforce
+íÕ	spoke
+½´	assemble
+ËÆ	countenance
+É¿	panther
+Á¨	despicable
+Å½	affix
+Ìã	get
+Ï¨	graft
+Æø	bustling
+íµ	stumble
+Äı	hoof
+½³	kick
+ÀØ	vestiges
+¸Ù	straddle
+ìî	kneel
+¾ß	soy sauce
+Âé	whey
+Ãñ	hooch
+¸ï	ghee
+ÀÃ	awakening
+½æ	strong sake
+ÌÍ	noodles
+¹í	malt
+ËÕ	button
+Ä¸	keg
+½û	plow
+Æé	pot
+Å­	arrowhead
+µø	handsaw
+¿í	awl
+¸°	key
+·­	hoe
+ÉÆ	rivet
+¼â	tin
+ÉÅ	anchor
+Å£	nail
+Ìú	javelin
+Ë¯	sword's point
+ÄÊ	hammer
+¾à	carillion
+»¬	rust
+¾á	cluster
+î÷	scissors
+Á®	flash
+Ìå	agony
+¹Ş	side gate
+°Ç	pitch dark
+¼¶	trickle
+²â	haze
+´Í	quill
+°¶	auspices
+°È	saddle
+ÊÜ	whip
+¾ä	saddle straps
+³ó	briefcase
+¿Ù	pliable
+µÇ	terminate
+ÆÜ	immediate
+Å¿	overturn
+±Ï	brush tip
+º¢	about that time
+ËË	cheek
+¿ü	exceedingly
+ğó	accolade
+³Ü	chin
+·Û	neck and throat
+±Â	feed
+»Á	repast
+¶Â	feast
+¿ª	eclipse
+°»	sweets
+Ìß	mochi
+²ï	stretcher
+ÂÍ	piebald
+ÃÚ	rush
+ñÙ	cheat
+Æë	tame
+Çı	rebuttal
+¶ï	gallop
+ñæ	donkey
+±·	eel
+Âä	sea bream
+°ó	sardine
+Ëğ	trout
+ºú	salmon
+Ëî	tuna
+°¾	sweet smelt
+°³	horse mackerel
+Ã­	cod
+»ª	mackerel
+»­	shark
+³ï	bonito
+³â	bullhead
+ÏÌ	alligator
+Ê«	crucian
+ò¿	sushi
+ÉÉ	fish fin
+²ª	seagull
+Ë²	roc
+óÀ	parakeet
+Ì¹	parrot
+±­	cormorant
+ºí	heron
+ÏÉ	eagle
+³û	wild duck
+ÆĞ	kite falcon
+Ûæ	owl
+¿Ğ	dust
+Ï¼	foot of a mountain
+óÊ	giraffe
+Ì½	hades
+âÔ	close the eyes
+Úù	murky
+ºÁ	sitting in mediation
+ºÃ	sprain
+ºó	first day of the month
+ÁÌ	go upstream
+±È	drag
+±Ì	dribble out
+×Â	comet
+·Å	astute
+²Å	applaud
+¶¤	evil
+³õ	helmet
+ÁÖ	bracing
+±µ	depressed
+¹å	kalpa
+ËÖ	erection
+Ã·	bemoan
+ÍÁ	palanquin
+Ã§	southeast
+ÏÄ	warped
+¿é	jade green
+Âã	blue black
+Å¤	tripod
+óÃ	rocksalt
+¸´	lye
+éÊ	reserved
+±í	swallow
+¾¨	lick
+ËØ	almost
+ÌÒ	start
+Ç×	mahjong tiles
+³¼	remains
+ÇÁ	peek
+É·	mottled
+¿Á	manchu dynasty
+¿ı	sparrow
+È»	peregrine falcon
+ÍÔ	shimmering
+°Ğ	ebisu
+ÀÌ	relatives
+Ç¹	cyst
+Ğ§	domburi
+Äª	carefree
+²ö	circling
+µ¦	capital suburbs
+¶Õ	elation
+µ£	stalwart
+»Û	this
+ºü	wooden spoon
+¶©	set straight
+È¥	founding
+Ëû	utamaro
+ÁÑ	conglomerate
+ºè	entreat
+Èå	symmetrically patterned
+¶ª	magistrate
+´å	fiddle with
+±÷	within
+Åå	hackneyed
+ÈÀ	rebellion
+Àí	sharp point
+ÄÛ	crock
+±Ã	sapience
+½¶	chieftain
+²©	nightingale
+³Ò	incandescent
+²é	supinate
+±ù	nephew
+É»	gourd
+Èü	biwa
+ÇÊ	lute
+ºµ	forked
+½Ø	rose of sharon
+È«	dry field
+·ı	fist
+Êà	vegetable patch
+¾ç	helping hand
+Î¼	translucent
+°ı	blood relative
+ÁÁ	transcription
+¹Ñ	ointment
+³¡	pioneer
+³¾	ambrosial
+Ä­	label
+ÊÍ	glimpse
+Éì	large hill
+âĞ	testicle
+Öà	sorceress
+ÆØ	empathetic
+Ô÷	andromeda
+æÆ	soar
+â«	beaming
+óÕ	tenebrous
+ìâ	bold
+Öá	stop short
+Ûù	thornbush
+æÜ	crowd
+á´	resucitate
+Ñò	pruning
+í¿	upbringing
+Ôî	plentiful
+óí	snore
+ã®	cast a spell
+¶Î	kilometer
+Á¸	centimeter
+Ì°	millimeter
+ÆÕ	ton
+Ëé	mile
+³½	nautical mile
+±¥	inch
+Òè	feet
+Ûğ	brahman
+ÂË	shakyamuni buddha
+»§	bodhisattva
+Êî	bo tree
+°¢	babble
+²à	sanskrit ka
+Æá	interrogative
+Ì¶	moo
+àİ	jeweled hairpin
+àê	beaded hairpin
+ÛØ	japanese cypress [old]
+·¥	bridle's bit
+Ê¥	abyss [old]
+¸à	V
+½º	X
+èß	ten thousand [old]
+î²	pass through
+í÷	tough
+Åõ	lamp [old]
+Î£	back [old]
+±ò	park [alternate]
+Êß	shop [alternate]
+Åè	island [alternate]
+Ê÷	summit [alternate]
+´à	boulder [old]
+Ç¸	plains [old]
+´Ü	bldg [old]
+Î¶	dragon [old]
+Ãş	patronage
+Ï¸	deafness
+Íİ	longing [old]
+ÏÊ	span [old]
+¶í	body [old]
+ÖÖ	point [old]
+Ô¢	country [old]
+æú	shin
+Ò¦	formidable
+äµ	stationary
+ã«	enshrine
+ã±	exorcism
+í°	dither
+Ôè	longevity [old]
+í´	hesitate
+×Ã	glossary
+ñ½	bean jam
+ÓÒ	retch
+óè	snapping turtle
+µü	go smoothly
+ĞÒ	condone
+¸è	parasol tree
+¶Ö	circumspect
+ßæ	cheer
+¼©	and then
+Ùİ	mandate

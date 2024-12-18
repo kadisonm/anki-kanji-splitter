@@ -61,9 +61,9 @@ class ConfigWindow(QDialog):
         currentDeck = "None"
 
         for deck in decks:
-            if str(deck.id) == config["deck_id"]:
+            if deck.id == config["deck_id"]:
                 currentDeck = deck.name
-            deckDropdown.addItem(deck.name, str(deck.id))
+            deckDropdown.addItem(deck.name, deck.id)
 
         if currentDeck:
             deckDropdown.setCurrentText(currentDeck)
@@ -103,7 +103,7 @@ class ConfigWindow(QDialog):
 
         # Button actions
         def save_action():
-            config["deck_id"] = str(deckDropdown.currentData())
+            config["deck_id"] = deckDropdown.currentData()
             update_config(config)
             self.close()
 
