@@ -1,7 +1,7 @@
 from aqt import mw
 
 config = {
-    'deck': "None",
+    'deck_id': "0",
 }
 
 def save_config() -> None:

@@ -1,8 +1,10 @@
-from aqt import AnkiApp, mw, gui_hooks
+from aqt import mw, gui_hooks
 from aqt.utils import showInfo, qconnect
 from aqt.qt import *
-from .config import load_config
+from .config import load_config, get_config, save_config
 from .configWindow import ConfigWindow
+
+from anki.cards import Card
 
 def start():
     config = load_config()
@@ -17,8 +19,10 @@ def start():
     # Add config action
     mw.addonManager.setConfigAction(__name__, window.open)
 
-    def addedNote(card):
-        print("added")
-        print(card)
-
+    def addedNote(card: Card):
+        if card.current_deck_id == get_config()["deckId"]:
+            print("Added in the right deck")
+        else:
+            print("ignore wrong deck")
+            
     gui_hooks.add_cards_did_add_note.append(addedNote)
