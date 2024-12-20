@@ -5,6 +5,7 @@ from .config import load_config, get_config, save_config
 from .configWindow import ConfigWindow
 from anki.notes import Note
 from .kanji import scan_note
+from .model import create_model, get_model
 
 def start():
     load_config()
@@ -19,7 +20,16 @@ def start():
     # Add config action
     mw.addonManager.setConfigAction(__name__, window.open)
 
+    def on_profile_loaded():
+        create_model()
+
+    gui_hooks.profile_did_open.append(on_profile_loaded)
+
     def addedNote(note: Note):  
+        if not get_model():
+            showInfo("Card model not found. Please ensure you have a 'Kanji Learner' card type.")
+            return
+
         if note.has_tag("kanji-learner"):
             return
 
