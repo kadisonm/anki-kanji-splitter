@@ -5,6 +5,7 @@ import json
 from anki.notes import Note
 from aqt.utils import showInfo
 from aqt import mw
+from .model import get_model
 
 currentDir = os.path.dirname(os.path.abspath(__file__))
 userFilesDir = os.path.join(currentDir, "..", "user_files")
@@ -41,15 +42,6 @@ def get_radicals(kanji):
     else:
         return []
 
-def get_model():
-    model = mw.col.models.by_name("Basic")
-
-    if not model:
-        showWarning("Basic model not found. Please ensure you have a 'Basic' card type.")
-        return
-
-    return model
-
 def get_kanji(note: Note):
     foundKanji = []
 
@@ -83,13 +75,13 @@ def create_note(kanji: str, deckId, model):
     if not keyword:
         return
 
-    if mw.col.find_notes(f'"Front:{keyword}"'):
+    if mw.col.find_notes(f'"Keyword:{keyword}"'):
         print(f"Duplicate found: {keyword}")
         return
 
     newNote = Note(mw.col, model)
-    newNote["Front"] = keyword
-    newNote["Back"] = kanji
+    newNote["Keyword"] = keyword
+    newNote["Kanji"] = kanji
     newNote.add_tag("kanji-learner")
 
     mw.col.add_note(newNote, deckId)
@@ -98,6 +90,10 @@ def create_note(kanji: str, deckId, model):
 
 def scan_note(note: Note, deckId):
     model = get_model()
+
+    if not model:
+        return
+
     foundKanji = get_kanji(note)
 
     # Create new cards for each kanij
