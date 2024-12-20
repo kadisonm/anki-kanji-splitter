@@ -1,5 +1,7 @@
 import re
 import os
+import sys
+import json
 from anki.notes import Note
 from aqt.utils import showInfo
 from aqt import mw
@@ -7,32 +9,35 @@ from aqt import mw
 currentDir = os.path.dirname(os.path.abspath(__file__))
 userFilesDir = os.path.join(currentDir, "..", "user_files")
 
-radicals = os.path.join(userFilesDir, 'radicals') 
-keywords = os.path.join(userFilesDir, 'keywords')
+radicalsPath = os.path.join(userFilesDir, 'radicals.json') 
+keywordsPath = os.path.join(userFilesDir, 'keywords.json')
+
+keywords = None
+radicals = None
 
 def get_heisig_keyword(kanji):
-    with open(keywords, 'r', encoding='eucjp') as file:
-        fileContent = file.read()
-    
-    pattern = rf"^{kanji}\t([^\n\r]+)"
-    match = re.search(pattern, fileContent, re.MULTILINE)
+    global keywords
 
-    if match:
-        return match.group(1)
+    if not keywords:
+        with open(keywordsPath, 'r', encoding="utf-8") as file:
+            keywords = json.load(file)
+    
+    if kanji in keywords:
+        return keywords[kanji]
     else:
-        return
+        return None
     
 def get_radicals(kanji):
-    with open(radicals, 'r', encoding='iso2022_jp') as file:
-        fileContent = file.read()
- 
-    pattern = r'.*[' + re.escape(kanji) + r'].+:\s*(.*)'
+    global radicals
 
-    match = re.search(pattern, fileContent, re.MULTILINE)
-
-    if match:
-        showInfo(match.group(1))
-        return match.group(1)
+    if not radicals:
+        with open(radicalsPath, 'r', encoding="utf-8") as file:
+            radicals = json.load(file)
+    
+    if kanji in radicals:
+        result = radicals[kanji]
+        result = result.split()
+        return result
     else:
         return []
 
@@ -102,8 +107,6 @@ def scan_note(note: Note, deckId):
     due = len(foundKanji)
 
     for kanji in foundKanji:
-        keyword = get_heisig_keyword(kanji)
-
         newNote = create_note(kanji, deckId, model)
 
         if not newNote:

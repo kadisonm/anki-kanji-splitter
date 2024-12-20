@@ -4,7 +4,7 @@ from aqt.qt import *
 from .config import load_config, get_config, save_config
 from .configWindow import ConfigWindow
 from anki.notes import Note
-from .kanji import scan_note, get_heisig_keyword, get_radicals
+from .kanji import scan_note
 
 def start():
     load_config()
