@@ -2,7 +2,7 @@
 Kanji Splitter
 </h1>
 
-<h4 align="center">An <a href="https://apps.ankiweb.net/">Anki</a> add-on that analyses your deck for Kanji characters and generates new cards for its components.</h4>
+<h4 align="center">An <a href="https://apps.ankiweb.net/">Anki</a> add-on that splits kanji found in your deck into its separate components.
 
 ---
 
