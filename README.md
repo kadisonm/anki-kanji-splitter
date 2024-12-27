@@ -1,5 +1,5 @@
 # Kanji Splitter
-An [Anki](https://apps.ankiweb.net/) add-on that analyzes your deck, identifies Kanji characters, breaks them down into their components, and generates new cards for effective learning.
+An [Anki](https://apps.ankiweb.net/) add-on that analyses your deck for Kanji characters and generates new cards for its components.
 
 
 ## Contribution
