@@ -1,4 +1,4 @@
-# Anki Kanji Learner
+# Anki Kanji Breaker
 
 ## Contribution
 Development for Anki with VSCode is a bit tricky, so here are some contribution instructions. (Note: You can use Pycharm as well)
