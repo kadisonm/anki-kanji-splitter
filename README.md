@@ -1,6 +1,12 @@
-# Kanji Splitter
-An [Anki](https://apps.ankiweb.net/) add-on that analyses your deck for Kanji characters and generates new cards for its components.
+<h1 align="center">
+Kanji Splitter
+</h1>
 
+<h4 align="center">An <a href="https://apps.ankiweb.net/">Anki</a> add-on that analyses your deck for Kanji characters and generates new cards for its components.</h4>
+
+---
+
+This add-on is **not** an official Anki add-on.
 
 ## Contribution
 Development for Anki with VSCode is a bit tricky, so here are some contribution instructions. (Note: You can use Pycharm as well)
