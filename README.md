@@ -2,11 +2,11 @@
 Kanji Splitter
 </h1>
 
-<h4 align="center">An <a href="https://apps.ankiweb.net/">Anki</a> add-on that splits kanji found in your deck into its separate components.
+<h4 align="center">An <a href="https://apps.ankiweb.net/">Anki</a> add-on that splits kanji found in your deck into its separate components. </h4>
 
 ---
 
-This add-on is **not** an official Anki add-on.
+This add-on is **not** an official Anki add-on and is licensed under the [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.en.html) license.
 
 ## Attribution
 This add-on uses the [RADKFILE and KRADFILE](http://www.edrdg.org/krad/kradinf.html) dictionary files. These files are the property of the [Electronic Dictionary Research and Development Group](https://www.edrdg.org/), and are used in conformance with the Group's [licence](https://www.edrdg.org/edrdg/licence.html).
