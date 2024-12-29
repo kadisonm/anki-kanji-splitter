@@ -31,3 +31,11 @@ It is recommended that you navigate to your Anki installation and run the `anki-
 
 https://wwwjdic.org/krad/kradinf.html
 http://aiki.info/kanji/
+
+## Show your support
+
+If you want to support me you can do so [here](https://www.buymeacoffee.com/kadisonm), but please know that this is not an expectation and this add-on is completely free.
+
+[<img src="https://github.com/kadisonm/obsidian-reference-generator/assets/134670047/826ead37-1265-42b1-b171-928d1e17035f" width="200">](https://www.buymeacoffee.com/kadisonm)
+
+Thank you so much for using my add-on.
