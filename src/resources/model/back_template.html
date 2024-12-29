@@ -1,5 +1,40 @@
-{{FrontSide}}
-<hr id=answer>
+{{Keyword}}
 {{Kanji}}
+
+<hr id=answer>
+
+
+{{Svg}}
 <br>
 {{Mnemonic}}
+<br>
+
+<!-- Drawable Canvas -->
+<canvas id="drawingCanvasBack" width="300" height="300"></canvas>
+
+<script>
+    // Canvas
+    const canvasBack  = document.getElementById('drawingCanvasBack');
+    const contextBack = canvasBack.getContext('2d');
+
+    const savedDrawing = localStorage.getItem('drawingData');
+
+    if (savedDrawing) {
+        const image = new Image();
+
+        image.onload = function() {
+            contextBack.drawImage(image, 0, 0);
+        };
+
+        image.src = savedDrawing;
+    }
+
+    // Theme
+    const isNightMode = document.body.classList.contains('nightMode');
+
+    defaultColour = 'black';
+
+    if (isNightMode) {
+        defaultColour = 'white'; 
+    }
+</script>

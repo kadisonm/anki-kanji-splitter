@@ -10,6 +10,7 @@ modelName = "Kanji Splitter"
 fieldsPath = os.path.join(os.path.dirname(__file__), "resources", "model", "fields.json")
 frontHTMLPath = os.path.join(os.path.dirname(__file__), "resources", "model", "front_template.html")
 backHTMLPath = os.path.join(os.path.dirname(__file__), "resources", "model", "back_template.html")
+cssPath = os.path.join(os.path.dirname(__file__), "resources", "model", "styles.css")
 
 with open(fieldsPath, 'r', encoding='utf-8') as file:
     fields = json.load(file)
@@ -20,10 +21,14 @@ with open(frontHTMLPath, 'r', encoding='utf-8') as file:
 with open(backHTMLPath, 'r', encoding='utf-8') as file:
     afmt_content = file.read()
 
+with open(cssPath, 'r', encoding='utf-8') as file:
+    css_content = file.read()
+
+
 templates = [{
     'name': "Card 1",
-    'qfmt': qfmt_content,
-    'afmt': afmt_content
+    'qfmt': f"<style>{css_content}</style>\n{qfmt_content}",
+    'afmt': f"<style>{css_content}</style>\n{afmt_content}"
 }]
 
 def create_model():
