@@ -1,1 +1,91 @@
 {{Keyword}}
+
+<!-- Drawable Canvas -->
+<div id="original-canvas-section">
+    <canvas id="drawingCanvas" width="300" height="300" style="border:1px solid #000000;"></canvas>
+</div>
+
+<br>
+<button onclick="undo()">Undo</button>
+<button onclick="clearCanvas()">Clear</button>
+
+<script>
+    const canvas = document.getElementById('drawingCanvas');
+    const context = canvas.getContext('2d', { willReadFrequently: true });
+    const isNightMode = document.body.classList.contains('nightMode');
+    const undoStack = [];
+    let drawing = false;
+
+    context.lineWidth = 5;
+    context.will
+
+    if (isNightMode) {
+        context.strokeStyle = 'white'; 
+    } else {
+        context.strokeStyle = 'black'; 
+    }
+
+    function saveDrawing() {
+        const drawingData = canvas.toDataURL();
+        localStorage.setItem('drawingData', drawingData);
+    }
+
+    function saveState() {
+        const currentState = context.getImageData(0, 0, canvas.width, canvas.height)
+
+        if (undoStack[undoStack.length - 1] !== currentState) {
+            undoStack.push(context.getImageData(0, 0, canvas.width, canvas.height));
+        }
+    }
+
+    saveState()
+
+    canvas.addEventListener('mousedown', function(event) {
+        drawing = true;
+        context.beginPath();
+        context.moveTo(event.offsetX, event.offsetY);
+    });
+
+    canvas.addEventListener('mousemove', function(event) {
+        if (drawing) {
+            context.lineTo(event.offsetX, event.offsetY);
+            context.stroke();
+        }
+    });
+
+    canvas.addEventListener('mouseup', function() {
+        if (drawing) {
+            drawing = false;
+            saveState(); 
+            saveDrawing();   
+        }
+    });
+
+    canvas.addEventListener('mouseout', function() {
+        if (drawing) {
+            drawing = false;
+            saveState();
+            saveDrawing();
+        }
+    });
+
+    function undo() {
+      if (undoStack.length > 1) {
+        undoStack.pop();
+        const previousState = undoStack[undoStack.length - 1];
+        context.putImageData(previousState, 0, 0);
+        saveDrawing();
+      }
+    }
+
+    function clearCanvas() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    window.addEventListener('keydown', function(event) {
+        if ((event.ctrlKey || event.metaKey) && event.key === 'z') {
+            event.preventDefault();
+            undo();
+        }
+    });
+</script>

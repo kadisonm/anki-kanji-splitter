@@ -12,6 +12,7 @@ resourcesDir = os.path.join(currentDir, "resources")
 
 radicalsPath = os.path.join(resourcesDir, 'radicals.json') 
 keywordsPath = os.path.join(resourcesDir, 'keywords.json')
+kanjiPath = os.path.join(resourcesDir, 'Kanji')
 
 keywords = None
 radicals = None
@@ -41,7 +42,7 @@ def get_radicals(kanji):
 
         if kanji in result:
             result.remove(kanji)
-            
+
         return result
     else:
         return []
@@ -54,7 +55,6 @@ def get_kanji(note: Note):
 
         for radical in get_radicals(character):
             if radical not in foundKanji:
-                showInfo("Radical" + radical)
                 radicals.append(radical)
                 foundKanji.append(radical)
 
@@ -71,10 +71,24 @@ def get_kanji(note: Note):
                     result = findAllComponents(radical)
             
             if kanji not in foundKanji:
-                showInfo("Kanji" + kanji)
                 foundKanji.append(kanji)
     
     return foundKanji
+
+def load_kanji_svg(kanji):
+    codePoint = ord(kanji)
+    hexCode = format(codePoint, 'x').zfill(5).lower() 
+    
+    path = os.path.join(kanjiPath, f"{hexCode}.svg")
+
+    if os.path.exists(path):
+        with open(path, 'r') as file:
+            svgContent = file.read()
+           
+            match = re.search(r'(<svg[^>]*>.*?</svg>)', svgContent, re.DOTALL)
+            
+            if match:
+                return match.group(1)
 
 def create_note(kanji: str, deckId, model): 
     keyword = get_heisig_keyword(kanji)
@@ -85,6 +99,12 @@ def create_note(kanji: str, deckId, model):
     newNote = Note(mw.col, model)
     newNote["Keyword"] = keyword
     newNote["Kanji"] = kanji
+
+    svg = load_kanji_svg(kanji)
+
+    if svg:
+        newNote["Svg"] = svg
+
     newNote.add_tag("kanji-splitter")
 
     mw.col.add_note(newNote, deckId)
