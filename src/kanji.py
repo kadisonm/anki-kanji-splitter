@@ -8,10 +8,10 @@ from aqt import mw
 from .model import get_model
 
 currentDir = os.path.dirname(os.path.abspath(__file__))
-userFilesDir = os.path.join(currentDir, "..", "user_files")
+resourcesDir = os.path.join(currentDir, "resources")
 
-radicalsPath = os.path.join(userFilesDir, 'radicals.json') 
-keywordsPath = os.path.join(userFilesDir, 'keywords.json')
+radicalsPath = os.path.join(resourcesDir, 'radicals.json') 
+keywordsPath = os.path.join(resourcesDir, 'keywords.json')
 
 keywords = None
 radicals = None
@@ -24,7 +24,7 @@ def get_heisig_keyword(kanji):
             keywords = json.load(file)
     
     if kanji in keywords:
-        return keywords[kanji]
+        return str.lower(keywords[kanji])
     else:
         return None
     
@@ -38,6 +38,10 @@ def get_radicals(kanji):
     if kanji in radicals:
         result = radicals[kanji]
         result = result.split()
+
+        if kanji in result:
+            result.remove(kanji)
+            
         return result
     else:
         return []
@@ -50,6 +54,7 @@ def get_kanji(note: Note):
 
         for radical in get_radicals(character):
             if radical not in foundKanji:
+                showInfo("Radical" + radical)
                 radicals.append(radical)
                 foundKanji.append(radical)
 
@@ -65,7 +70,9 @@ def get_kanji(note: Note):
                 for radical in result:
                     result = findAllComponents(radical)
             
-            foundKanji.append(kanji)
+            if kanji not in foundKanji:
+                showInfo("Kanji" + kanji)
+                foundKanji.append(kanji)
     
     return foundKanji
 
@@ -75,14 +82,10 @@ def create_note(kanji: str, deckId, model):
     if not keyword:
         return
 
-    if mw.col.find_notes(f'"Keyword:{keyword}"'):
-        print(f"Duplicate found: {keyword}")
-        return
-
     newNote = Note(mw.col, model)
     newNote["Keyword"] = keyword
     newNote["Kanji"] = kanji
-    newNote.add_tag("kanji-learner")
+    newNote.add_tag("kanji-splitter")
 
     mw.col.add_note(newNote, deckId)
 
@@ -99,10 +102,28 @@ def scan_note(note: Note, deckId):
     # Create new cards for each kanij
     originalCard = note.cards()[0]
     originalType = originalCard.type
-    originalDue = originalCard.due
-    due = len(foundKanji)
 
+    newKanji = []
+
+    # Remove already existing cards
     for kanji in foundKanji:
+        if not mw.col.find_notes(f'"Kanji:{kanji}"'):
+            if kanji not in newKanji:
+                newKanji.append(kanji)
+        
+    due = len(newKanji)
+
+    # Push due dates forward
+    originalCard.due += due
+    mw.col.update_card(originalCard)
+
+    mw.col.db.execute(
+        "UPDATE cards SET due = due + ? WHERE did = ? AND due > ?",
+        due, deckId, originalCard.due
+    )
+
+    # Add new cards
+    for kanji in newKanji:
         newNote = create_note(kanji, deckId, model)
 
         if not newNote:
@@ -111,7 +132,7 @@ def scan_note(note: Note, deckId):
         newCard = newNote.cards()[0] 
 
         if originalType == 0:
-            newCard.due = originalDue - due
+            newCard.due = originalCard.due - due
         else:
             newCard.due = due
 

@@ -33,7 +33,7 @@ class ConfigWindow(QDialog):
         layout = QVBoxLayout()
 
         # Title
-        titleLabel = QLabel("Kanji Learner", self)
+        titleLabel = QLabel("Kanji Splitter", self)
         titleLabel.setStyleSheet("font-size: 30px; font-weight: bold;")
         layout.addWidget(titleLabel)
 
@@ -77,7 +77,7 @@ class ConfigWindow(QDialog):
         scanLabel.setStyleSheet("font-size: 20px; font-weight: bold;")
         layout.addWidget(scanLabel)
 
-        explanation2 = QLabel("This will scan the deck for kanji and add new cards for any found kanji/primitives. If cards already exist, that kanji/primitive wil; be skipped.", self)
+        explanation2 = QLabel("This will scan the deck for kanji and add new cards for any found kanji/primitives. If cards already exist, that kanji/primitive will be skipped.", self)
         explanation2.setWordWrap(True)
         layout.addWidget(explanation2)
 

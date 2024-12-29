@@ -8,12 +8,14 @@ from .kanji import scan_note
 from .model import create_model, get_model
 
 def start():
+    debug = True
+
     load_config()
 
     window = ConfigWindow(mw)
 
     # Add config tool
-    action = QAction("Kanji Learning Settings", mw)
+    action = QAction("Kanji Splitter Settings", mw)
     qconnect(action.triggered, window.open)
     mw.form.menuTools.addAction(action)
 
@@ -27,10 +29,9 @@ def start():
 
     def addedNote(note: Note):  
         if not get_model():
-            showInfo("Card model not found. Please ensure you have a 'Kanji Learner' card type.")
-            return
+            create_model()
 
-        if note.has_tag("kanji-learner"):
+        if note.has_tag("kanji-splitter"):
             return
 
         deckId = get_config()["deck_id"]
