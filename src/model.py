@@ -1,23 +1,29 @@
 from anki.notes import Note
 from aqt.utils import showInfo
 from aqt import mw
+import os
+import os
+import json
 
-modelName = "Kanji Learner"
+modelName = "Kanji Splitter"
 
-fields = ["Kanji", "Keyword", "Mnemonic"]
+fieldsPath = os.path.join(os.path.dirname(__file__), "resources", "model", "fields.json")
+frontHTMLPath = os.path.join(os.path.dirname(__file__), "resources", "model", "front_template.html")
+backHTMLPath = os.path.join(os.path.dirname(__file__), "resources", "model", "back_template.html")
+
+with open(fieldsPath, 'r', encoding='utf-8') as file:
+    fields = json.load(file)
+    
+with open(frontHTMLPath, 'r', encoding='utf-8') as file:
+    qfmt_content = file.read()
+    
+with open(backHTMLPath, 'r', encoding='utf-8') as file:
+    afmt_content = file.read()
 
 templates = [{
     'name': "Card 1",
-    'qfmt': """
-        {{Keyword}}
-    """,
-    'afmt': """
-        {{FrontSide}}
-        <hr id=answer>
-        {{Kanji}}
-        <br>
-        {{Mnemonic}}
-    """
+    'qfmt': qfmt_content,
+    'afmt': afmt_content
 }]
 
 def create_model():
