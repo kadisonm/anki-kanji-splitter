@@ -8,6 +8,11 @@ Kanji Splitter
 
 This add-on is **not** an official Anki add-on.
 
+## Attribution
+This add-on uses the [RADKFILE and KRADFILE](http://www.edrdg.org/krad/kradinf.html) dictionary files. These files are the property of the [Electronic Dictionary Research and Development Group](https://www.edrdg.org/), and are used in conformance with the Group's [licence](https://www.edrdg.org/edrdg/licence.html).
+
+The Kanji stroke diagrams are sourced from KanjiVG data, which is licensed under the [Creative Commons Attribution-Share Alike 3.0](https://creativecommons.org/licenses/by-sa/3.0/) license. 
+
 ## Contribution
 Development for Anki with VSCode is a bit tricky, so here are some contribution instructions. (Note: You can use Pycharm as well)
 
