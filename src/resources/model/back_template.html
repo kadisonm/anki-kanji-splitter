@@ -1,40 +1,84 @@
 {{Keyword}}
 {{Kanji}}
 
+<div id="kanji-svg">
+    {{Svg}}
+</div>
+
 <hr id=answer>
 
 
-{{Svg}}
 <br>
 {{Mnemonic}}
 <br>
 
 <!-- Drawable Canvas -->
-<canvas id="drawingCanvasBack" width="300" height="300"></canvas>
+<canvas id="backDrawingCanvas" width="300" height="300" style="border:1px solid #000000;"></canvas>
 
 <script>
-    // Canvas
-    const canvasBack  = document.getElementById('drawingCanvasBack');
-    const contextBack = canvasBack.getContext('2d');
+    const isAndroid = document.documentElement.classList.contains("android");
 
-    const savedDrawing = localStorage.getItem('drawingData');
+    // Remove old Canvas Listeners
+    if (!isAndroid) {
+        canvas.removeEventListener('mousedown', mouseDown);
+        canvas.removeEventListener('mousemove', mouseMove);
+        document.removeEventListener('mouseup', mouseUp)
+        canvas.removeEventListener('mouseenter', mouseIn);
+
+        window.removeEventListener('keydown', keyDown);
+
+        canvas.removeEventListener("touchstart", touchStart);
+        canvas.removeEventListener("touchmove", touchMove);
+        canvas.removeEventListener("touchend", touchEnd);
+        canvas.removeEventListener("touchcancel", touchEnd);    
+    }
+
+    // Canvas
+    // Redefined variables for mobile because previous script doesn't stay loaded  
+    const m_isNightMode = document.body.classList.contains('nightMode');
+    const m_datastore = window.localStorage ?? window.sessionStorage
+    const m_pixelRatio = window.devicePixelRatio ?? 2;
+    const m_canvasStroke = m_isNightMode ? 'white' : 'black'
+
+    const backCanvas = document.getElementById('backDrawingCanvas');
+    const backContext = backCanvas.getContext('2d');
+
+    backContext.lineWidth = 5 * m_pixelRatio;
+    backContext.strokeStyle = m_canvasStroke; 
+
+    const savedDrawing = m_datastore.getItem('drawingData');
 
     if (savedDrawing) {
         const image = new Image();
 
         image.onload = function() {
-            contextBack.drawImage(image, 0, 0);
+            backContext.drawImage(image, 0, 0);
         };
 
         image.src = savedDrawing;
     }
 
-    // Theme
-    const isNightMode = document.body.classList.contains('nightMode');
+    // Kanji SVG
+    const svgElement = document.getElementById('kanji-svg').querySelector('svg');
 
-    defaultColour = 'black';
+    const radicals = svgElement.querySelectorAll('[kvg\\:element]');
 
-    if (isNightMode) {
-        defaultColour = 'white'; 
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    for (const radical of radicals) {
+        const color = getRandomColor();
+
+        const paths = radical.querySelectorAll('path');
+
+        for (const path of paths) {
+            path.style.stroke = color;
+        }
     }
 </script>
