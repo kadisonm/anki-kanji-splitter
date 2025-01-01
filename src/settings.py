@@ -1,6 +1,7 @@
 import aqt.qt as qt
 import aqt
-import config
+
+from . import config
 from .ui import *
 
 class SettingsWindow(qt.QDialog):

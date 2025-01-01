@@ -1,10 +1,11 @@
 from anki.notes import Note
 from aqt.utils import showInfo
 from aqt import mw
-import model
 import re
 import os
 import json
+
+from . import model
 
 currentDir = os.path.dirname(os.path.abspath(__file__))
 resourcesDir = os.path.join(currentDir, "resources")
