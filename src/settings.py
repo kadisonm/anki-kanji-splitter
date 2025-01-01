@@ -1,10 +1,6 @@
-import string
-from xml.etree.ElementTree import tostring
 import aqt.qt as qt
-from aqt import mw
-from . import config
-from anki import deck_config_pb2
-
+import aqt
+import config
 from .ui import *
 
 class SettingsWindow(qt.QDialog):
@@ -23,7 +19,7 @@ class SettingsWindow(qt.QDialog):
         self.loaded = False
 
     def open(self):
-        if mw.col and not self.loaded:
+        if aqt.mw.col and not self.loaded:
             self.setLayout(self.loadUI())
             self.loaded = True
         
@@ -33,7 +29,7 @@ class SettingsWindow(qt.QDialog):
         self.hide()
     
     def loadUI(self):
-        if not mw.col:
+        if not aqt.mw.col:
             return
         
         data = config.get_config()
@@ -53,7 +49,7 @@ class SettingsWindow(qt.QDialog):
         layout.addWidget(P("Select a deck to automatically add kanji/primitive cards to whenever a new note is created. Cards will be placed before the new note."))
 
         # Show selecting deck
-        decks = mw.col.decks.all_names_and_ids()
+        decks = aqt.mw.col.decks.all_names_and_ids()
         deckDropdown = qt.QComboBox()
         deckDropdown.setFocusPolicy(qt.Qt.FocusPolicy.NoFocus)
 
