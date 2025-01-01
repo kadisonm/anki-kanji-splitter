@@ -22,7 +22,6 @@ with open(backHTMLPath, 'r', encoding='utf-8') as file:
 with open(cssPath, 'r', encoding='utf-8') as file:
     css_content = file.read()
 
-
 templates = [{
     'name': "Card 1",
     'qfmt': f"<style>{css_content}</style>\n{qfmt_content}",
