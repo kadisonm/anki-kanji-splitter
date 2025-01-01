@@ -1,7 +1,6 @@
 from aqt.utils import showInfo
 from aqt import mw
 import os
-import os
 import json
 
 modelName = "Kanji Splitter"

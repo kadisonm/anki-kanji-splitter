@@ -3,10 +3,10 @@ from aqt.utils import showInfo, qconnect
 from anki.notes import Note
 import aqt.qt
 
-import config
-import settings
-import kanji
-import model
+from . import config
+from . import settings
+from . import kanji
+from . import model
 
 def start():
     # Load config
