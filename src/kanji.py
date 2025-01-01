@@ -1,11 +1,10 @@
-import re
-import os
-import sys
-import json
 from anki.notes import Note
 from aqt.utils import showInfo
 from aqt import mw
-from .model import get_model
+import model
+import re
+import os
+import json
 
 currentDir = os.path.dirname(os.path.abspath(__file__))
 resourcesDir = os.path.join(currentDir, "resources")
@@ -90,13 +89,13 @@ def load_kanji_svg(kanji):
             if match:
                 return match.group(1)
 
-def create_note(kanji: str, deckId, model): 
+def create_note(kanji: str, deckId, cardModel): 
     keyword = get_heisig_keyword(kanji)
 
     if not keyword:
         return
 
-    newNote = Note(mw.col, model)
+    newNote = Note(mw.col, cardModel)
     newNote["Keyword"] = keyword
     newNote["Kanji"] = kanji
 
@@ -112,9 +111,9 @@ def create_note(kanji: str, deckId, model):
     return newNote
 
 def scan_note(note: Note, deckId):
-    model = get_model()
+    cardModel = model.get_model()
 
-    if not model:
+    if not cardModel:
         return
 
     foundKanji = get_kanji(note)
@@ -144,7 +143,7 @@ def scan_note(note: Note, deckId):
 
     # Add new cards
     for kanji in newKanji:
-        newNote = create_note(kanji, deckId, model)
+        newNote = create_note(kanji, deckId, cardModel)
 
         if not newNote:
             continue

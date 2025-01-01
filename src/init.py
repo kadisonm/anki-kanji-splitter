@@ -1,35 +1,37 @@
 from aqt import mw, gui_hooks
 from aqt.utils import showInfo, qconnect
-from aqt.qt import *
-from . import config
-from .settings import SettingsWindow
 from anki.notes import Note
-from .kanji import scan_note
-from .model import create_model, get_model
+import aqt.qt
+
+import config
+import settings
+import kanji
+import model
 
 def start():
-    debug = True
-
+    # Load config
     config.load_config()
 
-    window = SettingsWindow(mw)
+    window = settings.SettingsWindow(mw)
 
-    # Add config tool
-    action = QAction("Kanji Splitter", mw)
+    # Add settings tool
+    action = aqt.qt.QAction("Kanji Splitter", mw)
     qconnect(action.triggered, window.open)
     mw.form.menuTools.addAction(action)
 
-    # Add config action
+    # Add settings action
     mw.addonManager.setConfigAction(__name__, window.open)
 
+    # Create anki card model
     def on_profile_loaded():
-        create_model()
+        model.create_model()
 
     gui_hooks.profile_did_open.append(on_profile_loaded)
 
+    # Listen for new notes in selected deck
     def addedNote(note: Note):  
-        if not get_model():
-            create_model()
+        if not model.get_model():
+            model.create_model()
 
         if note.has_tag("kanji-splitter"):
             return
@@ -41,7 +43,7 @@ def start():
         )
 
         if result:
-            scan_note(note, deckId)
+            kanji.scan_note(note, deckId)
             
     gui_hooks.add_cards_did_add_note.append(addedNote)
 

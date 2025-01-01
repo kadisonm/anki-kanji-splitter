@@ -1,4 +1,3 @@
-from anki.notes import Note
 from aqt.utils import showInfo
 from aqt import mw
 import os
