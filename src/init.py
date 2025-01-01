@@ -1,8 +1,8 @@
 from aqt import mw, gui_hooks
 from aqt.utils import showInfo, qconnect
 from aqt.qt import *
-from .config import load_config, get_config, save_config
-from .configWindow import ConfigWindow
+from . import config
+from .settings import SettingsWindow
 from anki.notes import Note
 from .kanji import scan_note
 from .model import create_model, get_model
@@ -10,12 +10,12 @@ from .model import create_model, get_model
 def start():
     debug = True
 
-    load_config()
+    config.load_config()
 
-    window = ConfigWindow(mw)
+    window = SettingsWindow(mw)
 
     # Add config tool
-    action = QAction("Kanji Splitter Settings", mw)
+    action = QAction("Kanji Splitter", mw)
     qconnect(action.triggered, window.open)
     mw.form.menuTools.addAction(action)
 
@@ -34,7 +34,7 @@ def start():
         if note.has_tag("kanji-splitter"):
             return
 
-        deckId = get_config()["deck_id"]
+        deckId = config.get_config()["deck_id"]
 
         result = mw.col.db.scalar(
             "SELECT 1 FROM cards WHERE nid = ? AND did = ?", note.id, deckId
