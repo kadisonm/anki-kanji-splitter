@@ -29,9 +29,6 @@ Development for Anki with VSCode is a bit tricky, so here are some contribution 
 ### Developing
 It is recommended that you navigate to your Anki installation and run the `anki-console.bat` to gain access to the console while developing.
 
-https://wwwjdic.org/krad/kradinf.html
-http://aiki.info/kanji/
-
 ## Show your support
 
 If you want to support me you can do so [here](https://www.buymeacoffee.com/kadisonm), but please know that this is not an expectation and this add-on is completely free.
