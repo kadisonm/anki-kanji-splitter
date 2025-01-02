@@ -23,13 +23,16 @@ back = getTextContent("back_template.html")
 css = getTextContent("styles.css")
 
 # Toggleable Elements
+kanji = getTextContent("elements", "kanji.html")
+keyword = getTextContent("elements", "keyword.html")
+strokes = getTextContent("elements", "strokes.html")
 canvas = getTextContent("elements", "canvas.html")
 canvasPreview = getTextContent("elements", "canvas_preview.html")
 
 templates = [{
     'name': "Card 1",
-    'qfmt': f"<style>{css}</style>\n{front}\n{canvas}",
-    'afmt': f"<style>{css}</style>\n{back}\n{canvasPreview}"
+    'qfmt': f"<style>{css}</style>\n{front}\n\n{canvas}",
+    'afmt': f"<style>{css}</style>\n{back}\n\n{canvasPreview}"
 }]
 
 def create_model():

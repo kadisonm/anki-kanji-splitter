@@ -4,10 +4,18 @@ config = {
     'deck_id': 0,
     'front': {
         'showKanji': False,
-        'showKeyword': False,
-        'showDrawingPad': False,
+        'showStrokes': False,
+        'showKeyword': True,
+        'showCanvas': True,
+        'showDictionaryLinks': False,
     },
-    'back': {}
+    'back': {
+        'showKanji': True,
+        'showStrokes': True,
+        'showKeyword': True,
+        'showCanvasPreview': True,
+        'showDictionaryLinks': True,
+    }
 }
 
 def save_config() -> None:

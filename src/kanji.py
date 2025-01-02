@@ -103,7 +103,7 @@ def create_note(kanji: str, deckId, cardModel):
     svg = load_kanji_svg(kanji)
 
     if svg:
-        newNote["Svg"] = svg
+        newNote["Strokes"] = svg
 
     newNote.add_tag("kanji-splitter")
 
