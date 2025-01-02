@@ -2,6 +2,12 @@ from aqt import mw
 
 config = {
     'deck_id': 0,
+    'front': {
+        'showKanji': False,
+        'showKeyword': False,
+        'showDrawingPad': False,
+    },
+    'back': {}
 }
 
 def save_config() -> None:

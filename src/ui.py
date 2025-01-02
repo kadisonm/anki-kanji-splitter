@@ -44,8 +44,8 @@ class Button(qt.QPushButton):
 class Br(qt.QFrame):
     def __init__(self):
         super().__init__()
-        self.setFrameShape(qt.QFrame.HLine)
-        self.setFrameShadow(qt.QFrame.Sunken)
+        self.setFrameShape(qt.QFrame.Shape.HLine)
+        self.setFrameShadow(qt.QFrame.Shadow.Sunken)
 
 class DropdownLabel(qt.QVBoxLayout):
     def __init__(self, heading, description):
