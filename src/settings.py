@@ -42,17 +42,17 @@ class SettingsWindow(qt.QDialog):
 
         # Author
         layout.addWidget(Italics("By Kadison McLellan"))
+        layout.addWidget(Br())
 
-        # Deck Selection Label
-        layout.addWidget(H2("Select deck"))
-
-        # Explanation
-        layout.addWidget(P("Select a deck to automatically add kanji/primitive cards to whenever a new note is created. Cards will be placed before the new note."))
-
-        # Show selecting deck
+        # Selecting deck
         decks = aqt.mw.col.decks.all_names_and_ids()
-        deckDropdown = qt.QComboBox()
-        deckDropdown.setFocusPolicy(qt.Qt.FocusPolicy.NoFocus)
+  
+        deckDropdownLayout = DropdownLabel(
+            "Select deck",
+            "Select a deck to automatically add kanji/primitive cards to whenever a new note is created. Cards will be placed before the new note."
+        )
+
+        deckDropdown = deckDropdownLayout.dropdown
 
         deckDropdown.addItem("None", 0)
 
@@ -68,21 +68,59 @@ class SettingsWindow(qt.QDialog):
         else:
             deckDropdown.setCurrentIndex(0)
 
-        layout.addWidget(deckDropdown, 1)
+        layout.addLayout(deckDropdownLayout)
 
         # Scan deck
-        layout.addWidget(H2("Scan deck"))
-        layout.addWidget(P("This will scan the deck for kanji and add new cards for any found kanji/primitives. If cards already exist, that kanji/primitive will be skipped."))
-        layout.addWidget(Button("Scan deck"))
+        layout.addLayout(
+            ButtonLabel(
+                "Scan deck", 
+                "Scan", 
+                "This will scan the deck for kanji and add new cards for any found kanji/primitives. If cards already exist, that kanji/primitive will be skipped."
+        ))
 
-        layout.addStretch()
+        # Clear deck
+        layout.addLayout(
+            ButtonLabel(
+                "Clear deck", 
+                "Clear", 
+                "This will delete any cards created by this plugin inside your deck. (This will not delete the original cards)"
+        ))
 
-        # Buttons layout (horizontal)
-        buttonsLayout = qt.QHBoxLayout()
-        buttonsLayout.addSpacerItem(qt.QSpacerItem(600, 30))
-        layout.addLayout(buttonsLayout)
+        # Note Options
+        layout.addWidget(H3("Note options"))
+        layout.addWidget(P("This will not delete existing notes but may require a rescan to fix missing fields."))
+
+        noteLayout = qt.QHBoxLayout()
+
+        # Front
+        frontLayout = qt.QVBoxLayout()
+        frontLayout.addWidget(Bold("Front"))
+        frontLayout.addLayout(CheckBoxLabel("Show kanji"))
+        frontLayout.addLayout(CheckBoxLabel("Show keyword"))
+        frontLayout.addLayout(CheckBoxLabel("Show drawing pad"))
+        frontLayout.addStretch()
+
+        # Back
+        backLayout = qt.QVBoxLayout()
+        backLayout.addWidget(Bold("Back"))
+        backLayout.addLayout(CheckBoxLabel("Show kanji"))
+        backLayout.addLayout(CheckBoxLabel("Show keyword"))
+        backLayout.addLayout(CheckBoxLabel("Show kanji components"))
+        backLayout.addLayout(CheckBoxLabel("Show drawing from front"))
+        backLayout.addStretch()
+        
+        noteLayout.addLayout(frontLayout)
+        noteLayout.addLayout(backLayout)
+        layout.addLayout(noteLayout)
+
+        layout.addWidget(Br())
 
         # Save / Cancel buttons
+        layout.addStretch()
+        buttonsLayout = qt.QHBoxLayout()
+        buttonsLayout.addStretch()
+        layout.addLayout(buttonsLayout)
+
         save = Button("Save")
         cancel = Button("Cancel")
 
