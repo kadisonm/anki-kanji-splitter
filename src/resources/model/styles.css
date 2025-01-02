@@ -4,14 +4,11 @@
     text-align: center !important;
     color: black !important;
     user-select: none;
-    position: absolute;
-    width: 100%;
     height: 100%;
-    display: -webkit-box;
-    -webkit-box-align: stretch;
-    -webkit-box-pack: center;
-    -webkit-box-orient: vertical;
-    word-wrap: break-word;
+    padding: none;
+    gap: 10px;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .nightMode.card, .night_mode.card {
@@ -24,6 +21,7 @@
 
 .card button {
     user-select: none;
+    margin: none;
 }
 
 .card canvas {
@@ -31,10 +29,9 @@
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    margin: 20px auto;
-    display: block; 
+    display: block;
+    margin: auto;
     padding: none;
-    margin: none;
 }
 
 .nightMode.card canvas, .night_mode.card canvas {

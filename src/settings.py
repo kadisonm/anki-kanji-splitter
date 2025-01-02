@@ -97,7 +97,9 @@ class SettingsWindow(qt.QDialog):
         frontLayout.addWidget(Bold("Front"))
         frontLayout.addLayout(CheckBoxLabel("Show kanji"))
         frontLayout.addLayout(CheckBoxLabel("Show keyword"))
-        frontLayout.addLayout(CheckBoxLabel("Show drawing pad"))
+        frontLayout.addLayout(CheckBoxLabel("Show strokes"))
+        frontLayout.addLayout(CheckBoxLabel("Show drawing canvas"))
+        frontLayout.addLayout(CheckBoxLabel("Show dictionary links"))
         frontLayout.addStretch()
 
         # Back
@@ -105,8 +107,9 @@ class SettingsWindow(qt.QDialog):
         backLayout.addWidget(Bold("Back"))
         backLayout.addLayout(CheckBoxLabel("Show kanji"))
         backLayout.addLayout(CheckBoxLabel("Show keyword"))
-        backLayout.addLayout(CheckBoxLabel("Show kanji components"))
-        backLayout.addLayout(CheckBoxLabel("Show drawing from front"))
+        backLayout.addLayout(CheckBoxLabel("Show strokes"))
+        backLayout.addLayout(CheckBoxLabel("Show front canvas preview"))
+        backLayout.addLayout(CheckBoxLabel("Show dictionary links"))
         backLayout.addStretch()
         
         noteLayout.addLayout(frontLayout)

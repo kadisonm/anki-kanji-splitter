@@ -2,11 +2,12 @@
 
 <br>
 
-<button class="tappable" onclick="undo()">Undo</button>
-<button class="tappable" onclick="clearCanvas()">Clear</button>
+<button id="undo" class="tappable">Undo</button>
+<button id="clear" class="tappable">Clear</button>
 
 <script>
 (function() {
+    console.log("Loaded");
     const isNightMode = document.body.classList.contains('nightMode');
     const datastore = window.localStorage ?? window.sessionStorage
     const pixelRatio = window.devicePixelRatio ?? 2;
@@ -33,11 +34,11 @@
     }
     
     function undo() {
-    if (undoStack.length > 1) {
-        undoStack.pop();
-        const previousState = undoStack[undoStack.length - 1];
-        context.putImageData(previousState, 0, 0);
-    }
+        if (undoStack.length > 1) {
+            undoStack.pop();
+            const previousState = undoStack[undoStack.length - 1];
+            context.putImageData(previousState, 0, 0);
+        }
     }
 
     function clearCanvas() {
@@ -122,6 +123,12 @@
             saveState();
         }
     }
+
+    const undoButton = document.getElementById('undo');
+    const clearButton = document.getElementById('clear');
+
+    undoButton.addEventListener("mousedown", undo);
+    clearButton.addEventListener("mousedown", clearCanvas);
 
     canvas.addEventListener("touchstart", touchStart);
     canvas.addEventListener("touchmove", touchMove);
