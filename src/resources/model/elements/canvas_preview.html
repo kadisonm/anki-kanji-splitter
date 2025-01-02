@@ -1,0 +1,34 @@
+
+<!-- Drawable Canvas -->
+<canvas width="300" height="300" style="border:1px solid #000000;"></canvas>
+
+<script>
+(function() {
+    const isAndroid = document.documentElement.classList.contains("android");
+
+    // Canvas
+    // Redefined variables for mobile because previous script doesn't stay loaded  
+    const isNightMode = document.body.classList.contains('nightMode');
+    const datastore = window.localStorage ?? window.sessionStorage
+    const pixelRatio = window.devicePixelRatio ?? 2;
+    const canvasStroke = isNightMode ? 'white' : 'black'
+
+    const canvas = document.getElementsByTagName("canvas")[0]
+    const context = canvas.getContext('2d');
+
+    context.lineWidth = 5 * pixelRatio;
+    context.strokeStyle = canvasStroke; 
+
+    const savedDrawing = datastore.getItem('drawingData');
+
+    if (savedDrawing) {
+        const image = new Image();
+
+        image.onload = function() {
+            context.drawImage(image, 0, 0);
+        };
+
+        image.src = savedDrawing;
+    }
+} ())
+</script>

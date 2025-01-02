@@ -5,27 +5,31 @@ import json
 
 modelName = "Kanji Splitter"
 
-fieldsPath = os.path.join(os.path.dirname(__file__), "resources", "model", "fields.json")
-frontHTMLPath = os.path.join(os.path.dirname(__file__), "resources", "model", "front_template.html")
-backHTMLPath = os.path.join(os.path.dirname(__file__), "resources", "model", "back_template.html")
-cssPath = os.path.join(os.path.dirname(__file__), "resources", "model", "styles.css")
+def getJSONContent(*paths):
+    path = os.path.join(os.path.dirname(__file__), "resources", "model", *paths)
 
-with open(fieldsPath, 'r', encoding='utf-8') as file:
-    fields = json.load(file)
-    
-with open(frontHTMLPath, 'r', encoding='utf-8') as file:
-    qfmt_content = file.read()
-    
-with open(backHTMLPath, 'r', encoding='utf-8') as file:
-    afmt_content = file.read()
+    with open(path, 'r', encoding='utf-8') as file:
+        return json.load(file)
 
-with open(cssPath, 'r', encoding='utf-8') as file:
-    css_content = file.read()
+def getTextContent(*paths):
+    path = os.path.join(os.path.dirname(__file__), "resources", "model", *paths)
+
+    with open(path, 'r', encoding='utf-8') as file:
+        return file.read()
+
+fields = getJSONContent("fields.json")
+front = getTextContent("front_template.html")
+back = getTextContent("back_template.html")
+css = getTextContent("styles.css")
+
+# Toggleable Elements
+canvas = getTextContent("elements", "canvas.html")
+canvasPreview = getTextContent("elements", "canvas_preview.html")
 
 templates = [{
     'name': "Card 1",
-    'qfmt': f"<style>{css_content}</style>\n{qfmt_content}",
-    'afmt': f"<style>{css_content}</style>\n{afmt_content}"
+    'qfmt': f"<style>{css}</style>\n{front}\n{canvas}",
+    'afmt': f"<style>{css}</style>\n{back}\n{canvasPreview}"
 }]
 
 def create_model():
