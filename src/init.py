@@ -7,7 +7,7 @@ from . import config
 from . import settings
 from . import kanji
 from . import model
-
+## 
 def start():
     # Load config
     config.load_config()
