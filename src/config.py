@@ -2,6 +2,10 @@ from aqt import mw
 
 config = {
     'deck_id': 0,
+    'show_front_keyword': True,
+    'show_back_keyword': False,
+    'show_front_kanji': False,
+    'show_back_kanji': True,
     'show_drawing_canvas': True,
     'show_edit_buttons': True,
     'show_kanji_strokes': True,

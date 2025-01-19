@@ -24,6 +24,8 @@ back = getTextContent("back_template.html")
 css = getTextContent("styles.css")
 
 # Toggleable Elements
+keyword = getTextContent("elements", "keyword.html")
+kanji = getTextContent("elements", "kanji.html")
 canvas = getTextContent("elements", "canvas.html")
 canvasPreview = getTextContent("elements", "canvas_preview.html")
 strokes = getTextContent("elements", "strokes.html")
@@ -39,6 +41,18 @@ def create_model():
     }]
 
     data = config.get_config()
+
+    if data["show_front_keyword"]:
+        templates[0]['qfmt'] += f"\n{keyword}"
+    
+    if data["show_front_kanji"]:
+        templates[0]['qfmt'] += f"\n{kanji}"
+    
+    if data["show_back_kanji"]:
+        templates[0]['afmt'] += f"\n{kanji}<hr>"
+
+    if data["show_back_keyword"]:
+        templates[0]['afmt'] += f"\n{keyword}"
 
     if data["show_drawing_canvas"]:
         templates[0]['qfmt'] += f"\n{canvas}"
