@@ -13,22 +13,8 @@ This add-on uses the [RADKFILE and KRADFILE](http://www.edrdg.org/krad/kradinf.h
 
 The Kanji stroke diagrams are sourced from KanjiVG data, which is licensed under the [Creative Commons Attribution-Share Alike 3.0](https://creativecommons.org/licenses/by-sa/3.0/) license. 
 
-## Contribution
-Development for Anki with VSCode is a bit tricky, so here are some contribution instructions. (Note: You can use Pycharm as well)
-
-### Installation with VSCode
-1. Install [Python 3.9](https://www.python.org/downloads/release/python-390/)
-2. Install [Visual Studio Code](https://code.visualstudio.com/)
-3. Install [Python VS Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-4. Install [Pylance VS Extension]()
-5. Git clone this repository into your `%AppData%\Anki2\addons21` folder and open it in VSCode
-6. VS Terminal -> `py -3.9 -m venv env`
-7. Terminal -> `env/Scripts/activate`
-8. (env) Terminal -> `pip install -r requirements.txt`
-9. Command Palette (Cmd/Ctrl+Shift+P) -> Python Select Interpreter -> `Python 3.9.0 ('env': venv)`
-
-### Developing
-It is recommended that you navigate to your Anki installation and run the `anki-console.bat` to gain access to the console while developing.
+## Contributing
+For more information on contributing, please see [Development](./docs/development.md) to get started.
 
 ## Show your support
 
