@@ -77,10 +77,20 @@ class CheckBoxLabel(qt.QHBoxLayout):
 
         self.checkbox = qt.QCheckBox()
         self.checkbox.setFocusPolicy(qt.Qt.FocusPolicy.NoFocus)
+
+        self.isChecked = self.checkbox.isChecked
+        self.setChecked = self.checkbox.setChecked
         
         self.addWidget(self.checkbox)  
         self.addWidget(P(description))
         self.addStretch()
-            
 
+class ConfirmationBox(qt.QMessageBox):
+    def __init__(self, label):
+        super().__init__()
 
+        self.setWindowTitle("Confirm Action")
+        self.setText(label)
+        self.setStandardButtons(qt.QMessageBox.StandardButton.Yes | qt.QMessageBox.StandardButton.No)
+        self.setDefaultButton(qt.QMessageBox.StandardButton.Yes)
+        

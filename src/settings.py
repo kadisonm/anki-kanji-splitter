@@ -1,8 +1,15 @@
+# To improve readability element variables are prefixed with an abreviation
+# dd_ = dropdown
+# b _ = button
+# cb_ = checkbox
+
+from tabnanny import check
 import aqt.qt as qt
 import aqt
 
 from . import config
 from .ui import *
+from . import model
 
 class SettingsWindow(qt.QDialog):
     def __init__(self, parent):
@@ -52,21 +59,21 @@ class SettingsWindow(qt.QDialog):
             "Select a deck to automatically add kanji/primitive cards to whenever a new note is created. Cards will be placed before the new note."
         )
 
-        deckDropdown = deckDropdownLayout.dropdown
+        dd_deck = deckDropdownLayout.dropdown
 
-        deckDropdown.addItem("None", 0)
+        dd_deck.addItem("None", 0)
 
         currentDeck = "None"
 
         for deck in decks:
             if deck.id == data["deck_id"]:
                 currentDeck = deck.name
-            deckDropdown.addItem(deck.name, deck.id)
+            dd_deck.addItem(deck.name, deck.id)
 
         if currentDeck:
-            deckDropdown.setCurrentText(currentDeck)
+            dd_deck.setCurrentText(currentDeck)
         else:
-            deckDropdown.setCurrentIndex(0)
+            dd_deck.setCurrentIndex(0)
 
         layout.addLayout(deckDropdownLayout)
 
@@ -88,33 +95,40 @@ class SettingsWindow(qt.QDialog):
 
         # Note Options
         layout.addWidget(H3("Note options"))
-        layout.addWidget(P("This will not delete existing notes but may require a rescan to fix missing fields."))
+        layout.addWidget(P("Changing these will not delete existing notes but may require a rescan to fix missing fields."))
 
         noteLayout = qt.QHBoxLayout()
 
-        # Front
-        frontLayout = qt.QVBoxLayout()
-        frontLayout.addWidget(Bold("Front"))
-        frontLayout.addLayout(CheckBoxLabel("Show kanji"))
-        frontLayout.addLayout(CheckBoxLabel("Show keyword"))
-        frontLayout.addLayout(CheckBoxLabel("Show strokes"))
-        frontLayout.addLayout(CheckBoxLabel("Show drawing canvas"))
-        frontLayout.addLayout(CheckBoxLabel("Show dictionary links"))
-        frontLayout.addStretch()
+        # Checkboxes Front Layout
+        checkBoxFront = qt.QVBoxLayout()
+        checkBoxFront.addWidget(Bold("Front"))
 
-        # Back
-        backLayout = qt.QVBoxLayout()
-        backLayout.addWidget(Bold("Back"))
-        backLayout.addLayout(CheckBoxLabel("Show kanji"))
-        backLayout.addLayout(CheckBoxLabel("Show keyword"))
-        backLayout.addLayout(CheckBoxLabel("Show strokes"))
-        backLayout.addLayout(CheckBoxLabel("Show front canvas preview"))
-        backLayout.addLayout(CheckBoxLabel("Show dictionary links"))
-        backLayout.addStretch()
+        # Checkboxes Back Layout
+        checkBoxBack = qt.QVBoxLayout()
+        checkBoxBack.addWidget(Bold("Back"))
         
-        noteLayout.addLayout(frontLayout)
-        noteLayout.addLayout(backLayout)
+        noteLayout.addLayout(checkBoxFront)
+        noteLayout.addLayout(checkBoxBack)
         layout.addLayout(noteLayout)
+
+        # Create Checkboxes
+        checkBoxes = {}
+
+        def createCheckBox(layout, key, label):
+            cb_new = CheckBoxLabel(label)
+            cb_new.setChecked(data[key])
+
+            checkBoxes[key] = cb_new
+            layout.addLayout(cb_new)
+
+        createCheckBox(checkBoxFront, "show_drawing_canvas", "Show drawing canvas")
+
+        createCheckBox(checkBoxBack, "show_edit_buttons", "Show edit buttons")
+        createCheckBox(checkBoxBack, "show_kanji_strokes", "Show kanji strokes")
+        createCheckBox(checkBoxBack, "show_dictionary_links", "Show dictionary links")
+
+        checkBoxFront.addStretch()
+        checkBoxBack.addStretch()
 
         layout.addWidget(Br())
 
@@ -124,20 +138,47 @@ class SettingsWindow(qt.QDialog):
         buttonsLayout.addStretch()
         layout.addLayout(buttonsLayout)
 
-        save = Button("Save")
-        cancel = Button("Cancel")
+        b_save = Button("Save")
+        b_cancel = Button("Cancel")
 
-        buttonsLayout.addWidget(save)
-        buttonsLayout.addWidget(cancel)
+        buttonsLayout.addWidget(b_save)
+        buttonsLayout.addWidget(b_cancel)
 
         def save_action():
-            data["deck_id"] = deckDropdown.currentData()
-            config.update_config(data)
-            self.close()
+            data["deck_id"] = dd_deck.currentData()
 
-        save.clicked.connect(save_action)
-        cancel.clicked.connect(self.close)
+            rescanRequired = False
+            
+            for key, checkBox in checkBoxes.items():
+                checked = checkBox.isChecked()
+
+                if checked != data[key]:
+                    rescanRequired = True
+                    data[key] = checked
+
+            if rescanRequired:     
+                response = ConfirmationBox("These changes will require a rescan of your deck to fill new fields. Continue?").exec()
+
+                if response == qt.QMessageBox.StandardButton.Yes:
+                    config.update_config(data)
+
+                    model.create_model()
+
+                    # Rescan here
+                    self.close()
+            else:
+                config.update_config(data)
+                self.close()
+
+        def close_action():
+            response = ConfirmationBox("Are you sure you wish to proceed? You may have unsaved changes.").exec()
+
+            if response == qt.QMessageBox.StandardButton.Yes:
+                self.close()
+            
+        b_save.clicked.connect(save_action)
+        b_cancel.clicked.connect(close_action)
         
-        save.setFocusPolicy(qt.Qt.FocusPolicy.ClickFocus)
+        b_save.setFocusPolicy(qt.Qt.FocusPolicy.ClickFocus)
     
         return layout

@@ -2,6 +2,7 @@ from aqt.utils import showInfo
 from aqt import mw
 import os
 import json
+from . import config
 
 modelName = "Kanji Splitter"
 
@@ -23,20 +24,31 @@ back = getTextContent("back_template.html")
 css = getTextContent("styles.css")
 
 # Toggleable Elements
-kanji = getTextContent("elements", "kanji.html")
-keyword = getTextContent("elements", "keyword.html")
-strokes = getTextContent("elements", "strokes.html")
 canvas = getTextContent("elements", "canvas.html")
 canvasPreview = getTextContent("elements", "canvas_preview.html")
-
-templates = [{
-    'name': "Card 1",
-    'qfmt': f"<style>{css}</style>\n{front}\n\n{canvas}",
-    'afmt': f"<style>{css}</style>\n{back}\n\n{canvasPreview}"
-}]
+strokes = getTextContent("elements", "strokes.html")
 
 def create_model():
     global modelName
+
+    # Create card template based on model
+    templates = [{
+        'name': "Card 1",
+        'qfmt': f"<style>{css}</style>\n{front}\n",
+        'afmt': f"<style>{css}</style>\n{back}\n"
+    }]
+
+    data = config.get_config()
+
+    if data["show_drawing_canvas"]:
+        templates[0]['qfmt'] += f"\n{canvas}"
+        templates[0]['afmt'] += f"\n{canvasPreview}"
+
+    if data["show_kanji_strokes"]:
+        templates[0]['afmt'] += f"\n{strokes}"
+
+    if data["show_dictionary_links"]:
+        templates[0]['afmt'] += f"\ndictionary links"
     
     mm = mw.col.models
 

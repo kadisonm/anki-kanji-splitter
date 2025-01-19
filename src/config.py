@@ -2,20 +2,10 @@ from aqt import mw
 
 config = {
     'deck_id': 0,
-    'front': {
-        'showKanji': False,
-        'showStrokes': False,
-        'showKeyword': True,
-        'showCanvas': True,
-        'showDictionaryLinks': False,
-    },
-    'back': {
-        'showKanji': True,
-        'showStrokes': True,
-        'showKeyword': True,
-        'showCanvasPreview': True,
-        'showDictionaryLinks': True,
-    }
+    'show_drawing_canvas': True,
+    'show_edit_buttons': True,
+    'show_kanji_strokes': True,
+    'show_dictionary_links': True,
 }
 
 def save_config() -> None:
@@ -28,6 +18,10 @@ def load_config():
     foundConfig = mw.addonManager.getConfig(__name__)
 
     if foundConfig:
+        for key, value in config.items():
+            if key not in foundConfig:
+                foundConfig[key] = value
+
         config = foundConfig
     else:
         save_config()
