@@ -22,6 +22,7 @@ fields = getJSONContent("fields.json")
 front = getTextContent("front_template.html")
 back = getTextContent("back_template.html")
 css = getTextContent("styles.css")
+warning = getTextContent("elements", "warning.html")
 
 # Toggleable Elements
 keyword = getTextContent("elements", "keyword.html")
@@ -36,8 +37,8 @@ def create_model():
     # Create card template based on model
     templates = [{
         'name': "Card 1",
-        'qfmt': f"<style>{css}</style>\n{front}\n",
-        'afmt': f"<style>{css}</style>\n{back}\n"
+        'qfmt': f"{warning}<style>{css}</style>\n{front}\n",
+        'afmt': f"{warning}<style>{css}</style>\n{back}\n"
     }]
 
     data = config.get_config()

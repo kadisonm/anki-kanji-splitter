@@ -3,7 +3,7 @@ from aqt import mw
 config = {
     'deck_id': 0,
     'show_front_keyword': True,
-    'show_back_keyword': False,
+    'show_back_keyword': True,
     'show_front_kanji': False,
     'show_back_kanji': True,
     'show_drawing_canvas': True,

@@ -125,8 +125,8 @@ class SettingsWindow(qt.QDialog):
         createCheckBox(checkBoxFront, "show_front_kanji", "Show kanji")
         createCheckBox(checkBoxFront, "show_drawing_canvas", "Show drawing canvas")
 
-        createCheckBox(checkBoxBack, "show_back_keyword", "Show keyword")
         createCheckBox(checkBoxBack, "show_back_kanji", "Show kanji")
+        createCheckBox(checkBoxBack, "show_back_keyword", "Show keyword")
         createCheckBox(checkBoxBack, "show_edit_buttons", "Show edit buttons")
         createCheckBox(checkBoxBack, "show_kanji_strokes", "Show kanji strokes")
         createCheckBox(checkBoxBack, "show_dictionary_links", "Show dictionary links")
