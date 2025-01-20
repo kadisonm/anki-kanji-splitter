@@ -26,7 +26,6 @@ Kanji Splitter
 </h4>
 
 <hr>
- </br>
 
 This add-on is **not** an official Anki add-on and is licensed under the [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.en.html) license.
 
@@ -43,5 +42,3 @@ For more information on contributing, please see [Development](./docs/developmen
 If you want to support me you can do so [here](https://www.buymeacoffee.com/kadisonm), but please know that this is not an expectation and this add-on is completely free.
 
 [<img src="./docs/assets/support.png" width="200">](https://www.buymeacoffee.com/kadisonm)
-
-Thank you so much for using my add-on.
