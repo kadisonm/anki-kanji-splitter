@@ -2,6 +2,18 @@
 Kanji Splitter
 </h1>
 
+<h1 align="center">
+
+<picture>
+  <source srcset="./docs/assets/logo-dark-mode.svg" 
+  media="(prefers-color-scheme: dark)"
+  height=300
+  >
+  <img src="./docs/assets/logo-light-mode.svg" height=300>
+</picture>
+
+</h1>
+
 <h4 align="center">An <a href="https://apps.ankiweb.net/">Anki</a> add-on that breaks down kanji cards into their components and adds them to your deck. </h4>
 
 ---
@@ -20,6 +32,6 @@ For more information on contributing, please see [Development](./docs/developmen
 
 If you want to support me you can do so [here](https://www.buymeacoffee.com/kadisonm), but please know that this is not an expectation and this add-on is completely free.
 
-[<img src="https://github.com/kadisonm/obsidian-reference-generator/assets/134670047/826ead37-1265-42b1-b171-928d1e17035f" width="200">](https://www.buymeacoffee.com/kadisonm)
+[<img src="./docs/assets/support.png" width="200">](https://www.buymeacoffee.com/kadisonm)
 
 Thank you so much for using my add-on.
