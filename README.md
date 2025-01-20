@@ -14,9 +14,19 @@ Kanji Splitter
 
 </h1>
 
-<h4 align="center">An <a href="https://apps.ankiweb.net/">Anki</a> add-on that breaks down kanji cards into their components and adds them to your deck. </h4>
 
----
+<img src="./docs/assets/split.svg" height=100 align="left">
+
+<h4>
+    </br>
+    An <a href="https://apps.ankiweb.net/">Anki</a> add-on that breaks down kanji cards into their components and adds them to your deck. 
+     </br>
+      </br>
+       </br>
+</h4>
+
+<hr>
+ </br>
 
 This add-on is **not** an official Anki add-on and is licensed under the [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.en.html) license.
 
