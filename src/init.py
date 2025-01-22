@@ -7,6 +7,7 @@ from . import config
 from . import settings
 from . import kanji
 from . import model
+from . import deck
 
 def start():
     # Load config
@@ -33,7 +34,7 @@ def start():
         if not model.get_model():
             model.create_model()
 
-        if note.has_tag("kanji-splitter"):
+        if note.has_tag(deck.get_tag()):
             return
 
         deckId = config.get_config()["deck_id"]

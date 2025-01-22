@@ -10,6 +10,7 @@ import aqt
 from . import config
 from .ui import *
 from . import model
+from . import deck
 
 class SettingsWindow(qt.QDialog):
     def __init__(self, parent):
@@ -65,10 +66,10 @@ class SettingsWindow(qt.QDialog):
 
         currentDeck = "None"
 
-        for deck in decks:
-            if deck.id == data["deck_id"]:
-                currentDeck = deck.name
-            dd_deck.addItem(deck.name, deck.id)
+        for foundDeck in decks:
+            if foundDeck.id == data["deck_id"]:
+                currentDeck = foundDeck.name
+            dd_deck.addItem(foundDeck.name, foundDeck.id)
 
         if currentDeck:
             dd_deck.setCurrentText(currentDeck)
@@ -86,12 +87,22 @@ class SettingsWindow(qt.QDialog):
         ))
 
         # Clear deck
-        layout.addLayout(
-            ButtonLabel(
+        b_clear = ButtonLabel(
                 "Clear deck", 
                 "Clear", 
                 "This will delete any cards created by this plugin inside your deck. (This will not delete the original cards)"
-        ))
+                )
+        
+        def clear():
+            response = ConfirmationBox("Are you sure you wish to delete all Kanji Splitter cards from your deck?").exec()
+
+            if response == qt.QMessageBox.StandardButton.Yes:
+                deck.clear_deck()
+                response = MessageBox("", "Done.").exec()
+        
+        b_clear.button.clicked.connect(clear)
+
+        layout.addLayout(b_clear)
 
         # Note Options
         layout.addWidget(H3("Note options"))

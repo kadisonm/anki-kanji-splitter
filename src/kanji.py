@@ -6,6 +6,7 @@ import os
 import json
 
 from . import model
+from . import deck
 
 currentDir = os.path.dirname(os.path.abspath(__file__))
 resourcesDir = os.path.join(currentDir, "resources")
@@ -105,7 +106,7 @@ def create_note(kanji: str, deckId, cardModel):
     if svg:
         newNote["Strokes"] = svg
 
-    newNote.add_tag("kanji-splitter")
+    newNote.add_tag(deck.get_tag())
 
     mw.col.add_note(newNote, deckId)
 

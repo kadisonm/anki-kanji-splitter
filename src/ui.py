@@ -85,6 +85,14 @@ class CheckBoxLabel(qt.QHBoxLayout):
         self.addWidget(P(description))
         self.addStretch()
 
+
+class MessageBox(qt.QMessageBox):
+    def __init__(self, title, label):
+        super().__init__()
+
+        self.setWindowTitle(title)
+        self.setText(label)
+        
 class ConfirmationBox(qt.QMessageBox):
     def __init__(self, label):
         super().__init__()
