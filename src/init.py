@@ -37,14 +37,14 @@ def start():
         if note.has_tag(deck.get_tag()):
             return
 
-        deckId = config.get_config()["deck_id"]
+        deckId = deck.get_deck_id()
 
         result = mw.col.db.scalar(
             "SELECT 1 FROM cards WHERE nid = ? AND did = ?", note.id, deckId
         )
 
         if result:
-            kanji.scan_note(note, deckId)
+            deck.note_added(note)
             
     gui_hooks.add_cards_did_add_note.append(addedNote)
 

@@ -1,12 +1,7 @@
 from anki.notes import Note
-from aqt.utils import showInfo
-from aqt import mw
 import re
 import os
 import json
-
-from . import model
-from . import deck
 
 currentDir = os.path.dirname(os.path.abspath(__file__))
 resourcesDir = os.path.join(currentDir, "resources")
@@ -47,6 +42,21 @@ def get_radicals(kanji):
         return result
     else:
         return []
+    
+def get_svg(kanji):
+    codePoint = ord(kanji)
+    hexCode = format(codePoint, 'x').zfill(5).lower() 
+    
+    path = os.path.join(kanjiPath, f"{hexCode}.svg")
+
+    if os.path.exists(path):
+        with open(path, 'r') as file:
+            svgContent = file.read()
+           
+            match = re.search(r'(<svg[^>]*>.*?</svg>)', svgContent, re.DOTALL)
+            
+            if match:
+                return match.group(1)
 
 def get_kanji(note: Note):
     foundKanji = []
@@ -75,88 +85,3 @@ def get_kanji(note: Note):
                 foundKanji.append(kanji)
     
     return foundKanji
-
-def load_kanji_svg(kanji):
-    codePoint = ord(kanji)
-    hexCode = format(codePoint, 'x').zfill(5).lower() 
-    
-    path = os.path.join(kanjiPath, f"{hexCode}.svg")
-
-    if os.path.exists(path):
-        with open(path, 'r') as file:
-            svgContent = file.read()
-           
-            match = re.search(r'(<svg[^>]*>.*?</svg>)', svgContent, re.DOTALL)
-            
-            if match:
-                return match.group(1)
-
-def create_note(kanji: str, deckId, cardModel): 
-    keyword = get_heisig_keyword(kanji)
-
-    if not keyword:
-        return
-
-    newNote = Note(mw.col, cardModel)
-    newNote["Keyword"] = keyword
-    newNote["Kanji"] = kanji
-
-    svg = load_kanji_svg(kanji)
-
-    if svg:
-        newNote["Strokes"] = svg
-
-    newNote.add_tag(deck.get_tag())
-
-    mw.col.add_note(newNote, deckId)
-
-    return newNote
-
-def scan_note(note: Note, deckId):
-    cardModel = model.get_model()
-
-    if not cardModel:
-        return
-
-    foundKanji = get_kanji(note)
-
-    # Create new cards for each kanij
-    originalCard = note.cards()[0]
-    originalType = originalCard.type
-
-    newKanji = []
-
-    # Remove already existing cards
-    for kanji in foundKanji:
-        if not mw.col.find_notes(f'"Kanji:{kanji}"'):
-            if kanji not in newKanji:
-                newKanji.append(kanji)
-        
-    due = len(newKanji)
-
-    # Push due dates forward
-    originalCard.due += due
-    mw.col.update_card(originalCard)
-
-    mw.col.db.execute(
-        "UPDATE cards SET due = due + ? WHERE did = ? AND due > ?",
-        due, deckId, originalCard.due
-    )
-
-    # Add new cards
-    for kanji in newKanji:
-        newNote = create_note(kanji, deckId, cardModel)
-
-        if not newNote:
-            continue
-
-        newCard = newNote.cards()[0] 
-
-        if originalType == 0:
-            newCard.due = originalCard.due - due
-        else:
-            newCard.due = due
-
-        mw.col.update_card(newCard)
-
-        due -= 1
