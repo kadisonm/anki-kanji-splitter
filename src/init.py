@@ -45,7 +45,7 @@ def start():
         )
 
         if result:
-            deck.note_added(note)
+            deck.scan_note(note)
             
     gui_hooks.add_cards_did_add_note.append(addedNote)
 

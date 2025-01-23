@@ -73,9 +73,8 @@ class SettingsWindow(qt.QDialog):
         )
         
         def scan():
-            deck.scan_deck()
-
-            MessageBox("", "Done.").exec()
+            added = deck.scan_deck()
+            MessageBox("", f"Done. {added} notes scanned.").exec()
         
         b_scan.button.clicked.connect(scan)
 
@@ -86,14 +85,14 @@ class SettingsWindow(qt.QDialog):
                 "Clear deck", 
                 "Clear", 
                 "This will delete any cards created by this plugin inside your deck. (This will not delete the original cards)"
-                )
+        )
         
         def clear():
             response = ConfirmationBox("Are you sure you wish to delete all Kanji Splitter cards from your deck? This action cannot be undone.").exec()
 
             if response == qt.QMessageBox.StandardButton.Yes:
-                deck.clear_deck()
-                MessageBox("", "Done.").exec()
+                removed = deck.clear_deck()
+                MessageBox("", f"Done. {removed} cards removed.").exec()
         
         b_clear.button.clicked.connect(clear)
 

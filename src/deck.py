@@ -47,7 +47,7 @@ def update_note(note):
 
     mw.col.update_note(note)
 
-def note_added(note: Note):
+def scan_note(note: Note):
     deck = get_deck()
     deckId = get_deck_id()
 
@@ -95,15 +95,30 @@ def note_added(note: Note):
 def scan_deck():
     deck = get_deck()
 
-    cards = mw.col.find_cards(f"deck:{deck['name']} tag:{tagName}")
+    cards = mw.col.find_cards(f"deck:{deck['name']}", True)
 
-    for cardId in cards:
+    notesAdded = 0
+
+    reversedCards = reversed(cards)
+
+    for cardId in reversedCards:
         card = mw.col.get_card(cardId)
+        
         note = card.note()
 
-        update_note(note)
+        if note.has_tag(tagName):
+            continue
+
+        print(card.due)
+
+        scan_note(note)
+
+        notesAdded += 1
+
+    return notesAdded
 
 def clear_deck():
     deck = get_deck()
     cards = mw.col.find_cards(f"deck:{deck['name']} tag:{tagName}")
     mw.col.remove_notes_by_card(cards)
+    return len(cards)
