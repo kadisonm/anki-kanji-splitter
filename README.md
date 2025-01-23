@@ -32,7 +32,7 @@ This add-on is **not** an official Anki add-on and is licensed under the [GPL-3.
 ## Attribution
 This add-on uses the [RADKFILE and KRADFILE](http://www.edrdg.org/krad/kradinf.html) dictionary files. These files are the property of the [Electronic Dictionary Research and Development Group](https://www.edrdg.org/), and are used in conformance with the Group's [licence](https://www.edrdg.org/edrdg/licence.html).
 
-The Kanji stroke diagrams are sourced from KanjiVG data, which is licensed under the [Creative Commons Attribution-Share Alike 3.0](https://creativecommons.org/licenses/by-sa/3.0/) license. 
+The Kanji stroke diagrams are sourced from [KanjiVG](http://kanjivg.tagaini.net) data, which is licensed under the [Creative Commons Attribution-Share Alike 3.0](https://creativecommons.org/licenses/by-sa/3.0/) license. 
 
 ## Contributing
 For more information on contributing, please see [Development](./docs/development.md) to get started.

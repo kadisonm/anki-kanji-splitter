@@ -1,3 +1,3 @@
-- Add functionality to rescanning deck (+ when a setting is changed)
+- Use svgs to find components instead of krad file
 - Add a link to the kanji on JPDB and equivalent websites to back of card
 - Make the keyword and mnemonic editable from the back of the card
