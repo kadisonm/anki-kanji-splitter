@@ -12,14 +12,15 @@ def start():
     # Load config
     config.load_config()
 
+    def open_settings():
+        window = settings.SettingsWindow(mw)
+        window.exec()
+
     def on_profile_loaded():
         # Create anki card model
         model.create_model()
 
-        def open_settings():
-            window = settings.SettingsWindow(mw)
-            window.exec()
-
+        # Add settings tool button
         action = aqt.qt.QAction("Kanji Splitter", mw)
         qconnect(action.triggered, open_settings)
         mw.form.menuTools.addAction(action)

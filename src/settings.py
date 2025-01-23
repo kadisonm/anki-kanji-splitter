@@ -66,12 +66,20 @@ class SettingsWindow(qt.QDialog):
         layout.addLayout(deckDropdownLayout)
 
         # Scan deck
-        layout.addLayout(
-            ButtonLabel(
+        b_scan = ButtonLabel(
                 "Scan deck", 
                 "Scan", 
                 "This will scan the deck for kanji and add new cards for any found kanji/primitives. If cards already exist, that kanji/primitive will be skipped."
-        ))
+        )
+        
+        def scan():
+            deck.scan_deck()
+
+            MessageBox("", "Done.").exec()
+        
+        b_scan.button.clicked.connect(scan)
+
+        layout.addLayout(b_scan)
 
         # Clear deck
         b_clear = ButtonLabel(
@@ -85,7 +93,7 @@ class SettingsWindow(qt.QDialog):
 
             if response == qt.QMessageBox.StandardButton.Yes:
                 deck.clear_deck()
-                response = MessageBox("", "Done.").exec()
+                MessageBox("", "Done.").exec()
         
         b_clear.button.clicked.connect(clear)
 
