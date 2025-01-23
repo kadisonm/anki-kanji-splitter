@@ -9,12 +9,14 @@ tagName = "kanji-splitter"
 def get_tag():
     return tagName
 
-def clear_deck():
+def get_deck():
     deckId = config.get_config()["deck_id"]
     deck = mw.col.decks.get(deckId)
+    return deck
 
-    deckName = deck['name']
 
-    cards = mw.col.find_cards(f"deck:{deckName} tag:{tagName}")
-    
+
+def clear_deck():
+    deck = get_deck()
+    cards = mw.col.find_cards(f"deck:{deck['name']} tag:{tagName}")
     mw.col.remove_notes_by_card(cards)

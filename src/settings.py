@@ -94,7 +94,7 @@ class SettingsWindow(qt.QDialog):
                 )
         
         def clear():
-            response = ConfirmationBox("Are you sure you wish to delete all Kanji Splitter cards from your deck?").exec()
+            response = ConfirmationBox("Are you sure you wish to delete all Kanji Splitter cards from your deck? This action cannot be undone.").exec()
 
             if response == qt.QMessageBox.StandardButton.Yes:
                 deck.clear_deck()

@@ -1,4 +1,3 @@
-- Add functionality to removing all kanji learner cards
 - Add functionality to rescanning deck (+ when a setting is changed)
 - Add a link to the kanji on JPDB and equivalent websites to back of card
 - Make the keyword and mnemonic editable from the back of the card
