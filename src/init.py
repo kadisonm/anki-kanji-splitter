@@ -5,7 +5,6 @@ import aqt.qt
 
 from . import config
 from . import settings
-from . import kanji
 from . import model
 from . import deck
 
@@ -13,19 +12,20 @@ def start():
     # Load config
     config.load_config()
 
-    window = settings.SettingsWindow(mw)
-
-    # Add settings tool
-    action = aqt.qt.QAction("Kanji Splitter", mw)
-    qconnect(action.triggered, window.open)
-    mw.form.menuTools.addAction(action)
-
-    # Add settings action
-    mw.addonManager.setConfigAction(__name__, window.open)
-
-    # Create anki card model
     def on_profile_loaded():
+        # Create anki card model
         model.create_model()
+
+        def open_settings():
+            window = settings.SettingsWindow(mw)
+            window.exec()
+
+        action = aqt.qt.QAction("Kanji Splitter", mw)
+        qconnect(action.triggered, open_settings)
+        mw.form.menuTools.addAction(action)
+
+        # Add settings to addon page
+        mw.addonManager.setConfigAction(__name__, open_settings)
 
     gui_hooks.profile_did_open.append(on_profile_loaded)
 

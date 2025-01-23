@@ -25,22 +25,9 @@ class SettingsWindow(qt.QDialog):
         self.setMinimumWidth(width)
         self.resize(width, height)
 
-        self.loaded = False
+        self.setLayout(self.load_ui())
 
-    def open(self):
-        if aqt.mw.col and not self.loaded:
-            self.setLayout(self.loadUI())
-            self.loaded = True
-        
-        self.show()
-
-    def close(self):
-        self.hide()
-    
-    def loadUI(self):
-        if not aqt.mw.col:
-            return
-        
+    def load_ui(self):
         data = config.get_config()
 
         layout = qt.QVBoxLayout()
@@ -162,38 +149,34 @@ class SettingsWindow(qt.QDialog):
         def save_action():
             data["deck_id"] = dd_deck.currentData()
 
-            rescanRequired = False
-            
             for key, checkBox in checkBoxes.items():
                 checked = checkBox.isChecked()
 
                 if checked != data[key]:
-                    rescanRequired = True
                     data[key] = checked
 
-            if rescanRequired:     
-                response = ConfirmationBox("These changes will require a rescan of your deck to fill new fields. Continue?").exec()
+            config.update_config(data)
+            model.create_model()
+            self.close()
+            
+        def close_action():
+            unsavedChanges = False
+
+            for key, checkBox in checkBoxes.items():
+                checked = checkBox.isChecked()
+
+                if checked != data[key]:
+                    unsavedChanges = True
+
+            if unsavedChanges:
+                response = ConfirmationBox("You have unsaved changes. Are you sure you wish to proceed?").exec()
 
                 if response == qt.QMessageBox.StandardButton.Yes:
-                    config.update_config(data)
-
-                    model.create_model()
-
-                    # Rescan here
                     self.close()
-            else:
-                config.update_config(data)
-                self.close()
-
-        def close_action():
-            response = ConfirmationBox("Are you sure you wish to proceed? You may have unsaved changes.").exec()
-
-            if response == qt.QMessageBox.StandardButton.Yes:
-                self.close()
             
         b_save.clicked.connect(save_action)
         b_cancel.clicked.connect(close_action)
         
         b_save.setFocusPolicy(qt.Qt.FocusPolicy.ClickFocus)
-    
+
         return layout

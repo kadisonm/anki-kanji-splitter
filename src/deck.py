@@ -34,7 +34,7 @@ def create_note(newKanji):
 
 def update_note(note): 
     noteKanji = note["Kanji"]
-    
+
     keyword = kanji.get_heisig_keyword(noteKanji)
 
     if keyword:
@@ -44,6 +44,8 @@ def update_note(note):
 
     if svg:
         note["Strokes"] = svg
+
+    mw.col.update_note(note)
 
 def note_added(note: Note):
     deck = get_deck()
