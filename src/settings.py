@@ -23,6 +23,7 @@ class SettingsWindow(qt.QDialog):
 
         self.setMinimumHeight(height)
         self.setMinimumWidth(width)
+
         self.resize(width, height)
 
         self.setLayout(self.load_ui())
@@ -84,7 +85,7 @@ class SettingsWindow(qt.QDialog):
         b_clear = ButtonLabel(
                 "Clear deck", 
                 "Clear", 
-                "This will delete any cards created by this plugin inside your deck. (This will not delete the original cards)"
+                "This will delete any cards created by this plugin inside your deck. (this will not delete the original cards)"
         )
         
         def clear():
@@ -100,7 +101,7 @@ class SettingsWindow(qt.QDialog):
 
         # Note Options
         layout.addWidget(H3("Note options"))
-        layout.addWidget(P("Changing these will not delete existing notes but may require a rescan to fix missing fields."))
+        layout.addWidget(P("Changing these will not delete existing notes."))
 
         noteLayout = qt.QHBoxLayout()
 

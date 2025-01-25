@@ -2,17 +2,25 @@
 Kanji Splitter
 </h1>
 
-<h1 align="center">
+<div align="center">
+  <picture>
+    <source srcset="./docs/assets/logo-dark-mode.svg" 
+    media="(prefers-color-scheme: dark)"
+    height=300
+    >
+    <img src="./docs/assets/logo-light-mode.svg" height=300>
+  </picture>
 
-<picture>
-  <source srcset="./docs/assets/logo-dark-mode.svg" 
-  media="(prefers-color-scheme: dark)"
-  height=300
-  >
-  <img src="./docs/assets/logo-light-mode.svg" height=300>
-</picture>
+  <a href="#features">Features</a> &nbsp;&bull;&nbsp;
+  <a href="#installation">Installation</a> &nbsp;&bull;&nbsp;
+  <a href="#usage">Usage</a> &nbsp;&bull;&nbsp;
+  <a href="#contributing">Contributing</a> &nbsp;&bull;&nbsp;
+  <a href="#attribution">Attribution</a>
 
-</h1>
+  <a title="Buy me a coffee" href="https://buymeacoffee.com/kadisonm"><img src="https://img.shields.io/badge/Support-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white"></a>
+</div>
+
+<hr>
 
 
 <img src="./docs/assets/split.svg" height=100 align="left">
@@ -29,16 +37,18 @@ Kanji Splitter
 
 This add-on is **not** an official Anki add-on and is licensed under the [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.en.html) license.
 
-## Attribution
-This add-on uses the [RADKFILE and KRADFILE](http://www.edrdg.org/krad/kradinf.html) dictionary files. These files are the property of the [Electronic Dictionary Research and Development Group](https://www.edrdg.org/), and are used in conformance with the Group's [licence](https://www.edrdg.org/edrdg/licence.html).
+## Features
 
-The Kanji stroke diagrams are sourced from [KanjiVG](http://kanjivg.tagaini.net) data, which is licensed under the [Creative Commons Attribution-Share Alike 3.0](https://creativecommons.org/licenses/by-sa/3.0/) license. 
+## Installation
+
+## Usage
 
 ## Contributing
-For more information on contributing, please see [Development](./docs/development.md) to get started.
+For more information on contributing, please see [development](./docs/development.md).
 
-## Show your support
+## Attribution
+A big thank you to [jpdb.io](https://jpdb.io) for permission to use their kanji keywords. All kanji keywords are linked to their respective pages on jpdb and more information can be found at [jpdb.io](https://jpdb.io).
 
-If you want to support me you can do so [here](https://www.buymeacoffee.com/kadisonm), but please know that this is not an expectation and this add-on is completely free.
+The jpdb and RTK keywords are sourced from [Jo Liss](https://github.com/joliss)' [heisig-jpdb](https://github.com/joliss/heisig-jpdb) comparison table, which is distributed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). Modifications have been performed on the original data to include more keywords.
 
-[<img src="./docs/assets/support.png" width="200">](https://www.buymeacoffee.com/kadisonm)
+The Kanji stroke diagrams are sourced from [KanjiVG](http://kanjivg.tagaini.net) data, which is licensed under the [Creative Commons Attribution-Share Alike 3.0](https://creativecommons.org/licenses/by-sa/3.0/) license. 
