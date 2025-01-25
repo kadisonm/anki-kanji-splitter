@@ -99,6 +99,22 @@ class SettingsWindow(qt.QDialog):
 
         layout.addLayout(b_clear)
 
+        # Keyword dropdown
+
+        keywordDropdownLayout = DropdownLabel(
+            "Keyword source",
+            "Select which source to use keywords from."
+        )
+
+        dd_keywords = keywordDropdownLayout.dropdown
+
+        dd_keywords.addItem("jpdb", 0)
+        dd_keywords.addItem("RTK", 1)
+
+        dd_keywords.setCurrentIndex(data["keyword_source"])
+
+        layout.addLayout(keywordDropdownLayout)
+
         # Note Options
         layout.addWidget(H3("Note options"))
         layout.addWidget(P("Changing these will not delete existing notes."))
@@ -156,6 +172,7 @@ class SettingsWindow(qt.QDialog):
 
         def save_action():
             data["deck_id"] = dd_deck.currentData()
+            data["keyword_source"] = dd_keywords.currentData()
 
             for key, checkBox in checkBoxes.items():
                 checked = checkBox.isChecked()
