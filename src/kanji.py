@@ -13,7 +13,7 @@ kanjiPath = os.path.join(resourcesDir, 'Kanji')
 keywords = None
 radicals = None
 
-def get_heisig_keyword(kanji):
+def get_keywords(kanji):
     global keywords
 
     if not keywords:
@@ -21,11 +21,12 @@ def get_heisig_keyword(kanji):
             keywords = json.load(file)
     
     if kanji in keywords:
-        return str.lower(keywords[kanji])
+        print(keywords[kanji])
+        return keywords[kanji]
     else:
         return None
     
-def get_radicals(kanji):
+def get_components(kanji):
     global radicals
 
     if not radicals:
@@ -64,7 +65,7 @@ def get_kanji(note: Note):
     def findAllComponents(character):
         radicals = []
 
-        for radical in get_radicals(character):
+        for radical in get_components(character):
             if radical not in foundKanji:
                 radicals.append(radical)
                 foundKanji.append(radical)

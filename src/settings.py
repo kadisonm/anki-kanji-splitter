@@ -12,196 +12,189 @@ from .ui import *
 from . import model
 from . import deck
 
-class SettingsWindow(qt.QDialog):
-    def __init__(self, parent):
-        super(SettingsWindow, self).__init__(parent)
+class SettingsWindow(SettingsDialog):
+    def __init__(self):
+        super(SettingsWindow, self).__init__("Kanji Splitter Settings")
 
-        self.setWindowTitle("Kanji Splitter")
+        self.checkboxes = {}
+        self.dropdowns = {}
 
-        height = 200
-        width = 400
+        self.data = config.get_config()
 
-        self.setMinimumHeight(height)
-        self.setMinimumWidth(width)
+        self.tabs.addTab(self.deck_tab(), "Deck")
+        self.tabs.addTab(self.card_tab(), "Card")
 
-        self.resize(width, height)
-
-        self.setLayout(self.load_ui())
-
-    def load_ui(self):
-        data = config.get_config()
-
+    def deck_tab(self):
+        widget = qt.QWidget()
         layout = qt.QVBoxLayout()
 
-        # Title
-        layout.addWidget(H1("Kanji Splitter"))
-
-        # Author
-        layout.addWidget(Italics("By Kadison McLellan"))
-        layout.addWidget(Br())
-
-        # Selecting deck
-        decks = aqt.mw.col.decks.all_names_and_ids()
-  
+        # Selecting Deck
         deckDropdownLayout = DropdownLabel(
             "Select deck",
             "Select a deck to automatically add kanji/primitive cards to whenever a new note is created. Cards will be placed before the new note."
         )
 
-        dd_deck = deckDropdownLayout.dropdown
+        deckDropdown = deckDropdownLayout.dropdown
 
-        dd_deck.addItem("None", 0)
+        self.dropdowns["deck_id"] = deckDropdown
+
+        deckDropdown.addItem("None", 0)
 
         currentDeck = "None"
+        decks = aqt.mw.col.decks.all_names_and_ids()
 
         for foundDeck in decks:
-            if foundDeck.id == data["deck_id"]:
+            if foundDeck.id == self.data["deck_id"]:
                 currentDeck = foundDeck.name
-            dd_deck.addItem(foundDeck.name, foundDeck.id)
+            deckDropdown.addItem(foundDeck.name, foundDeck.id)
 
         if currentDeck:
-            dd_deck.setCurrentText(currentDeck)
+            deckDropdown.setCurrentText(currentDeck)
         else:
-            dd_deck.setCurrentIndex(0)
+            deckDropdown.setCurrentIndex(0)
 
         layout.addLayout(deckDropdownLayout)
 
-        # Scan deck
-        b_scan = ButtonLabel(
+        layout.addWidget(Br())
+
+        # Scan Deck
+        scan = ButtonLabel(
                 "Scan deck", 
                 "Scan", 
                 "This will scan the deck for kanji and add new cards for any found kanji/primitives. If cards already exist, that kanji/primitive will be skipped."
         )
         
-        def scan():
+        def scan_action():
             added = deck.scan_deck()
             MessageBox("", f"Done. {added} notes scanned.").exec()
         
-        b_scan.button.clicked.connect(scan)
+        scan.button.clicked.connect(scan_action)
 
-        layout.addLayout(b_scan)
+        layout.addLayout(scan)
 
-        # Clear deck
-        b_clear = ButtonLabel(
+        # Clear Deck
+        clear = ButtonLabel(
                 "Clear deck", 
                 "Clear", 
                 "This will delete any cards created by this plugin inside your deck. (this will not delete the original cards)"
         )
         
-        def clear():
+        def clear_action():
             response = ConfirmationBox("Are you sure you wish to delete all Kanji Splitter cards from your deck? This action cannot be undone.").exec()
 
             if response == qt.QMessageBox.StandardButton.Yes:
                 removed = deck.clear_deck()
                 MessageBox("", f"Done. {removed} cards removed.").exec()
         
-        b_clear.button.clicked.connect(clear)
+        clear.button.clicked.connect(clear_action)
 
-        layout.addLayout(b_clear)
+        layout.addLayout(clear)
 
-        # Keyword dropdown
+        widget.setLayout(layout)
+        return widget
 
+    def card_tab(self):
+        widget = qt.QWidget()
+        layout = qt.QVBoxLayout()
+
+        # Keyword Source
         keywordDropdownLayout = DropdownLabel(
-            "Keyword source",
-            "Select which source to use keywords from."
+            "Keyword source. Select which source to use keywords from. (Changing this will not change existing cards)"
         )
 
         dd_keywords = keywordDropdownLayout.dropdown
 
+        self.dropdowns["keyword_source"] = dd_keywords
+
         dd_keywords.addItem("jpdb", 0)
         dd_keywords.addItem("RTK", 1)
 
-        dd_keywords.setCurrentIndex(data["keyword_source"])
+        dd_keywords.setCurrentIndex(self.data["keyword_source"])
 
         layout.addLayout(keywordDropdownLayout)
 
         # Note Options
-        layout.addWidget(H3("Note options"))
-        layout.addWidget(P("Changing these will not delete existing notes."))
 
         noteLayout = qt.QHBoxLayout()
 
         # Checkboxes Front Layout
-        checkBoxFront = qt.QVBoxLayout()
-        checkBoxFront.addWidget(Bold("Front"))
+        frontOptions = qt.QGroupBox("Front")
+        backOptions = qt.QGroupBox("Back")
 
-        # Checkboxes Back Layout
-        checkBoxBack = qt.QVBoxLayout()
-        checkBoxBack.addWidget(Bold("Back"))
+        front = qt.QVBoxLayout()
+        back = qt.QVBoxLayout()
+
+        frontOptions.setLayout(front)
+        backOptions.setLayout(back)
         
-        noteLayout.addLayout(checkBoxFront)
-        noteLayout.addLayout(checkBoxBack)
+        noteLayout.addWidget(frontOptions)
+        noteLayout.addWidget(backOptions)
+
         layout.addLayout(noteLayout)
 
         # Create Checkboxes
-        checkBoxes = {}
+        self.checkboxes = {}
 
         def createCheckBox(layout, key, label):
-            cb_new = CheckBoxLabel(label)
-            cb_new.setChecked(data[key])
+            newCheckbox = CheckBoxLabel(label)
+            newCheckbox.setChecked(self.data[key])
 
-            checkBoxes[key] = cb_new
-            layout.addLayout(cb_new)
+            self.checkboxes[key] = newCheckbox
+            layout.addLayout(newCheckbox)
 
-        createCheckBox(checkBoxFront, "show_front_keyword", "Show keyword")
-        createCheckBox(checkBoxFront, "show_front_kanji", "Show kanji")
-        createCheckBox(checkBoxFront, "show_drawing_canvas", "Show drawing canvas")
+        createCheckBox(front, "show_front_keyword", "Show keyword")
+        createCheckBox(front, "show_front_kanji", "Show kanji")
+        createCheckBox(front, "show_drawing_canvas", "Show drawing canvas")
 
-        createCheckBox(checkBoxBack, "show_back_kanji", "Show kanji")
-        createCheckBox(checkBoxBack, "show_back_keyword", "Show keyword")
-        createCheckBox(checkBoxBack, "show_edit_buttons", "Show edit buttons")
-        createCheckBox(checkBoxBack, "show_kanji_strokes", "Show kanji strokes")
-        createCheckBox(checkBoxBack, "show_dictionary_links", "Show dictionary links")
+        createCheckBox(back, "show_back_kanji", "Show kanji")
+        createCheckBox(back, "show_back_keyword", "Show keyword")
+        createCheckBox(back, "show_edit_buttons", "Show edit buttons")
+        createCheckBox(back, "show_kanji_strokes", "Show kanji strokes")
+        createCheckBox(back, "show_dictionary_links", "Show dictionary links")
 
-        checkBoxFront.addStretch()
-        checkBoxBack.addStretch()
+        layout.addWidget(P("Changing these will not delete existing notes."))
 
-        layout.addWidget(Br())
+        front.addStretch()
+        back.addStretch()
 
-        # Save / Cancel buttons
-        layout.addStretch()
-        buttonsLayout = qt.QHBoxLayout()
-        buttonsLayout.addStretch()
-        layout.addLayout(buttonsLayout)
+        widget.setLayout(layout)
+        
+        return widget
 
-        b_save = Button("Save")
-        b_cancel = Button("Cancel")
-
-        buttonsLayout.addWidget(b_save)
-        buttonsLayout.addWidget(b_cancel)
-
-        def save_action():
-            data["deck_id"] = dd_deck.currentData()
-            data["keyword_source"] = dd_keywords.currentData()
-
-            for key, checkBox in checkBoxes.items():
+    def save_action(self):
+            for key, checkBox in self.checkboxes.items():
                 checked = checkBox.isChecked()
 
-                if checked != data[key]:
-                    data[key] = checked
+                if checked != self.data[key]:
+                    self.data[key] = checked
 
-            config.update_config(data)
+            for key, dropdown in self.dropdowns.items():
+                result = dropdown.currentData()
+
+                if result != self.data[key]:
+                    self.data[key] = result
+
+            config.update_config(self.data)
             model.create_model()
             self.close()
-            
-        def close_action():
-            unsavedChanges = False
+        
+    def close_action(self):
+        unsavedChanges = False
 
-            for key, checkBox in checkBoxes.items():
-                checked = checkBox.isChecked()
+        for key, checkBox in self.checkboxes.items():
+            checked = checkBox.isChecked()
 
-                if checked != data[key]:
+            if checked != self.data[key]:
+                unsavedChanges = True
+
+        for key, dropdown in self.dropdowns.items():
+                result = dropdown.currentData()
+
+                if result != self.data[key]:
                     unsavedChanges = True
 
-            if unsavedChanges:
-                response = ConfirmationBox("You have unsaved changes. Are you sure you wish to proceed?").exec()
+        if unsavedChanges:
+            response = ConfirmationBox("You have unsaved changes. Are you sure you wish to proceed?").exec()
 
-                if response == qt.QMessageBox.StandardButton.Yes:
-                    self.close()
-            
-        b_save.clicked.connect(save_action)
-        b_cancel.clicked.connect(close_action)
-        
-        b_save.setFocusPolicy(qt.Qt.FocusPolicy.ClickFocus)
-
-        return layout
+            if response == qt.QMessageBox.StandardButton.Yes:
+                self.close()

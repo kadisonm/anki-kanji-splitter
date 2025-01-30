@@ -13,7 +13,7 @@ def start():
     config.load_config()
 
     def open_settings():
-        window = settings.SettingsWindow(mw)
+        window = settings.SettingsWindow()
         window.exec()
 
     def on_profile_loaded():

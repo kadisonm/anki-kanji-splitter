@@ -2,7 +2,7 @@ from aqt import mw
 
 config = {
     'deck_id': 0,
-    'keyword_source': 0,
+    'keyword_source': 0, # 0 = jpdb, 1 = rtk
     'show_front_keyword': True,
     'show_back_keyword': True,
     'show_front_kanji': False,
@@ -14,7 +14,6 @@ config = {
 }
 
 def save_config() -> None:
-    print(config)
     mw.addonManager.writeConfig(__name__, config)
 
 def load_config():

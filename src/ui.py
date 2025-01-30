@@ -1,4 +1,6 @@
+import textwrap
 import aqt.qt as qt
+from aqt.theme import theme_manager
 
 class H1(qt.QLabel):
     def __init__(self, text):
@@ -47,17 +49,19 @@ class Br(qt.QFrame):
         self.setFrameShape(qt.QFrame.Shape.HLine)
         self.setFrameShadow(qt.QFrame.Shadow.Sunken)
 
-class DropdownLabel(qt.QVBoxLayout):
-    def __init__(self, heading, description):
+class DropdownLabel(qt.QHBoxLayout):
+    def __init__(self, description, tooltip = None):
         super().__init__()
 
         self.dropdown = qt.QComboBox()
         self.dropdown.setFocusPolicy(qt.Qt.FocusPolicy.NoFocus)
         
-        self.addWidget(H3(heading))
         self.addWidget(P(description))
+        self.addStretch()
         self.addWidget(self.dropdown)
-        self.addWidget(Br())
+
+        if tooltip:
+            self.addWidget(Tooltip(tooltip))
         
 class ButtonLabel(qt.QVBoxLayout):
     def __init__(self, heading, label, description):
@@ -85,6 +89,20 @@ class CheckBoxLabel(qt.QHBoxLayout):
         self.addWidget(P(description))
         self.addStretch()
 
+class Tooltip(qt.QToolButton):
+    def __init__(self, text):
+        super().__init__()
+        
+        if theme_manager.night_mode:
+            self.setIcon(qt.QIcon("src/resources/icons/help_night.svg"))
+        else:
+            self.setIcon(qt.QIcon("src/resources/icons/help_light.svg"))
+
+        self.setStyleSheet("border: none;")
+
+        wrappedText = "\n".join(textwrap.wrap(text, width=40))
+
+        self.setToolTip(wrappedText)
 
 class MessageBox(qt.QMessageBox):
     def __init__(self, title, label):
@@ -102,3 +120,46 @@ class ConfirmationBox(qt.QMessageBox):
         self.setStandardButtons(qt.QMessageBox.StandardButton.Yes | qt.QMessageBox.StandardButton.No)
         self.setDefaultButton(qt.QMessageBox.StandardButton.Yes)
         
+class SettingsDialog(qt.QDialog):
+    def __init__(self, title):
+        super(SettingsDialog, self).__init__()
+
+        self.setWindowTitle(title)
+
+        self.setMinimumHeight(200)
+        self.setMinimumWidth(400)
+
+        layout = qt.QVBoxLayout(self)
+
+        layout.addWidget(H1(title))
+
+        self.about = qt.QVBoxLayout(self)
+
+        # Author
+        layout.addLayout(self.about)
+
+        # Tabs
+        self.tabs = qt.QTabWidget()
+        layout.addWidget(self.tabs)
+
+        # Save / close buttons
+        buttonsLayout = qt.QHBoxLayout()
+        buttonsLayout.addStretch()
+        layout.addLayout(buttonsLayout)
+
+        save = Button("Save")
+        cancel = Button("Cancel")
+
+        buttonsLayout.addWidget(save)
+        buttonsLayout.addWidget(cancel)
+            
+        save.clicked.connect(self.save_action)
+        cancel.clicked.connect(self.close_action)
+        
+        save.setFocusPolicy(qt.Qt.FocusPolicy.ClickFocus)
+
+    def save_action(self):
+        self.close()
+
+    def close_action(self):
+        self.close()

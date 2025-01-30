@@ -35,10 +35,17 @@ def create_note(newKanji):
 def update_note(note): 
     noteKanji = note["Kanji"]
 
-    keyword = kanji.get_heisig_keyword(noteKanji)
+    keywords = kanji.get_keywords(noteKanji)
 
-    if keyword:
-        note["Keyword"] = keyword
+    keywordSource = config.get_config()["keyword_source"]
+
+    if keywords:
+        if keywordSource == 0:
+            note["Keyword"] = keywords["jpdbKeyword"]
+        elif keywordSource == 1:
+            note["Keyword"] = keywords["heisigKeyword"]
+    else:
+        note["Keyword"] = "missing"
 
     svg = kanji.get_svg(noteKanji)
 
