@@ -1,9 +1,3 @@
-# To improve readability element variables are prefixed with an abreviation
-# dd_ = dropdown
-# b _ = button
-# cb_ = checkbox
-
-from tabnanny import check
 import aqt.qt as qt
 import aqt
 
@@ -14,7 +8,7 @@ from . import deck
 
 class SettingsWindow(SettingsDialog):
     def __init__(self):
-        super(SettingsWindow, self).__init__("Kanji Splitter Settings")
+        super(SettingsWindow, self).__init__("Kanji Splitter")
 
         self.checkboxes = {}
         self.dropdowns = {}
@@ -23,6 +17,9 @@ class SettingsWindow(SettingsDialog):
 
         self.tabs.addTab(self.deck_tab(), "Deck")
         self.tabs.addTab(self.card_tab(), "Card")
+
+        self.heading.addLayout(Logo(200))
+        self.about.addWidget(P("By Kadison McLellan"))
 
     def deck_tab(self):
         widget = qt.QWidget()
@@ -151,8 +148,8 @@ class SettingsWindow(SettingsDialog):
         # Disclaimer
         layout.addWidget(Italics("Changing these settings will not delete existing notes."))
 
-        front.addStretch()
-        back.addStretch()
+        frontBox.layout.addStretch()
+        backBox.layout.addStretch()
 
         widget.setLayout(layout)
         

@@ -31,6 +31,23 @@ class P(qt.QLabel):
         super().__init__(text)
         self.setWordWrap(True)
 
+class Logo(qt.QVBoxLayout):
+    def __init__(self, size):
+        super().__init__()
+
+        if theme_manager.night_mode:
+            pixmap = qt.QPixmap("src/resources/icons/logo_night.png") 
+        else:
+            pixmap = qt.QPixmap("src/resources/icons/logo_light.png") 
+       
+        
+        label = qt.QLabel()
+        scaledPixmap = pixmap.scaledToWidth(size)
+        label.setPixmap(scaledPixmap)
+        label.setAlignment(qt.Qt.AlignmentFlag.AlignCenter)
+
+        self.addWidget(label)
+
 class Italics(qt.QLabel):
     def __init__(self, text):
         super().__init__(text)
@@ -143,11 +160,9 @@ class SettingsDialog(qt.QDialog):
 
         layout = qt.QVBoxLayout(self)
 
-        layout.addWidget(H1(title))
-
+        self.heading = qt.QVBoxLayout(self)
         self.about = qt.QVBoxLayout(self)
-
-        # Author
+        layout.addLayout(self.heading)
         layout.addLayout(self.about)
 
         # Tabs
