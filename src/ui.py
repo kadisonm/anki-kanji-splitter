@@ -27,9 +27,12 @@ class Bold(qt.QLabel):
         self.setWordWrap(True)
 
 class P(qt.QLabel):
-    def __init__(self, text):
+    def __init__(self, text, center = False):
         super().__init__(text)
         self.setWordWrap(True)
+
+        if center == True:
+            self.setAlignment(qt.Qt.AlignmentFlag.AlignCenter)
 
 class Logo(qt.QVBoxLayout):
     def __init__(self, size):
@@ -40,7 +43,6 @@ class Logo(qt.QVBoxLayout):
         else:
             pixmap = qt.QPixmap("src/resources/icons/logo_light.png") 
        
-        
         label = qt.QLabel()
         scaledPixmap = pixmap.scaledToWidth(size)
         label.setPixmap(scaledPixmap)
@@ -161,9 +163,7 @@ class SettingsDialog(qt.QDialog):
         layout = qt.QVBoxLayout(self)
 
         self.heading = qt.QVBoxLayout(self)
-        self.about = qt.QVBoxLayout(self)
         layout.addLayout(self.heading)
-        layout.addLayout(self.about)
 
         # Tabs
         self.tabs = qt.QTabWidget()

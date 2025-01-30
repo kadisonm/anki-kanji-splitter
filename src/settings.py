@@ -17,13 +17,14 @@ class SettingsWindow(SettingsDialog):
 
         self.tabs.addTab(self.deck_tab(), "Deck")
         self.tabs.addTab(self.card_tab(), "Card")
+        self.tabs.addTab(self.about_tab(), "About")
 
         self.heading.addLayout(Logo(200))
-        self.about.addWidget(P("By Kadison McLellan"))
 
     def deck_tab(self):
         widget = qt.QWidget()
         layout = qt.QVBoxLayout()
+        widget.setLayout(layout)
 
         # Selecting Deck
         deckDropdownLayout = DropdownLabel(
@@ -87,12 +88,12 @@ class SettingsWindow(SettingsDialog):
 
         layout.addStretch()
 
-        widget.setLayout(layout)
         return widget
 
     def card_tab(self):
         widget = qt.QWidget()
         layout = qt.QVBoxLayout()
+        widget.setLayout(layout)
 
         # Keyword Source
         keywordsBox = GroupBox("Keywords")
@@ -151,8 +152,25 @@ class SettingsWindow(SettingsDialog):
         frontBox.layout.addStretch()
         backBox.layout.addStretch()
 
+        return widget
+    
+    def about_tab(self):
+        widget = qt.QWidget()
+        layout = qt.QVBoxLayout()
         widget.setLayout(layout)
-        
+
+        layout.addWidget(P("An add-on that breaks down kanji cards into their components and adds them to your deck.", True))
+
+        layout.addWidget(P("v1.0.0", True))
+
+        layout.addWidget(P("GPL-3.0", True))
+
+        layout.addWidget(P("By Kadison McLellan", True))
+
+        layout.addStretch()
+
+        layout.setAlignment(qt.Qt.AlignmentFlag.AlignCenter)
+
         return widget
 
     def save_action(self):
