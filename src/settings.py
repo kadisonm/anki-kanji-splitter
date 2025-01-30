@@ -55,8 +55,6 @@ class SettingsWindow(SettingsDialog):
 
         layout.addLayout(deckDropdownLayout)
 
-        layout.addWidget(Br())
-
         # Scan Deck
         scan = ButtonLabel(
                 "Scan deck", 
@@ -76,7 +74,7 @@ class SettingsWindow(SettingsDialog):
         clear = ButtonLabel(
                 "Clear deck", 
                 "Clear", 
-                "This will delete any cards created by this plugin inside your deck. (this will not delete the original cards)"
+                "This will delete any cards created by this plugin inside your deck. (This will not delete the original cards)"
         )
         
         def clear_action():
@@ -89,6 +87,8 @@ class SettingsWindow(SettingsDialog):
         clear.button.clicked.connect(clear_action)
 
         layout.addLayout(clear)
+
+        layout.addStretch()
 
         widget.setLayout(layout)
         return widget

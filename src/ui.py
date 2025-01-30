@@ -57,23 +57,29 @@ class DropdownLabel(qt.QHBoxLayout):
         self.dropdown.setFocusPolicy(qt.Qt.FocusPolicy.NoFocus)
         
         self.addWidget(P(description))
+
         self.addStretch()
         self.addWidget(self.dropdown)
+        
+        if tooltip:
+            self.addWidget(Tooltip(tooltip))
+
+
+        
+class ButtonLabel(qt.QHBoxLayout):
+    def __init__(self, description, button, tooltip = None):
+        super().__init__()
+
+        self.button = qt.QPushButton(button)
+        self.button.setFocusPolicy(qt.Qt.FocusPolicy.NoFocus)
+
+        self.addWidget(P(description))
+
+        self.addStretch()
+        self.addWidget(self.button)
 
         if tooltip:
             self.addWidget(Tooltip(tooltip))
-        
-class ButtonLabel(qt.QVBoxLayout):
-    def __init__(self, heading, label, description):
-        super().__init__()
-
-        self.button = qt.QPushButton(label)
-        self.button.setFocusPolicy(qt.Qt.FocusPolicy.NoFocus)
-        
-        self.addWidget(H3(heading))
-        self.addWidget(P(description))
-        self.addWidget(self.button)
-        self.addWidget(Br())
 
 class CheckBoxLabel(qt.QHBoxLayout):
     def __init__(self, description):
