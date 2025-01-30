@@ -37,6 +37,14 @@ class Italics(qt.QLabel):
         self.setStyleSheet("font-style: italic;")
         self.setWordWrap(True)
 
+class GroupBox(qt.QGroupBox):
+    def __init__(self, text):
+        super().__init__(text)
+        
+        self.layout = qt.QVBoxLayout()
+
+        self.setLayout(self.layout)
+
 class Button(qt.QPushButton):
     def __init__(self, label):
         super().__init__(label)
@@ -64,8 +72,6 @@ class DropdownLabel(qt.QHBoxLayout):
         if tooltip:
             self.addWidget(Tooltip(tooltip))
 
-
-        
 class ButtonLabel(qt.QHBoxLayout):
     def __init__(self, description, button, tooltip = None):
         super().__init__()

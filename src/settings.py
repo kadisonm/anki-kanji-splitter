@@ -98,41 +98,37 @@ class SettingsWindow(SettingsDialog):
         layout = qt.QVBoxLayout()
 
         # Keyword Source
-        keywordDropdownLayout = DropdownLabel(
-            "Keyword source. Select which source to use keywords from. (Changing this will not change existing cards)"
+        keywordsBox = GroupBox("Keywords")
+        layout.addWidget(keywordsBox)
+
+        keywordsDropdownLayout = DropdownLabel(
+            "Keyword source",
+            "Select which source to use keywords from. (Changing this will not change existing cards)"
         )
 
-        dd_keywords = keywordDropdownLayout.dropdown
+        keywordsBox.layout.addLayout(keywordsDropdownLayout)
 
-        self.dropdowns["keyword_source"] = dd_keywords
+        keywordsDropdown= keywordsDropdownLayout.dropdown
 
-        dd_keywords.addItem("jpdb", 0)
-        dd_keywords.addItem("RTK", 1)
+        self.dropdowns["keyword_source"] = keywordsDropdown
 
-        dd_keywords.setCurrentIndex(self.data["keyword_source"])
+        keywordsDropdown.addItem("jpdb", 0)
+        keywordsDropdown.addItem("RTK", 1)
 
-        layout.addLayout(keywordDropdownLayout)
+        keywordsDropdown.setCurrentIndex(self.data["keyword_source"])
 
         # Note Options
-
         noteLayout = qt.QHBoxLayout()
 
-        # Checkboxes Front Layout
-        frontOptions = qt.QGroupBox("Front")
-        backOptions = qt.QGroupBox("Back")
+        frontBox = GroupBox("Front")
+        backBox = GroupBox("Back")
 
-        front = qt.QVBoxLayout()
-        back = qt.QVBoxLayout()
-
-        frontOptions.setLayout(front)
-        backOptions.setLayout(back)
-        
-        noteLayout.addWidget(frontOptions)
-        noteLayout.addWidget(backOptions)
+        noteLayout.addWidget(frontBox)
+        noteLayout.addWidget(backBox)
 
         layout.addLayout(noteLayout)
 
-        # Create Checkboxes
+        # Checkboxes
         self.checkboxes = {}
 
         def createCheckBox(layout, key, label):
@@ -142,17 +138,18 @@ class SettingsWindow(SettingsDialog):
             self.checkboxes[key] = newCheckbox
             layout.addLayout(newCheckbox)
 
-        createCheckBox(front, "show_front_keyword", "Show keyword")
-        createCheckBox(front, "show_front_kanji", "Show kanji")
-        createCheckBox(front, "show_drawing_canvas", "Show drawing canvas")
+        createCheckBox(frontBox.layout, "show_front_keyword", "Show keyword")
+        createCheckBox(frontBox.layout, "show_front_kanji", "Show kanji")
+        createCheckBox(frontBox.layout, "show_drawing_canvas", "Show drawing canvas")
 
-        createCheckBox(back, "show_back_kanji", "Show kanji")
-        createCheckBox(back, "show_back_keyword", "Show keyword")
-        createCheckBox(back, "show_edit_buttons", "Show edit buttons")
-        createCheckBox(back, "show_kanji_strokes", "Show kanji strokes")
-        createCheckBox(back, "show_dictionary_links", "Show dictionary links")
+        createCheckBox(backBox.layout, "show_back_kanji", "Show kanji")
+        createCheckBox(backBox.layout, "show_back_keyword", "Show keyword")
+        createCheckBox(backBox.layout, "show_edit_buttons", "Show edit buttons")
+        createCheckBox(backBox.layout, "show_kanji_strokes", "Show kanji strokes")
+        createCheckBox(backBox.layout, "show_dictionary_links", "Show dictionary links")
 
-        layout.addWidget(P("Changing these will not delete existing notes."))
+        # Disclaimer
+        layout.addWidget(Italics("Changing these settings will not delete existing notes."))
 
         front.addStretch()
         back.addStretch()
