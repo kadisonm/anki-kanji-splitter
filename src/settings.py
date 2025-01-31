@@ -136,6 +136,8 @@ class SettingsWindow(SettingsDialog):
             self.checkboxes[key] = newCheckbox
             layout.addLayout(newCheckbox)
 
+        createCheckBox(keywordsBox.layout, "use_alternative_keyword", "Use alternative source when a keyword is missing")
+
         createCheckBox(frontBox.layout, "show_front_keyword", "Show keyword")
         createCheckBox(frontBox.layout, "show_front_kanji", "Show kanji")
         createCheckBox(frontBox.layout, "show_drawing_canvas", "Show drawing canvas")

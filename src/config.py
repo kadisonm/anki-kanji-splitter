@@ -3,6 +3,7 @@ from aqt import mw
 config = {
     'deck_id': 0,
     'keyword_source': 0, # 0 = jpdb, 1 = rtk
+    'use_alternative_keyword': True,
     'show_front_keyword': True,
     'show_back_keyword': True,
     'show_front_kanji': False,
