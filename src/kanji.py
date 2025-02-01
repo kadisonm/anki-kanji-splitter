@@ -1,4 +1,6 @@
+from aqt.utils import showInfo
 from anki.notes import Note
+import xml.etree.ElementTree as ET
 import re
 import os
 import json
@@ -6,12 +8,10 @@ import json
 currentDir = os.path.dirname(os.path.abspath(__file__))
 resourcesDir = os.path.join(currentDir, "resources")
 
-radicalsPath = os.path.join(resourcesDir, 'radicals.json') 
 keywordsPath = os.path.join(resourcesDir, 'keywords.json')
 kanjiPath = os.path.join(resourcesDir, 'Kanji')
 
 keywords = None
-radicals = None
 
 def get_keywords(kanji):
     global keywords
@@ -26,23 +26,29 @@ def get_keywords(kanji):
     else:
         return None
     
+isKanji = re.compile(r'^[\u4e00-\u9faf]+$')
+
+namespaces = {"kvg": "http://kanjivg.tagaini.net"}
+
 def get_components(kanji):
-    global radicals
-
-    if not radicals:
-        with open(radicalsPath, 'r', encoding="utf-8") as file:
-            radicals = json.load(file)
+    codePoint = ord(kanji)
+    hexCode = format(codePoint, 'x').zfill(5).lower()
     
-    if kanji in radicals:
-        result = radicals[kanji]
-        result = result.split()
+    path = os.path.join(kanjiPath, f"{hexCode}.svg")
 
-        if kanji in result:
-            result.remove(kanji)
+    components = []
 
-        return result
-    else:
-        return []
+    if os.path.exists(path):
+        tree = ET.parse(path)
+        root = tree.getroot()
+
+        for child in root.findall(".//*[@kvg:element]", namespaces):
+            element = child.attrib.get("{http://kanjivg.tagaini.net}element")
+            print(element)
+            if element and isKanji.match(element):
+                components.append(element)
+
+    return reversed(components)
     
 def get_svg(kanji):
     codePoint = ord(kanji)
@@ -63,14 +69,15 @@ def get_kanji(note: Note):
     foundKanji = []
 
     def findAllComponents(character):
-        radicals = []
+        components = []
 
-        for radical in get_components(character):
-            if radical not in foundKanji:
-                radicals.append(radical)
-                foundKanji.append(radical)
+        for component in get_components(character):
+            if component not in foundKanji:
+                showInfo(component)
+                components.append(component)
+                foundKanji.append(component)
 
-        return radicals
+        return components
 
     expression = note["Expression"] if "Expression" in note else ""
 
@@ -79,8 +86,8 @@ def get_kanji(note: Note):
             result = findAllComponents(kanji)
 
             while result:
-                for radical in result:
-                    result = findAllComponents(radical)
+                for components in result:
+                    result = findAllComponents(components)
             
             if kanji not in foundKanji:
                 foundKanji.append(kanji)

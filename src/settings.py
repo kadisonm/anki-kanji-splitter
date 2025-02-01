@@ -212,3 +212,5 @@ class SettingsWindow(SettingsDialog):
 
             if response == qt.QMessageBox.StandardButton.Yes:
                 self.close()
+        else:
+            self.close()

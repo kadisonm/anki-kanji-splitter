@@ -1,4 +1,3 @@
-- Use svgs to find components instead of krad file
 - Add a link to the kanji on JPDB and equivalent websites to back of card
 - Make the keyword and mnemonic editable from the back of the card
 - Add switch to use alternative keyword source when the main source is missing

@@ -162,7 +162,7 @@ class SettingsDialog(qt.QDialog):
 
         layout = qt.QVBoxLayout(self)
 
-        self.heading = qt.QVBoxLayout(self)
+        self.heading = qt.QVBoxLayout()
         layout.addLayout(self.heading)
 
         # Tabs
