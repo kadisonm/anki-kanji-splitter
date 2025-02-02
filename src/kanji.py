@@ -21,7 +21,6 @@ def get_keywords(kanji):
             keywords = json.load(file)
     
     if kanji in keywords:
-        print(keywords[kanji])
         return keywords[kanji]
     else:
         return None
@@ -44,7 +43,7 @@ def get_components(kanji):
 
         for child in root.findall(".//*[@kvg:element]", namespaces):
             element = child.attrib.get("{http://kanjivg.tagaini.net}element")
-            print(element)
+
             if element and isKanji.match(element):
                 components.append(element)
 

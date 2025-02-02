@@ -35,17 +35,24 @@ def create_note(newKanji):
 def update_note(note): 
     noteKanji = note["Kanji"]
 
-    keywords = kanji.get_keywords(noteKanji)
+    keywordsData = kanji.get_keywords(noteKanji)
 
-    keywordSource = config.get_config()["keyword_source"]
+    originalSource = config.get_config()["keyword_source"]
 
-    if keywords:
-        if keywordSource == 0:
-            note["Keyword"] = keywords["jpdbKeyword"]
-        elif keywordSource == 1:
-            note["Keyword"] = keywords["heisigKeyword"]
-    else:
-        note["Keyword"] = "missing"
+    keyword = "missing"
+
+    if keywordsData:
+        keywordsData[0] = keywordsData["jpdbKeyword"]
+        keywordsData[1] = keywordsData["heisigKeyword"]
+
+        keyword = keywordsData[originalSource]
+
+        # Use alternative source if missing
+        if keyword == "missing" and config.get_config()["use_alternative_keyword"]:
+            originalSource = 1 if originalSource == 0 else 0
+            keyword = keywordsData[originalSource]
+
+    note["Keyword"] = keyword
 
     svg = kanji.get_svg(noteKanji)
 
@@ -115,8 +122,6 @@ def scan_deck():
 
         if note.has_tag(tagName):
             continue
-
-        print(card.due)
 
         scan_note(note)
 
