@@ -37,17 +37,24 @@ def get_components(kanji):
 
     components = []
 
+    def extractChildrenFirst(element):
+        for child in list(element):
+            extractChildrenFirst(child)
+
+        elementAttrib = element.attrib.get("{http://kanjivg.tagaini.net}element")
+
+        if elementAttrib and isKanji.match(elementAttrib):
+            components.append(elementAttrib)
+ 
     if os.path.exists(path):
         tree = ET.parse(path)
         root = tree.getroot()
+        element = root.find(".//*[@kvg:element]", namespaces)
 
-        for child in root.findall(".//*[@kvg:element]", namespaces):
-            element = child.attrib.get("{http://kanjivg.tagaini.net}element")
+        if element is not None:
+            extractChildrenFirst(element)
 
-            if element and isKanji.match(element):
-                components.append(element)
-
-    return reversed(components)
+    return components
     
 def get_svg(kanji):
     codePoint = ord(kanji)
@@ -72,11 +79,10 @@ def get_kanji(note: Note):
 
         for component in get_components(character):
             if component not in foundKanji:
-                showInfo(component)
                 components.append(component)
                 foundKanji.append(component)
 
-        return components
+        return
 
     expression = note["Expression"] if "Expression" in note else ""
 
