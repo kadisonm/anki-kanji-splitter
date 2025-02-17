@@ -31,6 +31,7 @@ canvas = getTextContent("elements", "canvas.html")
 canvasPreview = getTextContent("elements", "canvas_preview.html")
 strokes = getTextContent("elements", "strokes.html")
 composedOf = getTextContent("elements", "composed_of.html")
+dictionaryLinks = getTextContent("elements", "dictionary_links.html")
 
 def create_model():
     global modelName
@@ -46,12 +47,15 @@ def create_model():
 
     if data["show_front_keyword"]:
         templates[0]['qfmt'] += f"\n{keyword}"
+
+    if data["show_front_keyword"] & data["show_front_kanji"]:
+        templates[0]['qfmt'] += "<hr>"
     
     if data["show_front_kanji"]:
         templates[0]['qfmt'] += f"\n{kanji}"
     
     if data["show_back_kanji"]:
-        templates[0]['afmt'] += f"\n{kanji}<hr>"
+        templates[0]['afmt'] += f"\n{kanji}"
 
     if data["show_back_keyword"]:
         templates[0]['afmt'] += f"\n{keyword}"
@@ -67,7 +71,7 @@ def create_model():
         templates[0]['afmt'] += f"\n{composedOf}"
 
     if data["show_dictionary_links"]:
-        templates[0]['afmt'] += f"\ndictionary links"
+        templates[0]['afmt'] += f"\n{dictionaryLinks}"
     
     mm = mw.col.models
 

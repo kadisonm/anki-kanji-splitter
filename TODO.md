@@ -1,7 +1,5 @@
 - Add a link to the kanji on JPDB and equivalent websites to back of card
 - Make the keyword and mnemonic editable from the back of the card
-- Add a setting for showing jpdb link and jisho link
-- Maybe somehow show on the card where a keyword looks from
 - Make sure Scan Deck and Clear Deck dont work if they have no deck selected
 - Add github link and issue to kanji settings about
 - Finish writing README features and installation instructions
