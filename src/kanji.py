@@ -43,7 +43,7 @@ def get_components(kanji):
 
         elementAttrib = element.attrib.get("{http://kanjivg.tagaini.net}element")
 
-        if elementAttrib and isKanji.match(elementAttrib):
+        if elementAttrib and isKanji.match(elementAttrib) and elementAttrib != kanji:
             components.append(elementAttrib)
  
     if os.path.exists(path):

@@ -35,6 +35,14 @@ def create_note(newKanji):
 def update_note(note): 
     noteKanji = note["Kanji"]
 
+    composedOf = kanji.get_components(noteKanji)
+    composedString = ""
+
+    for item in composedOf:
+        composedString += f"<li>{item}</li>\n"
+
+    note["ComposedOf"] = f"<ul>\n{composedString}</ul>" 
+
     keywordsData = kanji.get_keywords(noteKanji)
 
     originalSource = config.get_config()["keyword_source"]
@@ -51,6 +59,11 @@ def update_note(note):
         if keyword == "missing" and config.get_config()["use_alternative_keyword"]:
             originalSource = 1 if originalSource == 0 else 0
             keyword = keywordsData[originalSource]
+
+    if originalSource == 0:
+        keyword += " jpdb"
+    else:
+        keyword += " RTK"
 
     note["Keyword"] = keyword
 

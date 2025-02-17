@@ -6,3 +6,4 @@
 - Add github link and issue to kanji settings about
 - Finish writing README features and installation instructions
 - Write Anki add-on post
+- Make kanji text copyable

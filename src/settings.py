@@ -146,8 +146,9 @@ class SettingsWindow(SettingsDialog):
         createCheckBox(backBox.layout, "show_back_keyword", "Show keyword")
         createCheckBox(backBox.layout, "show_edit_buttons", "Show edit buttons")
         createCheckBox(backBox.layout, "show_kanji_strokes", "Show kanji strokes")
+        createCheckBox(backBox.layout, "show_composed_of", "Show composed of")
         createCheckBox(backBox.layout, "show_dictionary_links", "Show dictionary links")
-
+        
         # Disclaimer
         layout.addWidget(Italics("Changing these settings will not delete existing notes."))
 

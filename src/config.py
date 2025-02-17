@@ -12,6 +12,7 @@ config = {
     'show_edit_buttons': True,
     'show_kanji_strokes': True,
     'show_dictionary_links': True,
+    'show_composed_of': True,
 }
 
 def save_config() -> None:

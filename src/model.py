@@ -30,6 +30,7 @@ kanji = getTextContent("elements", "kanji.html")
 canvas = getTextContent("elements", "canvas.html")
 canvasPreview = getTextContent("elements", "canvas_preview.html")
 strokes = getTextContent("elements", "strokes.html")
+composedOf = getTextContent("elements", "composed_of.html")
 
 def create_model():
     global modelName
@@ -61,6 +62,9 @@ def create_model():
 
     if data["show_kanji_strokes"]:
         templates[0]['afmt'] += f"\n{strokes}"
+
+    if data["show_composed_of"]:
+        templates[0]['afmt'] += f"\n{composedOf}"
 
     if data["show_dictionary_links"]:
         templates[0]['afmt'] += f"\ndictionary links"
