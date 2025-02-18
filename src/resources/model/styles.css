@@ -11,7 +11,7 @@
     overflow-y: hidden;
 }
 
-.nightMode.card, .night_mode.card {
+.nightMode.card {
     color: white !important;
 }
 
@@ -24,6 +24,7 @@
     margin: none;
 }
 
+/* Drawing Canvas */
 .card canvas {
     border: 1px solid #000000; 
     border-radius: 10px;
@@ -38,4 +39,28 @@
     background-color: #404040;
     border: 1px solid #000000; 
     box-shadow: 0px 4px 6px rgba(15, 15, 15, 0.2);
+}
+
+/* Keyword and Kanji */
+.keyword {
+    font-weight: 700;
+}
+
+.kanji {
+    font-weight: 500;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+
+/* Keyword Source */
+.keyword-source {
+    font-weight: 700;
+    margin-top: 0 !important;
+    padding-bottom: 0 !important;
+    color: #838383;
+}
+
+.nightMode.card.keyword-source, .night_mode.card.keyword-source {
+    color: #656565 !important;
 }

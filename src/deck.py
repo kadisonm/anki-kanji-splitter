@@ -61,9 +61,9 @@ def update_note(note):
             keyword = keywordsData[originalSource]
 
     if originalSource == 0:
-        keyword += " jpdb"
+        note["Source"] = "jpdb keyword"
     else:
-        keyword += " RTK"
+        note["Source"] = "RTK keyword"
 
     note["Keyword"] = keyword
 
