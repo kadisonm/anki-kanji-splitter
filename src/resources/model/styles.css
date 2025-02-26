@@ -5,14 +5,15 @@
     color: black !important;
     user-select: none;
     height: 100%;
+    width: 100vw;
     padding: none;
-    gap: 10px;
     overflow-x: hidden;
     overflow-y: hidden;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 0px;
     justify-content: space-evenly;
 }
 
@@ -29,8 +30,41 @@
     margin: none;
 }
 
-/* Drawing Canvas */
-.card canvas {
+/* Keyword and Kanji */
+.keyword {
+    font-weight: 700;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.kanji {
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.back-side .kanji {
+    font-size: 46px;
+}
+
+/* Keyword Source */
+.source {
+    font-weight: 700;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 0;
+    color: #838383;
+}
+
+.nightMode.card.source, .night_mode.card.source {
+    color: #656565 !important;
+}
+
+/* Kanji Strokes */
+.strokes-box {
+    width: 150px;
+    height: 150px;
     border: 1px solid #000000; 
     border-radius: 10px;
     background-color: #ffffff;
@@ -38,6 +72,33 @@
     display: block;
     margin: auto;
     padding: none;
+    margin-top: 20px;
+}
+
+.nightMode.card .strokes-box, .night_mode.card .strokes-box {
+    background-color: #404040;
+    border: 1px solid #000000; 
+    box-shadow: 0px 4px 6px rgba(15, 15, 15, 0.2);
+}
+
+.canvas-row {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+/* Drawing Canvas */
+.card canvas {
+    width: 300px;
+    height: 300px;
+    border: 1px solid #000000; 
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: auto;
+    padding: none;
+    margin-top: 20px;
 }
 
 .nightMode.card canvas, .night_mode.card canvas {
@@ -46,26 +107,7 @@
     box-shadow: 0px 4px 6px rgba(15, 15, 15, 0.2);
 }
 
-/* Keyword and Kanji */
-.keyword {
-    font-weight: 700;
-}
-
-.kanji {
-    font-weight: 500;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-}
-
-
-/* Keyword Source */
-.keyword-source {
-    font-weight: 700;
-    margin-top: 0 !important;
-    padding-bottom: 0 !important;
-    color: #838383;
-}
-
-.nightMode.card.keyword-source, .night_mode.card.keyword-source {
-    color: #656565 !important;
+.back-side canvas {
+    width: 150px;
+    height: 150px
 }

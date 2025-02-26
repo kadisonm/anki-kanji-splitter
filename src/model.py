@@ -40,8 +40,8 @@ def create_model():
     # Create card template based on model
     templates = [{
         'name': "Card 1",
-        'qfmt': f"{warning}<style>{css}</style>\n{front}\n",
-        'afmt': f"{warning}<style>{css}</style>\n{back}\n"
+        'qfmt': f"{warning}<style>{css}</style>\n<div class='front-side'>\n{front}\n",
+        'afmt': f"{warning}<style>{css}</style>\n<div class='back-side'>\n{back}\n"
     }]
 
     data = config.get_config()
@@ -82,12 +82,17 @@ def create_model():
 
     ## --
 
-    if data["show_kanji_strokes"]:
-        templates[0]['afmt'] += f"\n{strokes}"
+    templates[0]['afmt'] += "<div class='canvas-row'>"
 
     if data["show_drawing_canvas"]:
         templates[0]['qfmt'] += f"\n{canvas}"
         templates[0]['afmt'] += f"\n{canvasPreview}"
+
+    if data["show_kanji_strokes"]:
+        templates[0]['afmt'] += f"\n{strokes}"
+
+    templates[0]['qfmt'] += "</div>"
+    templates[0]['afmt'] += "</div></div>"
     
     mm = mw.col.models
 
