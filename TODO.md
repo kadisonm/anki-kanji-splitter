@@ -6,3 +6,4 @@
 - Make kanji text copyable
 - Changing deck in settings and then using a button doesnt work (will use old deck)
 - Make sure Scan Deck and Clear Deck dont work if they have no deck selected
+- Add a setting for showing components, not showing keyword source, and showing mnemonic

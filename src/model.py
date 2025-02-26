@@ -30,8 +30,9 @@ kanji = getTextContent("elements", "kanji.html")
 canvas = getTextContent("elements", "canvas.html")
 canvasPreview = getTextContent("elements", "canvas_preview.html")
 strokes = getTextContent("elements", "strokes.html")
-composedOf = getTextContent("elements", "composed_of.html")
+components = getTextContent("elements", "components.html")
 dictionaryLinks = getTextContent("elements", "dictionary_links.html")
+mnemonic = getTextContent("elements", "mnemonic.html")
 
 def create_model():
     global modelName
@@ -45,6 +46,7 @@ def create_model():
 
     data = config.get_config()
 
+    # Front
     if data["show_front_keyword"]:
         templates[0]['qfmt'] += f"\n{keyword}"
 
@@ -54,24 +56,38 @@ def create_model():
     if data["show_front_kanji"]:
         templates[0]['qfmt'] += f"\n{kanji}"
     
+    # Back
     if data["show_back_kanji"]:
         templates[0]['afmt'] += f"\n{kanji}"
 
     if data["show_back_keyword"]:
         templates[0]['afmt'] += f"\n{keyword}"
 
-    if data["show_drawing_canvas"]:
-        templates[0]['qfmt'] += f"\n{canvas}"
-        templates[0]['afmt'] += f"\n{canvasPreview}"
+    if data["show_dictionary_links"]:
+        templates[0]['afmt'] += f"\n{dictionaryLinks}"
+
+    if data["show_back_kanji"] or data["show_back_keyword"] or data["show_dictionary_links"]:
+        templates[0]['afmt'] += "<hr>"
+
+    ## --
+
+    if data["show_mnemonic"]:
+        templates[0]['afmt'] += f"\n{mnemonic}"
+
+    if data["show_components"]:
+        templates[0]['afmt'] += f"\n{components}"
+
+    if data["show_mnemonic"] or data["show_components"]:
+        templates[0]['afmt'] += "<hr>"
+
+    ## --
 
     if data["show_kanji_strokes"]:
         templates[0]['afmt'] += f"\n{strokes}"
 
-    if data["show_composed_of"]:
-        templates[0]['afmt'] += f"\n{composedOf}"
-
-    if data["show_dictionary_links"]:
-        templates[0]['afmt'] += f"\n{dictionaryLinks}"
+    if data["show_drawing_canvas"]:
+        templates[0]['qfmt'] += f"\n{canvas}"
+        templates[0]['afmt'] += f"\n{canvasPreview}"
     
     mm = mw.col.models
 

@@ -8,11 +8,13 @@ config = {
     'show_back_keyword': True,
     'show_front_kanji': False,
     'show_back_kanji': True,
+    'show_keyword_source': True,
+    'show_mnemonic': True,
     'show_drawing_canvas': True,
     'show_edit_buttons': True,
     'show_kanji_strokes': True,
     'show_dictionary_links': True,
-    'show_composed_of': True,
+    'show_components': True,
 }
 
 def save_config() -> None:
