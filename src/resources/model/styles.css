@@ -1,11 +1,10 @@
 .card {
-    font-family: arial !important;
-    font-size: 20px !important;
-    text-align: center !important;
-    color: black !important;
+    font-size: 20px;
+    text-align: center;
+    color: black ;
     user-select: none;
     height: 100%;
-    width: 100vw;
+    width: 100%;
     padding: none;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -25,31 +24,36 @@
     user-select: none;
 }
 
+.card hr {
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+
 .card button {
     user-select: none;
     margin: none;
 }
 
 /* Keyword and Kanji */
-.keyword {
+.card .keyword {
     font-weight: 700;
     margin-bottom: 0;
     padding: 0;
 }
 
-.kanji {
+.card .kanji {
     font-weight: 500;
     margin-top: 5px;
     margin-bottom: 0;
     padding-bottom: 0;
 }
 
-.back-side .kanji {
+.card .back-side .kanji {
     font-size: 46px;
 }
 
 /* Keyword Source */
-.source {
+.card .source {
     font-weight: 700;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -62,7 +66,7 @@
 }
 
 /* Kanji Strokes */
-.strokes-box {
+.card .strokes-box {
     width: 150px;
     height: 150px;
     border: 1px solid #000000; 
@@ -73,6 +77,10 @@
     margin: auto;
     padding: none;
     margin-top: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nightMode.card .strokes-box, .night_mode.card .strokes-box {
@@ -81,10 +89,10 @@
     box-shadow: 0px 4px 6px rgba(15, 15, 15, 0.2);
 }
 
-.canvas-row {
+.card .canvas-row {
     display: flex;
     justify-content: center;
-    justify-content: space-evenly;
+    gap: 20px;
 }
 
 /* Drawing Canvas */
@@ -107,7 +115,7 @@
     box-shadow: 0px 4px 6px rgba(15, 15, 15, 0.2);
 }
 
-.back-side canvas {
+.card .back-side canvas {
     width: 150px;
     height: 150px
 }
