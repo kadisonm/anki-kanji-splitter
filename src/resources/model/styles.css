@@ -1,48 +1,57 @@
+/* ---------------- ANKI ---------------- */
 .card {
     font-family: meiryo;
     text-align: center;
-    color: black ;
-    user-select: none;
-    height: 100%;
-    width: 100%;
+    color: black;
     padding: none;
     overflow-x: hidden;
     overflow-y: hidden;
+}
+
+.nightMode.card {
+    color: white;
+}
+
+.night_mode.card {
+    color: white;
+}
+
+/* ---------------- LAYOUT ---------------- */
+.card-container {
+    width: 100%;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0px;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    gap: 10px;
 }
 
-.nightMode.card {
-    color: white !important;
-}
+/* ---------------- ELEMENTS ---------------- */
 
-.card br {
-    user-select: none;
-}
-
-.card hr {
+hr {
     margin-top: 15px;
     margin-bottom: 15px;
-}
-
-.card button {
     user-select: none;
-    margin: none;
 }
 
-/* Keyword and Kanji */
-.card .keyword {
+button {
+    margin: none;
+    user-select: none;
+}
+
+/* ----------------  KEYWORD ---------------- */
+.keyword {
+    user-select: auto;
     font-weight: 700;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0;
     padding: 0;
 }
 
-.card .kanji {
+/* ----------------  KANJI ---------------- */
+.kanji {
+    user-select: auto;
     font-weight: 500;
     margin-top: 5px;
     margin-bottom: 0;
@@ -50,29 +59,49 @@
     font-family: yu mincho;
 }
 
-.card .back-side .kanji {
+#back .kanji {
     font-size: 56px;
 }
 
-/* Keyword Source */
-.card .source {
+/* ----------------  KEYWORD SOURCE ---------------- */
+.source {
     font-weight: 700;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 0;
     padding: 0;
     color: #838383;
-
-    &:hover {
-        text-decoration: underline;
-    }
+    user-select: none;
 }
 
-.nightMode.card.source, .night_mode.card.source {
-    color: #656565 !important;
+.source:hover {
+    text-decoration: underline;
 }
 
-/* Kanji Strokes */
-.card .strokes-box {
+/* ---------------- KANJI COMPONENTS ---------------- */
+
+.components {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.components h4 {
+    margin: none;
+}
+
+.components ul {
+    user-select: auto;
+    padding: none;
+    margin: none;
+}
+
+.components li {
+    user-select: auto;
+    font-family: yu mincho;
+}
+
+/* ----------------  KANJI STROKES ---------------- */
+.strokes-box {
     width: 150px;
     height: 150px;
     border: 1px solid #000000; 
@@ -83,10 +112,15 @@
     margin: auto;
     padding: none;
     margin-top: 20px;
+    user-select: none;
 
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.strokes-box #strokes {
+    transform: scale(1.2);
 }
 
 .nightMode.card .strokes-box, .night_mode.card .strokes-box {
@@ -95,14 +129,14 @@
     box-shadow: 0px 4px 6px rgba(15, 15, 15, 0.2);
 }
 
-.card .canvas-row {
+/* ----------------  DRAWING CANVAS ---------------- */
+.canvas-row {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
-/* Drawing Canvas */
-.card canvas {
+canvas {
     width: 300px;
     height: 300px;
     border: 1px solid #000000; 
@@ -121,13 +155,7 @@
     box-shadow: 0px 4px 6px rgba(15, 15, 15, 0.2);
 }
 
-.card .back-side canvas {
+.card #back canvas {
     width: 150px;
     height: 150px
-}
-
-/* Components */
-
-.card .components li {
-    font-family: yu mincho;
 }

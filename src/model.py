@@ -40,8 +40,8 @@ def create_model():
     # Create card template based on model
     templates = [{
         'name': "Card 1",
-        'qfmt': f"{warning}<style>{css}</style>\n<div class='front-side'>\n{front}\n",
-        'afmt': f"{warning}<style>{css}</style>\n<div class='back-side'>\n{back}\n"
+        'qfmt': f"{warning}<style>{css}</style>\n<div class='card-container' id='front'>\n{front}\n",
+        'afmt': f"{warning}<style>{css}</style>\n<div class='card-container' id='back'>\n{back}\n"
     }]
 
     data = config.get_config()
