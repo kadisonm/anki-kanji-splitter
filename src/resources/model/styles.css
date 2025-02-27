@@ -1,4 +1,5 @@
 .card {
+    font-family: meiryo;
     text-align: center;
     color: black ;
     user-select: none;
@@ -46,6 +47,7 @@
     margin-top: 5px;
     margin-bottom: 0;
     padding-bottom: 0;
+    font-family: yu mincho;
 }
 
 .card .back-side .kanji {
@@ -122,4 +124,10 @@
 .card .back-side canvas {
     width: 150px;
     height: 150px
+}
+
+/* Components */
+
+.card .components li {
+    font-family: yu mincho;
 }
