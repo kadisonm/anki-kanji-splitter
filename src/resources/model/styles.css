@@ -1,4 +1,5 @@
 /* ---------------- ANKI ---------------- */
+
 .card {
     font-family: meiryo;
     text-align: center;
@@ -31,32 +32,37 @@
 /* ---------------- ELEMENTS ---------------- */
 
 hr {
-    margin-top: 15px;
-    margin-bottom: 15px;
     user-select: none;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 button {
-    margin: none;
     user-select: none;
+    margin: 0;
+}
+
+h5, h4, h3, h2, h1, p {
+    margin: 0;
+    padding: 0;
+    line-height: .8;
 }
 
 /* ----------------  KEYWORD ---------------- */
+
 .keyword {
     user-select: auto;
     font-weight: 700;
-    margin: 0;
-    padding: 0;
 }
 
 /* ----------------  KANJI ---------------- */
+
 .kanji {
     user-select: auto;
     font-weight: 500;
-    margin-top: 5px;
-    margin-bottom: 0;
-    padding-bottom: 0;
     font-family: yu mincho;
+    margin-bottom: 10px;
 }
 
 #back .kanji {
@@ -64,10 +70,9 @@ button {
 }
 
 /* ----------------  KEYWORD SOURCE ---------------- */
+
 .source {
     font-weight: 700;
-    margin: 0;
-    padding: 0;
     color: #838383;
     user-select: none;
 }
@@ -76,31 +81,48 @@ button {
     text-decoration: underline;
 }
 
+/* ---------------- MNEMONIC ---------------- */
+
+.mnemonic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
 /* ---------------- KANJI COMPONENTS ---------------- */
 
 .components {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
-
-.components h4 {
-    margin: none;
+    justify-content: flex-start;
+    gap: 10px;
 }
 
 .components ul {
-    user-select: auto;
-    padding: none;
-    margin: none;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-auto-columns: auto;
+    grid-auto-flow: column dense;
+    gap: 15px;
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
 }
 
 .components li {
     user-select: auto;
     font-family: yu mincho;
+    margin: 0;
+    padding: 0;
+    line-height: .9;
 }
 
 /* ----------------  KANJI STROKES ---------------- */
+
 .strokes-box {
     width: 150px;
     height: 150px;
@@ -109,10 +131,11 @@ button {
     background-color: #ffffff;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     display: block;
-    margin: auto;
     padding: none;
-    margin-top: 20px;
     user-select: none;
+
+    margin: 0;
+    padding: 0;
 
     display: flex;
     justify-content: center;
@@ -130,6 +153,7 @@ button {
 }
 
 /* ----------------  DRAWING CANVAS ---------------- */
+
 .canvas-row {
     display: flex;
     justify-content: center;
@@ -144,9 +168,9 @@ canvas {
     background-color: #ffffff;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     display: block;
-    margin-top: 20px;
-    padding: none;
-    
+
+    margin: 0;
+    padding: 0;
 }
 
 .nightMode.card canvas, .night_mode.card canvas {
@@ -158,4 +182,11 @@ canvas {
 .card #back canvas {
     width: 150px;
     height: 150px
+}
+
+.canvas-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-top: 10px;
 }

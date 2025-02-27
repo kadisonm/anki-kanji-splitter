@@ -38,7 +38,7 @@ def update_note(note):
     composedOf = kanji.get_components(noteKanji)
 
     for item in composedOf:
-        note["Components"] += f"<li>{item}</li>\n"
+        note["Components"] += f"<li>• {item}</li>"
 
     keywordsData = kanji.get_keywords(noteKanji)
 
