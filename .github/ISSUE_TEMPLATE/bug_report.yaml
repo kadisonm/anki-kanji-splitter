@@ -26,12 +26,3 @@ body:
         - Other
     validations:
       required: true
-  - type: dropdown
-    id: version
-    attributes:
-      label: Add-on version?
-      options:
-        - 1.0.0
-      default: 0
-    validations:
-      required: true
