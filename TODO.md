@@ -8,4 +8,3 @@
 - Fix weird list bullet point thing
 - Added duplicates with kami and jinjya
 - Make components not show if there are none for the kanji
-- Use field to get dictionary icon images instead of link

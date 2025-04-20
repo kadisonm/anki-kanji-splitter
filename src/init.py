@@ -2,11 +2,19 @@ from aqt import mw, gui_hooks
 from aqt.utils import showInfo, qconnect
 from anki.notes import Note
 import aqt.qt
+import os
 
 from . import config
 from . import settings
 from . import model
 from . import deck
+
+currentDir = os.path.dirname(os.path.abspath(__file__))
+resourcesDir = os.path.join(currentDir, "resources")
+
+iconsDir = os.path.join(resourcesDir, 'icons')
+jpdbIconPath = os.path.join(iconsDir, 'jpdb_icon.png')
+jishoIconPath = os.path.join(iconsDir, 'jisho_icon.png')
 
 def start():
     # Load config
@@ -24,6 +32,10 @@ def start():
         action = aqt.qt.QAction("Kanji Splitter", mw)
         qconnect(action.triggered, open_settings)
         mw.form.menuTools.addAction(action)
+
+        # Add icons
+        mw.col.media.addFile(jpdbIconPath)
+        mw.col.media.addFile(jishoIconPath)
 
         # Add settings to addon page
         mw.addonManager.setConfigAction(__name__, open_settings)
