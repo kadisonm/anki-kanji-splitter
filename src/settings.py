@@ -190,13 +190,19 @@ class SettingsWindow(SettingsDialog):
         layout = qt.QVBoxLayout()
         widget.setLayout(layout)
 
-        layout.addWidget(P("An add-on that breaks down kanji cards into their components and adds them to your deck.", True))
+        layout.addWidget(P("An add-on that breaks down kanji cards into their components and adds them to your deck. <br>", True))
 
-        layout.addWidget(P("v1.0.0", True))
 
-        layout.addWidget(P("GPL-3.0", True))
+        layout.addWidget(P("<a href='https://github.com/kadisonm/anki-kanji-splitter'>↗ Repository</a>", True))
+
+        layout.addWidget(P("<a href='https://buymeacoffee.com/kadisonm'>♡ Support</a>", True))
+
+        layout.addWidget(P("<a href='https://github.com/kadisonm/anki-kanji-splitter/issues'>✎ Found an issue?</a><br>", True))
+
 
         layout.addWidget(P("By Kadison McLellan", True))
+
+        layout.addWidget(P("GPL-3.0", True))
 
         layout.addStretch()
 

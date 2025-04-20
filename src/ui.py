@@ -30,6 +30,7 @@ class P(qt.QLabel):
     def __init__(self, text, center = False):
         super().__init__(text)
         self.setWordWrap(True)
+        self.setOpenExternalLinks(True)
 
         if center == True:
             self.setAlignment(qt.Qt.AlignmentFlag.AlignCenter)
