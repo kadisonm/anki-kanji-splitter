@@ -15,6 +15,8 @@ class SettingsWindow(SettingsDialog):
 
         self.data = config.get_config()
 
+        self.deckChanged = False
+
         self.tabs.addTab(self.deck_tab(), "Deck")
         self.tabs.addTab(self.card_tab(), "Card")
         self.tabs.addTab(self.about_tab(), "About")
@@ -51,6 +53,11 @@ class SettingsWindow(SettingsDialog):
         else:
             deckDropdown.setCurrentIndex(0)
 
+        def deck_changed():
+            self.deckChanged = True
+
+        deckDropdown.currentIndexChanged.connect(deck_changed)
+
         layout.addLayout(deckDropdownLayout)
 
         # Scan Deck
@@ -61,8 +68,18 @@ class SettingsWindow(SettingsDialog):
         )
         
         def scan_action():
-            added = deck.scan_deck()
-            MessageBox("", f"Done. {added} notes scanned.").exec()
+            if self.deckChanged:
+                MessageBox("Warning", "You have unsaved changes to your selected deck. Please save before trying to perform any actions on it.").exec()
+            else:
+                response = ConfirmationBox("Are you sure you wish to scan your deck and add new cards for each kanji found?\n\nPlease note:\n• This will scan ALL cards within your deck (excluding cards from this add-on), including those already due.\n• Any kanji not previously in your deck will be added as new cards.\n• If your deck is large and you already have pending reviews, this may flood your queue with new kanji cards, making it harder to reach your original cards.\n• If you dislike the results, you can reverse this change with the 'Clear Deck' button.").exec()
+
+                if response == qt.QMessageBox.StandardButton.Yes:
+                    added = deck.scan_deck()
+
+                    if added == None:
+                        MessageBox("Warning", f"Please select a deck and save first before attempting to perform any actions.").exec()
+                    else:
+                        MessageBox("", f"Done. {added} notes scanned.").exec()
         
         scan.button.clicked.connect(scan_action)
 
@@ -76,11 +93,18 @@ class SettingsWindow(SettingsDialog):
         )
         
         def clear_action():
-            response = ConfirmationBox("Are you sure you wish to delete all Kanji Splitter cards from your deck? This action cannot be undone.").exec()
+            if self.deckChanged:
+                MessageBox("Warning", "You have unsaved changes to your selected deck. Please save before trying to perform any actions on it.").exec()
+            else:
+                response = ConfirmationBox("Are you sure you wish to delete all Kanji Splitter cards from your deck? This action cannot be undone.").exec()
 
-            if response == qt.QMessageBox.StandardButton.Yes:
-                removed = deck.clear_deck()
-                MessageBox("", f"Done. {removed} cards removed.").exec()
+                if response == qt.QMessageBox.StandardButton.Yes:
+                    removed = deck.clear_deck()
+
+                    if removed == None:
+                        MessageBox("Warning", f"Please select a deck and save first before attempting to perform any actions.").exec()
+                    else:                
+                        MessageBox("", f"Done. {removed} cards removed.").exec()
         
         clear.button.clicked.connect(clear_action)
 
@@ -139,14 +163,18 @@ class SettingsWindow(SettingsDialog):
         createCheckBox(keywordsBox.layout, "use_alternative_keyword", "Use alternative source when a keyword is missing")
 
         createCheckBox(frontBox.layout, "show_front_keyword", "Show keyword")
+        createCheckBox(frontBox.layout, "show_front_keyword_source", "Show keyword source")
         createCheckBox(frontBox.layout, "show_front_kanji", "Show kanji")
+        createCheckBox(frontBox.layout, "show_front_mnemonic", "Show mnemonic")
         createCheckBox(frontBox.layout, "show_drawing_canvas", "Show drawing canvas")
 
         createCheckBox(backBox.layout, "show_back_kanji", "Show kanji")
         createCheckBox(backBox.layout, "show_back_keyword", "Show keyword")
+        createCheckBox(backBox.layout, "show_back_keyword_source", "Show keyword source")
+        createCheckBox(backBox.layout, "show_back_mnemonic", "Show mnemonic")
         createCheckBox(backBox.layout, "show_edit_buttons", "Show edit buttons")
         createCheckBox(backBox.layout, "show_kanji_strokes", "Show kanji strokes")
-        createCheckBox(backBox.layout, "show_composed_of", "Show composed of")
+        createCheckBox(backBox.layout, "show_components", "Show components")
         createCheckBox(backBox.layout, "show_dictionary_links", "Show dictionary links")
         
         # Disclaimer

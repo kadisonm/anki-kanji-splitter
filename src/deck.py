@@ -16,8 +16,12 @@ def get_deck_id():
 
 def get_deck():
     deckId = get_deck_id()
-    deck = mw.col.decks.get(deckId)
-    return deck
+
+    if deckId != 0:
+        deck = mw.col.decks.get(deckId)
+        return deck
+    
+    return None
 
 def create_note(newKanji):
     cardModel = model.get_model()
@@ -119,6 +123,9 @@ def scan_note(note: Note):
 def scan_deck():
     deck = get_deck()
 
+    if deck == None:
+        return None
+
     cards = mw.col.find_cards(f"deck:{deck['name']}", True)
 
     notesAdded = 0
@@ -141,6 +148,10 @@ def scan_deck():
 
 def clear_deck():
     deck = get_deck()
+
+    if deck == None:
+        return None
+    
     cards = mw.col.find_cards(f"deck:{deck['name']} tag:{tagName}")
     mw.col.remove_notes_by_card(cards)
     return len(cards)

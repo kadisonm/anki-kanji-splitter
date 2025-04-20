@@ -33,6 +33,7 @@ strokes = getTextContent("elements", "strokes.html")
 components = getTextContent("elements", "components.html")
 dictionaryLinks = getTextContent("elements", "dictionary_links.html")
 mnemonic = getTextContent("elements", "mnemonic.html")
+source = getTextContent("elements", "source.html")
 
 def create_model():
     global modelName
@@ -52,6 +53,12 @@ def create_model():
 
     if data["show_front_keyword"] & data["show_front_kanji"]:
         templates[0]['qfmt'] += "<hr>"
+
+    if data["show_front_keyword_source"]:
+        templates[0]['qfmt'] += f"\n{source}"
+
+    if data["show_front_mnemonic"]:
+        templates[0]['qfmt'] += f"\n{mnemonic}"
     
     if data["show_front_kanji"]:
         templates[0]['qfmt'] += f"\n{kanji}"
@@ -63,6 +70,9 @@ def create_model():
     if data["show_back_keyword"]:
         templates[0]['afmt'] += f"\n{keyword}"
 
+    if data["show_back_keyword_source"]:
+        templates[0]['afmt'] += f"\n{source}"
+
     if data["show_dictionary_links"]:
         templates[0]['afmt'] += f"\n{dictionaryLinks}"
 
@@ -71,7 +81,7 @@ def create_model():
 
     ## --
 
-    if data["show_mnemonic"]:
+    if data["show_back_mnemonic"]:
         templates[0]['afmt'] += f"\n{mnemonic}"
 
     if data["show_components"]:
