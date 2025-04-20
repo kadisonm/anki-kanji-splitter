@@ -54,6 +54,7 @@ h5, h4, h3, h2, h1, p {
 .keyword {
     user-select: auto;
     font-weight: 700;
+    margin-bottom: 5px;
 }
 
 /* ----------------  KANJI ---------------- */
@@ -75,10 +76,29 @@ h5, h4, h3, h2, h1, p {
     font-weight: 700;
     color: #838383;
     user-select: none;
+    margin-bottom: 5px;
 }
 
 .source:hover {
     text-decoration: underline;
+}
+
+
+/* ---------------- DICTIONARY LINKS ---------------- */
+
+.dictionary-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.dictionary-links img {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
 }
 
 /* ---------------- MNEMONIC ---------------- */
