@@ -99,6 +99,7 @@ h5, h4, h3, h2, h1, p {
     width: 30px;
     height: 30px;
     border-radius: 3px;
+    user-select: none;
 }
 
 /* ---------------- MNEMONIC ---------------- */

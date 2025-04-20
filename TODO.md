@@ -1,10 +1,8 @@
-- Add a link to the kanji on JPDB and equivalent websites to back of card
+- Add a link to JPDB and RTK for the sources
 - Make the keyword and mnemonic editable from the back of the card
-- Add github link and issue to kanji settings about
 - Finish writing README features and installation instructions
 - Write Anki add-on post
-- Make kanji text copyable
 - Fix strokes not being different colours
 - Fix weird list bullet point thing
-- Added duplicates with kami and jinjya
 - Make components not show if there are none for the kanji
+- When editing keywords, change the source to 'Custom Keyword'
