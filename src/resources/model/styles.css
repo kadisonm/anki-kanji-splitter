@@ -79,11 +79,6 @@ h5, h4, h3, h2, h1, p {
     margin-bottom: 5px;
 }
 
-.source:hover {
-    text-decoration: underline;
-}
-
-
 /* ---------------- DICTIONARY LINKS ---------------- */
 
 .dictionary-links {
