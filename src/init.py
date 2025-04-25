@@ -8,6 +8,7 @@ from . import config
 from . import settings
 from . import model
 from . import deck
+from . import editing
 
 currentDir = os.path.dirname(os.path.abspath(__file__))
 resourcesDir = os.path.join(currentDir, "resources")
@@ -60,5 +61,11 @@ def start():
             deck.scan_note(note)
             
     gui_hooks.add_cards_did_add_note.append(addedNote)
+
+    # Listen for any cards being opened (to allow editing)
+    def cardOpened(html: str, card, context):
+        return editing.shouldModifyCard(html, card)
+
+    gui_hooks.card_will_show.append(cardOpened)
 
     

@@ -79,6 +79,23 @@ h5, h4, h3, h2, h1, p {
     margin-bottom: 5px;
 }
 
+/* ----------------  EDIT BUTTON ---------------- */
+
+.edit-shown {
+    padding: 5px 10px;
+    margin: 5px;
+    background: var(--button-primary-bg);
+    color: var(--button-primary-fg);
+    border: none;
+    border-radius: 3px;
+}
+
+.edit-hidden {
+    display: none;
+    margin: none;
+    padding: none;
+}
+
 /* ---------------- DICTIONARY LINKS ---------------- */
 
 .dictionary-links {
