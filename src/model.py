@@ -68,7 +68,7 @@ def create_model():
         templates[0]['afmt'] += f"\n{kanji}"
 
     if data["show_back_keyword"]:
-        templates[0]['afmt'] += f"\n{keyword}"
+        templates[0]['afmt'] += f"\n{keyword}" + '<div class="edit-hidden"></div>'
 
     if data["show_back_keyword_source"]:
         templates[0]['afmt'] += f"\n{source}"
