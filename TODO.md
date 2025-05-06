@@ -1,3 +1,5 @@
 - Finish writing README features and installation instructions
 - Write Anki add-on post
 - Fix the awful CSS
+- Change back to using radicals.json (has better breakdowns)
+- Stop anki from switching the user to Kanji Splitter when the plugin makes a new card
