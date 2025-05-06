@@ -1,3 +1,4 @@
+import keyword
 from aqt.utils import showInfo
 from aqt import mw
 import os
@@ -25,7 +26,8 @@ css = getTextContent("styles.css")
 warning = getTextContent("elements", "warning.html")
 
 # Toggleable Elements
-keyword = getTextContent("elements", "keyword.html")
+keywordFront = getTextContent("elements", "keyword_front.html")
+keywordBack = getTextContent("elements", "keyword_back.html")
 kanji = getTextContent("elements", "kanji.html")
 canvas = getTextContent("elements", "canvas.html")
 canvasPreview = getTextContent("elements", "canvas_preview.html")
@@ -49,7 +51,7 @@ def create_model():
 
     # Front
     if data["show_front_keyword"]:
-        templates[0]['qfmt'] += f"\n{keyword}"
+        templates[0]['qfmt'] += f"\n{keywordFront}"
 
     if data["show_front_keyword"] & data["show_front_kanji"]:
         templates[0]['qfmt'] += "<hr>"
@@ -68,7 +70,7 @@ def create_model():
         templates[0]['afmt'] += f"\n{kanji}"
 
     if data["show_back_keyword"]:
-        templates[0]['afmt'] += f"\n{keyword}" + '<div class="edit-hidden" id="keyword"></div>'
+        templates[0]['afmt'] += f"\n{keywordBack}"
 
     if data["show_back_keyword_source"]:
         templates[0]['afmt'] += f"\n{source}"

@@ -51,10 +51,18 @@ h5, h4, h3, h2, h1, p {
 
 /* ----------------  KEYWORD ---------------- */
 
-.keyword {
+#keyword {
     user-select: auto;
     font-weight: 700;
     margin-bottom: 5px;
+}
+
+.keyword-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
 
 /* ----------------  KANJI ---------------- */
@@ -81,16 +89,18 @@ h5, h4, h3, h2, h1, p {
 
 /* ----------------  EDIT BUTTON ---------------- */
 
-.edit-shown {
-    display: inline;
-    padding: 5px 10px;
-    margin: 5px;
-    background: var(--button-primary-bg);
-    color: var(--button-primary-fg);
-    border: none;
-    border-radius: 3px;
+i.fa-edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fg-subtle);
     height: 10px;
     width: 10px;
+    margin-bottom: 5px;
+}
+
+i.fa-edit:hover {
+    color: var(--fg);
 }
 
 .edit-hidden #mnemonic #keyword {
@@ -125,6 +135,19 @@ h5, h4, h3, h2, h1, p {
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
+}
+
+.mnemonic-heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+#mnemonic {
+    margin-top: 10px;
+    font-weight: 500;
 }
 
 /* ---------------- KANJI COMPONENTS ---------------- */
