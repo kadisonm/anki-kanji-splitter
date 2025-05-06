@@ -1,7 +1,3 @@
-- Make the keyword and mnemonic editable from the back of the card
 - Finish writing README features and installation instructions
 - Write Anki add-on post
-- Fix strokes not being different colours
-- Fix weird list bullet point thing
-- Make components not show if there are none for the kanji
-- When editing keywords, change the source to 'Custom Keyword'
+- Fix the awful CSS

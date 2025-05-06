@@ -160,19 +160,23 @@ i.fa-edit:hover {
     gap: 10px;
 }
 
-.components ul {
+.components:not(.component-list:has(.component-item)) {
+    display: flex;
+}
+
+.component-list {
     display: grid;
     grid-template-rows: auto auto;
     grid-auto-columns: auto;
     grid-auto-flow: column dense;
     gap: 15px;
-    list-style: none;
+    list-style: disc inside;
 
     margin: 0;
     padding: 0;
 }
 
-.components li {
+.component-item {
     user-select: auto;
     font-family: yu mincho;
     margin: 0;
