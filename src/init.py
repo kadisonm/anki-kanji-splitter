@@ -67,5 +67,7 @@ def start():
         return editing.shouldModifyCard(html, card)
 
     gui_hooks.card_will_show.append(cardOpened)
+    
+    gui_hooks.webview_did_receive_js_message.append(editing.buttonClicked)
 
     
