@@ -5,15 +5,15 @@
 </div>
 
 <script>
-    (function() {
-        function randomColor() {
+(function() {
+    function randomColor() {
         return `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
-        }
+    }
 
-        const paths = document.querySelectorAll('svg path');
-    
-        paths.forEach(path => {
-            path.setAttribute('stroke', randomColor());
-        });    
-    })
+    const paths = document.querySelectorAll('svg path');
+
+    paths.forEach(path => {
+        path.setAttribute('stroke', randomColor());
+    });    
+} ())
 </script>
