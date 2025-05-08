@@ -32,30 +32,26 @@ namespaces = {"kvg": "http://kanjivg.tagaini.net"}
 def get_components(kanji):
     codePoint = ord(kanji)
     hexCode = format(codePoint, 'x').zfill(5).lower()
-    
     path = os.path.join(kanjiPath, f"{hexCode}.svg")
 
-    components = []
+    elements = []
 
-    def extractChildrenFirst(element):
-        for child in list(element):
-            extractChildrenFirst(child)
+    if not os.path.exists(path):
+        return elements
 
-        elementAttrib = element.attrib.get("{http://kanjivg.tagaini.net}element")
+    tree = ET.parse(path)
+    root = tree.getroot()
 
-        if elementAttrib and isKanji.match(elementAttrib) and elementAttrib != kanji and elementAttrib not in components:
-            components.append(elementAttrib)
- 
-    if os.path.exists(path):
-        tree = ET.parse(path)
-        root = tree.getroot()
-        element = root.find(".//*[@kvg:element]", namespaces)
-
-        if element is not None:
-            extractChildrenFirst(element)
-
-    return components
+    kvgNamespace = '{http://kanjivg.tagaini.net}'
     
+    for elem in reversed(list(root.iter())):  # bottom-up
+        kvgElement = elem.attrib.get(f'{kvgNamespace}element')
+
+        if kvgElement and kvgElement not in elements and kvgElement != kanji:
+            elements.append(kvgElement)
+
+    return elements
+ 
 def get_svg(kanji):
     codePoint = ord(kanji)
     hexCode = format(codePoint, 'x').zfill(5).lower() 
@@ -74,26 +70,16 @@ def get_svg(kanji):
 def get_kanji(note: Note):
     foundKanji = []
 
-    def findAllComponents(character):
-        components = []
-
-        for component in get_components(character):
-            if component not in foundKanji:
-                components.append(component)
-                foundKanji.append(component)
-
-        return
-
     expression = note["Expression"] if "Expression" in note else ""
 
     for kanji in re.findall(r'[\u4e00-\u9faf\u3400-\u4dbf]', expression):
         if kanji not in foundKanji:
-            result = findAllComponents(kanji)
+            result = get_components(kanji)
 
-            while result:
-                for components in result:
-                    result = findAllComponents(components)
-            
+            for component in result:
+                if component not in foundKanji:
+                    foundKanji.append(component)
+                    
             if kanji not in foundKanji:
                 foundKanji.append(kanji)
     

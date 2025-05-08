@@ -17,15 +17,25 @@ It is recommended that you navigate to your Anki installation and run the `anki-
 
 Creating a VSCode task to do this for you is extremely helpful, an example can be found below.
 
+Note: chcp 65001 switches the console to UTF-8 which allows Kanji to be shown with print().
+
 ```json
 {
+    {
     "version": "2.0.0",
     "tasks": [
       {
         "label": "Run Anki",
         "type": "shell",
-        "command": "path\\to\\your\\Anki Install\\anki-console.bat",
+        "command": "cmd",
+        "args": [
+          "/c",
+          "chcp 65001 && Path\\To\\Anki\\anki-console.bat"
+        ],
+        "problemMatcher": []
       }
     ]
+  }
+  
 }
 ```
