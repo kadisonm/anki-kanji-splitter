@@ -30,11 +30,15 @@ isKanji = re.compile(r'^[\u4e00-\u9faf]+$')
 namespaces = {"kvg": "http://kanjivg.tagaini.net"}
 
 def get_components(kanji):
+    elements = []
+
+    if len(kanji) != 1 and not re.fullmatch(r'[\u4e00-\u9faf\u3400-\u4dbf]', kanji):
+        print(f"Skipping non-Unicode or pseudo-kanji: {kanji}")
+        return elements
+
     codePoint = ord(kanji)
     hexCode = format(codePoint, 'x').zfill(5).lower()
     path = os.path.join(kanjiPath, f"{hexCode}.svg")
-
-    elements = []
 
     if not os.path.exists(path):
         return elements
@@ -53,6 +57,10 @@ def get_components(kanji):
     return elements
  
 def get_svg(kanji):
+    if len(kanji) != 1 and not re.fullmatch(r'[\u4e00-\u9faf\u3400-\u4dbf]', kanji):
+        print(f"Skipping non-Unicode or pseudo-kanji: {kanji}")
+        return kanji
+    
     codePoint = ord(kanji)
     hexCode = format(codePoint, 'x').zfill(5).lower() 
     
