@@ -1,4 +1,3 @@
-from aqt.utils import showInfo
 from anki.notes import Note
 import xml.etree.ElementTree as ET
 import re
@@ -29,10 +28,17 @@ isKanji = re.compile(r'^[\u4e00-\u9faf]+$')
 
 namespaces = {"kvg": "http://kanjivg.tagaini.net"}
 
+def is_valid_kanji(kanji):
+    if len(kanji) != 1 and not re.fullmatch(r'[\u4e00-\u9faf\u3400-\u4dbf]', kanji):
+        print(f"{kanji} is not a valid kanji.")
+        return False
+    
+    return True
+
 def get_components(kanji):
     elements = []
 
-    if len(kanji) != 1 and not re.fullmatch(r'[\u4e00-\u9faf\u3400-\u4dbf]', kanji):
+    if not is_valid_kanji(kanji):
         print(f"Skipping non-Unicode or pseudo-kanji: {kanji}")
         return elements
 
@@ -51,13 +57,13 @@ def get_components(kanji):
     for elem in reversed(list(root.iter())):  # bottom-up
         kvgElement = elem.attrib.get(f'{kvgNamespace}element')
 
-        if kvgElement and kvgElement not in elements and kvgElement != kanji:
+        if kvgElement and kvgElement not in elements and kvgElement != kanji and is_valid_kanji(kvgElement):
             elements.append(kvgElement)
 
     return elements
  
 def get_svg(kanji):
-    if len(kanji) != 1 and not re.fullmatch(r'[\u4e00-\u9faf\u3400-\u4dbf]', kanji):
+    if not is_valid_kanji(kanji):
         print(f"Skipping non-Unicode or pseudo-kanji: {kanji}")
         return kanji
     
@@ -81,7 +87,7 @@ def get_kanji(note: Note):
     expression = note["Expression"] if "Expression" in note else ""
 
     for kanji in re.findall(r'[\u4e00-\u9faf\u3400-\u4dbf]', expression):
-        if kanji not in foundKanji:
+        if kanji not in foundKanji and len(kanji) == 1:
             result = get_components(kanji)
 
             for component in result:
