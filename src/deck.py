@@ -126,7 +126,26 @@ def scan_note(note: Note):
 
         due -= 1
 
+def reorder_deck():
+    deck = get_deck()
+
+    if deck == None:
+        return None
+    
+    cardIds = mw.col.find_cards(f"deck:{deck['name']}")
+    cards = [mw.col.get_card(id) for id in cardIds]
+
+    sorted_cards = sorted(cards, key=lambda c: c.due)
+    
+    for i, card in enumerate(sorted_cards):
+        card.due = i + 1
+        mw.col.update_card(card)
+
+    return
+
 def scan_deck():
+    reorder_deck()
+
     deck = get_deck()
 
     if deck == None:
@@ -160,4 +179,7 @@ def clear_deck():
     
     cards = mw.col.find_cards(f"deck:{deck['name']} tag:{tagName}")
     mw.col.remove_notes_by_card(cards)
+
+    reorder_deck()
+
     return len(cards)
