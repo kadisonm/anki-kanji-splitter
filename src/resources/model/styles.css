@@ -160,10 +160,6 @@ i.fa-edit:hover {
     gap: 10px;
 }
 
-.components:not(.component-list:has(.component-item)) {
-    display: flex;
-}
-
 .component-list {
     display: grid;
     grid-template-rows: auto auto;

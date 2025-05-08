@@ -5,3 +5,16 @@
         {{Components}}
     </ul>
 </div>
+
+<script>
+    (function() {
+        const componentList = document.querySelector('.component-list');
+        const componentsDiv = document.querySelector('.components');
+
+        if (!componentList.querySelector('.component-item')) {
+            componentsDiv.style.display = 'none';
+        } else {
+            componentsDiv.style.display = 'flex';
+        }  
+    } ())
+</script>
