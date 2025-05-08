@@ -24,15 +24,21 @@ def get_deck():
     return None
 
 def create_note(newKanji):
+    originalCardModel = mw.col.conf["curModel"]
+
     cardModel = model.get_model()
+
     note = Note(mw.col, cardModel)
-
     note["Kanji"] = newKanji
-
     note.add_tag(tagName)
 
     deckId = get_deck_id()
     mw.col.add_note(note, deckId)
+
+    if originalCardModel: # To stop anki from switching the default model to Kanji Splitter
+        dummyNote = Note(mw.col, originalCardModel)
+        mw.col.add_note(dummyNote, deckId)
+        mw.col.remove_notes([dummyNote.id])
 
     return note
 

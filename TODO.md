@@ -1,4 +1,3 @@
 - Finish writing README features and installation instructions
 - Write Anki add-on post
 - Fix the awful CSS
-- Stop anki from switching the user to Kanji Splitter when the plugin makes a new card
