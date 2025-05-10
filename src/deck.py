@@ -87,7 +87,7 @@ def scan_note(note: Note):
 
     # Create new cards for each kanij
     originalCard = note.cards()[0]
-    originalType = originalCard.type
+    originalDue = originalCard.due
 
     # Find new kanji
     foundKanji = kanji.get_kanji(note)
@@ -99,15 +99,13 @@ def scan_note(note: Note):
             if kanjiItem not in newKanjiList:
                 newKanjiList.append(kanjiItem)
 
-    # Push due dates forward
-    due = len(newKanjiList)
-
-    originalCard.due += due
-    mw.col.update_card(originalCard)
+    # Push all cards after the scanned note forward
+    newKanjiLength = len(newKanjiList)
+    due = newKanjiLength
 
     mw.col.db.execute(
-        "UPDATE cards SET due = due + ? WHERE did = ? AND due > ?",
-        due, deckId, originalCard.due
+        "UPDATE cards SET due = due + ? WHERE did = ? AND due >= ?",
+        due, deckId, originalDue
     )
 
     # Add new cards
@@ -116,11 +114,7 @@ def scan_note(note: Note):
         update_note(newNote)
 
         newCard = newNote.cards()[0] 
-
-        if originalType == 0:
-            newCard.due = originalCard.due - due
-        else:
-            newCard.due = due
+        newCard.due = originalDue + newKanjiLength - due
 
         mw.col.update_card(newCard)
 
@@ -155,6 +149,7 @@ def scan_deck():
 
     notesAdded = 0
 
+    # Scan first due -> last due
     reversedCards = reversed(cards)
 
     for cardId in reversedCards:
@@ -162,7 +157,7 @@ def scan_deck():
         
         note = card.note()
 
-        if note.has_tag(tagName):
+        if note.has_tag(tagName) or card.type != 0:
             continue
 
         scan_note(note)
