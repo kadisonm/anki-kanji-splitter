@@ -1,4 +1,3 @@
 - Finish writing README features and installation instructions
 - Write Anki add-on post
 - Fix the awful CSS
-- After scanning a card and creating a note, any cards due after the original due date need to be pushed forward 1

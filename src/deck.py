@@ -14,6 +14,19 @@ def get_tag():
 def get_deck_id():
     return config.get_config()["deck_id"]
 
+def get_deck_and_subdeck_ids():
+    parent = get_deck()
+    parentId = get_deck_id()
+
+    deckIds = [parentId]
+    
+    if parent:
+        for deck in mw.col.decks.all_names_and_ids():
+            if deck.name.startswith(parent["name"] + "::"):
+                deckIds.append(deck.id)
+
+    return deckIds
+
 def get_deck():
     deckId = get_deck_id()
 
@@ -84,6 +97,7 @@ def update_note(note):
 def scan_note(note: Note):
     deck = get_deck()
     deckId = get_deck_id()
+    subDeckIds = get_deck_and_subdeck_ids()
 
     # Create new cards for each kanij
     originalCard = note.cards()[0]
@@ -103,10 +117,10 @@ def scan_note(note: Note):
     newKanjiLength = len(newKanjiList)
     due = newKanjiLength
 
-    mw.col.db.execute(
-        "UPDATE cards SET due = due + ? WHERE did = ? AND due >= ?",
-        due, deckId, originalDue
-    )
+    placeholders = ",".join("?" for _ in subDeckIds)
+    query = f"UPDATE cards SET due = due + ? WHERE did IN ({placeholders}) AND due >= ?"
+
+    mw.col.db.execute(query, due, *subDeckIds, originalDue)
 
     # Add new cards
     for newKanji in newKanjiList:
@@ -123,16 +137,24 @@ def scan_note(note: Note):
 def reorder_deck():
     deck = get_deck()
 
-    if deck == None:
-        return None
-    
+    subDeckIds = get_deck_and_subdeck_ids()
+    placeholders = ",".join("?" for _ in subDeckIds)
+    query = f"SELECT id FROM cards WHERE did IN ({placeholders}) AND queue = 0 ORDER BY due ASC"
+
+    lowestDueId = mw.col.db.first(query, *subDeckIds)
+
+    if lowestDueId == None:
+        return
+
+    lowestDue = mw.col.get_card(lowestDueId[0]).due
+
     cardIds = mw.col.find_cards(f"deck:{deck['name']}")
     cards = [mw.col.get_card(id) for id in cardIds]
 
     sorted_cards = sorted(cards, key=lambda c: c.due)
     
     for i, card in enumerate(sorted_cards):
-        card.due = i + 1
+        card.due = lowestDue + i
         mw.col.update_card(card)
 
     return

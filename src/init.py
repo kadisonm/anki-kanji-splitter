@@ -50,15 +50,15 @@ def start():
 
         if note.has_tag(deck.get_tag()):
             return
+        
+        chosenDeck = deck.get_deck()
+        
+        if chosenDeck:
+            parentDeckId = mw.col.db.scalar("SELECT did FROM cards WHERE nid = ?", note.id)
+            parentDeck = mw.col.decks.get(parentDeckId)
 
-        deckId = deck.get_deck_id()
-
-        result = mw.col.db.scalar(
-            "SELECT 1 FROM cards WHERE nid = ? AND did = ?", note.id, deckId
-        )
-
-        if result:
-            deck.scan_note(note)
+            if parentDeck["name"] == chosenDeck["name"] or parentDeck["name"].startswith(chosenDeck["name"] + "::"):
+                deck.scan_note(note)
             
     gui_hooks.add_cards_did_add_note.append(addedNote)
 
