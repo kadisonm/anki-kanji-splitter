@@ -46,6 +46,7 @@ def start():
 
     # For detecting when a new note is added to the deck through the Anki GUI
     def note_added(note: Note):  
+        print("Note added no?")
         if not model.get_model():
             model.create_model()
 
@@ -63,12 +64,12 @@ def start():
             
     gui_hooks.add_cards_did_add_note.append(note_added)
 
-    # For detecting cards being added through AnkiConnect.
+    # For detecting cards being added through Yomitan.
     def internal_note_added(col, note: Note, deckId):
         if note.has_tag(deck.tagName) or not note.has_tag("Yomitan"):
             return
         
-        print("Note added by AnkiConnect")
+        print("Note added by Yomitan")
         
         elapsed = 0
         timer = qt.QTimer()

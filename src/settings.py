@@ -71,7 +71,7 @@ class SettingsWindow(SettingsDialog):
             if self.deckChanged:
                 MessageBox("Warning", "You have unsaved changes to your selected deck. Please save before trying to perform any actions on it.").exec()
             else:
-                response = ConfirmationBox("Are you sure you wish to scan your deck and add new cards for each kanji found?\n\nPlease note:\n• This will scan ALL cards within your deck (excluding cards from this add-on), including those already due.\n• Any kanji not previously in your deck will be added as new cards.\n• If your deck is large and you already have pending reviews, this may flood your queue with new kanji cards, making it harder to reach your original cards.\n• If you dislike the results, you can reverse this change with the 'Clear Deck' button.").exec()
+                response = ConfirmationBox("Are you sure you wish to scan your deck and add new cards for each kanji found?\n\nPlease note:\n• This will scan ALL new cards within your deck (excluding cards from this add-on and due cards).\n• Any kanji not previously in your deck will be added as new cards.\n• If you dislike the results, you can reverse this change with the 'Clear Deck' button however all the timestamps will be changed. Which may cause issues when combining decks due to duplicate timestamps. Alternatively you can Ctrl-Z any changes this add-on makes to restore previous timestamps.").exec()
 
                 if response == qt.QMessageBox.StandardButton.Yes:
                     added = deck.scan_deck()

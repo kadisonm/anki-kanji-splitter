@@ -1,3 +1,5 @@
 - Finish writing README features and installation instructions
 - Write Anki add-on post
 - Fix the awful CSS
+- Add an undo to scanning the deck that uses Anki internally
+- When sorting set the first card to the next new card timestamp and build up from there. This should avoid duplicate timestamps.
