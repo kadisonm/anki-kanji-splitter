@@ -1,6 +1,7 @@
 from aqt import mw, gui_hooks
 from aqt.utils import showInfo, qconnect
 from anki.notes import Note
+from anki.hooks_gen import note_will_be_addedz
 import aqt.qt
 import os
 
@@ -44,7 +45,7 @@ def start():
     gui_hooks.profile_did_open.append(on_profile_loaded)
 
     # Listen for new notes in selected deck
-    def addedNote(note: Note):  
+    def addedNote(col, note, deckId):  
         if not model.get_model():
             model.create_model()
 
@@ -54,13 +55,12 @@ def start():
         chosenDeck = deck.get_deck()
         
         if chosenDeck:
-            parentDeckId = mw.col.db.scalar("SELECT did FROM cards WHERE nid = ?", note.id)
-            parentDeck = mw.col.decks.get(parentDeckId)
+            parentDeck = mw.col.decks.get(deckId)
 
             if parentDeck["name"] == chosenDeck["name"] or parentDeck["name"].startswith(chosenDeck["name"] + "::"):
                 deck.scan_note(note)
             
-    gui_hooks.add_cards_did_add_note.append(addedNote)
+    note_will_be_added.append(addedNote)
 
     # Listen for any cards being opened (to allow editing)
     def cardOpened(html: str, card, context):

@@ -100,6 +100,8 @@ def scan_note(note: Note):
     subDeckIds = get_deck_and_subdeck_ids()
 
     # Create new cards for each kanij
+
+    print(note.card_ids())
     originalCard = note.cards()[0]
     originalDue = originalCard.due
 
