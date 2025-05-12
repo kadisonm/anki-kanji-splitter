@@ -152,6 +152,13 @@ def create_model():
     # Save the updated model
     mm.save(existingModel)
 
+def get_model_id():
+    global modelName
+
+    id = mw.col.models.id_for_name(modelName)
+
+    return id
+
 def get_model():
     global modelName
 

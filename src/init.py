@@ -1,8 +1,8 @@
-from aqt import mw, gui_hooks
+from aqt import mw, gui_hooks, qt
 from aqt.utils import showInfo, qconnect
 from anki.notes import Note
-from anki.hooks_gen import note_will_be_addedz
-import aqt.qt
+from anki import hooks_gen
+import time
 import os
 
 from . import config
@@ -31,21 +31,21 @@ def start():
         model.create_model()
 
         # Add settings tool button
-        action = aqt.qt.QAction("Kanji Splitter", mw)
+        action = qt.QAction("Kanji Splitter", mw)
         qconnect(action.triggered, open_settings)
         mw.form.menuTools.addAction(action)
 
         # Add icons
-        mw.col.media.addFile(jpdbIconPath)
-        mw.col.media.addFile(jishoIconPath)
+        mw.col.media.add_file(jpdbIconPath)
+        mw.col.media.add_file(jishoIconPath)
 
         # Add settings to addon page
         mw.addonManager.setConfigAction(__name__, open_settings)
 
     gui_hooks.profile_did_open.append(on_profile_loaded)
 
-    # Listen for new notes in selected deck
-    def addedNote(col, note, deckId):  
+    # For detecting when a new note is added to the deck through the Anki GUI
+    def note_added(note: Note):  
         if not model.get_model():
             model.create_model()
 
@@ -55,12 +55,40 @@ def start():
         chosenDeck = deck.get_deck()
         
         if chosenDeck:
-            parentDeck = mw.col.decks.get(deckId)
+            parentDeckId = mw.col.db.scalar("SELECT did FROM cards WHERE nid = ?", note.id)
+            parentDeck = mw.col.decks.get(parentDeckId)
 
             if parentDeck["name"] == chosenDeck["name"] or parentDeck["name"].startswith(chosenDeck["name"] + "::"):
                 deck.scan_note(note)
             
-    note_will_be_added.append(addedNote)
+    gui_hooks.add_cards_did_add_note.append(note_added)
+
+    # For detecting cards being added through AnkiConnect.
+    def internal_note_added(col, note: Note, deckId):
+        if note.has_tag(deck.tagName) or not note.has_tag("Yomitan"):
+            return
+        
+        print("Note added by AnkiConnect")
+        
+        elapsed = 0
+        timer = qt.QTimer()
+
+        def timer_ended():
+            nonlocal elapsed
+            nonlocal note
+
+            elapsed += 1
+
+            if len(note.card_ids()) > 0:
+                note_added(note)
+                return
+
+            if elapsed < 10:
+                timer.singleShot(1000, timer_ended)
+
+        timer.singleShot(1000, timer_ended)
+
+    hooks_gen.note_will_be_added.append(internal_note_added)
 
     # Listen for any cards being opened (to allow editing)
     def cardOpened(html: str, card, context):

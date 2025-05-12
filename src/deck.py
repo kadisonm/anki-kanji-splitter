@@ -42,14 +42,15 @@ def create_note(newKanji):
     cardModel = model.get_model()
 
     note = Note(mw.col, cardModel)
+    note.tags = [tagName]
     note["Kanji"] = newKanji
-    note.add_tag(tagName)
 
     deckId = get_deck_id()
     mw.col.add_note(note, deckId)
 
     if originalCardModel: # To stop anki from switching the default model to Kanji Splitter
         dummyNote = Note(mw.col, originalCardModel)
+        dummyNote.tags = [tagName]
         mw.col.add_note(dummyNote, deckId)
         mw.col.remove_notes([dummyNote.id])
 
@@ -100,8 +101,6 @@ def scan_note(note: Note):
     subDeckIds = get_deck_and_subdeck_ids()
 
     # Create new cards for each kanij
-
-    print(note.card_ids())
     originalCard = note.cards()[0]
     originalDue = originalCard.due
 
