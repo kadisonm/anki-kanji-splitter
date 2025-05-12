@@ -3,3 +3,4 @@
 - Fix the awful CSS
 - Add an undo to scanning the deck that uses Anki internally
 - When sorting set the first card to the next new card timestamp and build up from there. This should avoid duplicate timestamps.
+- Add CSS to make the user able to change text colour to highlight components and keyword in the mnemonic.
