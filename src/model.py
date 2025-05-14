@@ -89,7 +89,7 @@ def create_model():
     if data["show_components"]:
         templates[0]['afmt'] += f"\n{components}"
 
-    if data["show_mnemonic"] or data["show_components"]:
+    if data["show_back_mnemonic"] or data["show_components"]:
         templates[0]['afmt'] += "<hr>"
 
     ## --
