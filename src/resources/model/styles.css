@@ -151,6 +151,24 @@ i.fa-edit:hover {
     line-height: 120%;
 }
 
+.mnemonic span {
+    color: var(--fg-default);
+    border-radius: var(--border-radius);
+    padding: 1px 5px 1px 5px;
+    border: 0px;
+    margin: 0px 1px 0px 1px;
+    font-weight: 500;
+}
+
+.mnemonic .keyword-highlight {
+    background-color: var(--button-primary-bg);
+}
+
+
+.mnemonic .component-highlight {
+    background-color: var(--button-bg);
+}
+
 /* ---------------- KANJI COMPONENTS ---------------- */
 
 .components {

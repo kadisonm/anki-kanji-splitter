@@ -1,13 +1,12 @@
 - Finish writing README features and installation instructions
 - Write Anki add-on post
 - Fix the awful CSS
-- Add an undo to scanning the deck that uses Anki internally
+- Add an undo to scanning the deck that uses Anki internally and update settings
 - When sorting set the first card to the next new card timestamp and build up from there. This should avoid duplicate timestamps.
 - Switch the default deck internally instead of through unreliable method
-- Add CSS to make the user able to change text colour to highlight components and keyword in the mnemonic.
 - Remove irreversible message from mnemonic
 - Some keywords are out of date with JPDB due to the original list being old
 - investigate some kanji not being broken down properly
-- When editing a mnemonic fill the existing textbox with that mnemonic
 - Show keyword for each component in kanji's component list (might need to use JS api)
 - Build a card editor that can allow sections to be dragged around and placed wherever the user would like
+- Make editing keyword and mnemonic editable within the note (turn the edit button into a tick and add a caret)
