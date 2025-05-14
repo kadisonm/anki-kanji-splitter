@@ -168,7 +168,7 @@ def scan_deck():
     if deck == None:
         return None
 
-    cards = mw.col.find_cards(f"deck:{deck['name']}", True)
+    cards = mw.col.find_cards(f"deck:\"{deck['name']}\"", True)
 
     notesAdded = 0
 
@@ -195,7 +195,7 @@ def clear_deck():
     if deck == None:
         return None
     
-    cards = mw.col.find_cards(f"deck:{deck['name']} tag:{tagName}")
+    cards = mw.col.find_cards(f"deck:\"{deck['name']}\" tag:{tagName}")
     mw.col.remove_notes_by_card(cards)
 
     reorder_deck()
