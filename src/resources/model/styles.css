@@ -148,6 +148,7 @@ i.fa-edit:hover {
 #mnemonic {
     margin-top: 10px;
     font-weight: 500;
+    line-height: 120%;
 }
 
 /* ---------------- KANJI COMPONENTS ---------------- */
