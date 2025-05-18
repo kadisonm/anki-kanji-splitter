@@ -35,7 +35,49 @@ def is_valid_kanji(kanji):
     
     return True
 
-def get_components(kanji):
+def get_direct_components(kanji):
+    elements = []
+
+    if not is_valid_kanji(kanji):
+        print(f"Skipping non-Unicode or pseudo-kanji: {kanji}")
+        return elements
+
+    codePoint = ord(kanji)
+    hexCode = format(codePoint, 'x').zfill(5).lower()
+    path = os.path.join(kanjiPath, f"{hexCode}.svg")
+
+    if not os.path.exists(path):
+        return elements
+
+    tree = ET.parse(path)
+    root = tree.getroot()
+
+    kvgNamespace = '{http://kanjivg.tagaini.net}'
+
+    # Get the kanji's group
+    for elem in root.iter():
+        if elem.attrib.get(f'{kvgNamespace}element') == kanji:
+            rootKanji = elem
+            break
+    else:
+        return elements
+
+    # Get direct components of that kanji
+    def getDirectElements(kanji):
+        for elem in kanji:
+            kvgElement = elem.attrib.get(f'{kvgNamespace}element')
+
+            if kvgElement and kvgElement not in elements and kvgElement != kanji and is_valid_kanji(kvgElement):
+                elements.append(kvgElement)
+            elif not kvgElement:
+                getDirectElements(elem)
+
+    getDirectElements(rootKanji)
+
+    return elements
+ 
+
+def get_all_components(kanji):
     elements = []
 
     if not is_valid_kanji(kanji):
@@ -88,7 +130,7 @@ def get_kanji(note: Note):
 
     for kanji in re.findall(r'[\u4e00-\u9faf\u3400-\u4dbf]', expression):
         if kanji not in foundKanji and is_valid_kanji(kanji):
-            result = get_components(kanji)
+            result = get_all_components(kanji)
 
             for component in result:
                 if component not in foundKanji:

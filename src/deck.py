@@ -59,7 +59,7 @@ def create_note(newKanji):
 def update_note(note): 
     noteKanji = note["Kanji"]
 
-    composedOf = kanji.get_components(noteKanji)
+    composedOf = kanji.get_direct_components(noteKanji)
     
     for item in composedOf:
         note["Components"] += f"<li class='component-item'>{item}</li>"

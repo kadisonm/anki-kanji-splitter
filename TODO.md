@@ -12,4 +12,3 @@
 - Make editing keyword and mnemonic editable within the note (turn the edit button into a tick and add a caret)
 - 乡 could not find the Kanji VG
 - Settings image isnt loading
-- Only show direct children components of kanji and not the whole composition within the note's Components section (so for 響 show just 郷音 and not 郷幺艮⻏ and 音立日)

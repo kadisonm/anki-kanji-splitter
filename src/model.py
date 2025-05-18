@@ -53,17 +53,17 @@ def create_model():
     if data["show_front_keyword"]:
         templates[0]['qfmt'] += f"\n{keywordFront}"
 
-    if data["show_front_keyword"] & data["show_front_kanji"]:
-        templates[0]['qfmt'] += "<hr>"
-
     if data["show_front_keyword_source"]:
         templates[0]['qfmt'] += f"\n{source}"
 
-    if data["show_front_mnemonic"]:
-        templates[0]['qfmt'] += f"\n{mnemonic}"
-    
     if data["show_front_kanji"]:
         templates[0]['qfmt'] += f"\n{kanji}"
+
+    if data["show_front_keyword"] & data["show_front_kanji"]:
+        templates[0]['qfmt'] += "<hr>"
+
+    if data["show_front_mnemonic"]:
+        templates[0]['qfmt'] += f"\n{mnemonic}"
     
     # Back
     if data["show_back_kanji"]:
