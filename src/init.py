@@ -1,5 +1,5 @@
 from aqt import mw, gui_hooks, qt
-from aqt.utils import showInfo, qconnect
+from aqt.utils import qconnect
 from anki.notes import Note
 from anki import hooks_gen
 import time
@@ -46,7 +46,6 @@ def start():
 
     # For detecting when a new note is added to the deck through the Anki GUI
     def note_added(note: Note):  
-        print("Note added no?")
         if not model.get_model():
             model.create_model()
 

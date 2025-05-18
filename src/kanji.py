@@ -87,14 +87,13 @@ def get_kanji(note: Note):
     expression = note["Expression"] if "Expression" in note else ""
 
     for kanji in re.findall(r'[\u4e00-\u9faf\u3400-\u4dbf]', expression):
-        if kanji not in foundKanji and len(kanji) == 1:
+        if kanji not in foundKanji and is_valid_kanji(kanji):
             result = get_components(kanji)
 
             for component in result:
                 if component not in foundKanji:
                     foundKanji.append(component)
                     
-            if kanji not in foundKanji:
-                foundKanji.append(kanji)
+            foundKanji.append(kanji)
     
     return foundKanji
