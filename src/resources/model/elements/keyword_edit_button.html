@@ -4,6 +4,7 @@
     (function() {
         const editButton = document.getElementById('keyword-edit');
         const keyword = document.getElementById('keyword');
+        const source = document.getElementById('source');
 
         let editing = false;
 
@@ -25,6 +26,7 @@
             let text = keyword.textContent.trim();
 
             pycmd(`kanji_splitter:edit_keyword:${text}`)
+            source.textContent = "Custom keyword";
         }
 
         editButton.addEventListener("click", () => {

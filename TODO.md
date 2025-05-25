@@ -10,6 +10,3 @@
 - 乡 could not find the Kanji VG
 - Settings image isnt loading (couldn't find a way to reproduce it)
 - scanning a deck with due cards made them all invalid date??
-
-- Caret deleting deletes characters and spaces for some reason, but now its only deleting spaces normally but it isnt restoring the caret position
-
