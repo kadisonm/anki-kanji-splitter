@@ -1,1 +1,99 @@
-<i class="fa-solid fa-edit" onclick="pycmd('edit_keyword')"></i>
+<i id="keyword-edit" class="fa-solid fa-edit"></i>
+
+<script>
+    (function() {
+        const editButton = document.getElementById('keyword-edit');
+        const keyword = document.getElementById('keyword');
+
+        let editing = false;
+
+        function editEnabled() {
+            editButton.classList.remove("fa-edit");
+            editButton.classList.add("fa-check"); 
+
+            keyword.contentEditable = true; 
+            keyword.focus();
+
+            moveCaretToEnd();
+        }
+
+        function editDisabled() {
+            editButton.classList.remove("fa-check");
+            editButton.classList.add("fa-edit");
+            keyword.contentEditable = false; 
+
+            let text = keyword.textContent.trim();
+
+            pycmd(`kanji_splitter:edit_keyword:${text}`)
+        }
+
+        editButton.addEventListener("click", () => {
+            editing = !editing;
+ 
+            if (editing) {
+                editEnabled();
+            } else {
+                editDisabled();
+            }
+        });
+
+        function moveCaretToEnd() {
+            const selection = window.getSelection();
+            const range = document.createRange();
+
+            keyword.textContent = keyword.textContent.trim();
+
+            range.selectNodeContents(keyword);
+            range.collapse(false);
+
+            selection.removeAllRanges();
+            selection.addRange(range)
+        }
+
+        keyword.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                if (editing == true) {
+                    event.preventDefault();
+                    editing = false;
+                    editDisabled();
+                }
+            }
+
+            if (event.key === "Backspace") {
+                if (editing == false) return
+
+                const selection = window.getSelection();
+                const range = selection.getRangeAt(0);
+
+                if (!range.collapsed) {
+                    range.deleteContents()
+                    return;
+                }
+
+                const node = range.startContainer;
+                const caretOffset = range.startOffset;
+
+                if (node.nodeType === Node.TEXT_NODE && caretOffset > 0) {
+                    const newRange = document.createRange();
+                    newRange.setStart(node, caretOffset - 1);
+                    newRange.setEnd(node, caretOffset);
+                    newRange.deleteContents();
+
+                    // Move caret back
+                    const selection = window.getSelection();
+                    selection.removeAllRanges();
+                    const newCaret = document.createRange();
+                    newCaret.setStart(node, caretOffset - 1);
+                    newCaret.collapse(true);
+                    selection.addRange(newCaret);
+                }
+            }
+        })
+        
+        keyword.addEventListener("blur", (event) => {
+            if (editing == true) {
+                setTimeout(function () { keyword.focus(); }, 20);
+            }
+        })
+    } ())
+</script>

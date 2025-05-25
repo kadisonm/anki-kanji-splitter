@@ -1,1 +1,142 @@
-<i class="fa-solid fa-edit" onclick="pycmd('edit_mnemonic')"></i>
+<i id="mnemonic-edit" class="fa-solid fa-edit"></i>
+
+<script>
+    (function() {
+        const editButton = document.getElementById('mnemonic-edit');
+        const mnemonic = document.getElementById('mnemonic');
+
+        let editing = false;
+
+        function changeToMarkdown() {
+            let text = mnemonic.innerHTML.replace(/<span class="keyword-highlight">(.*?)<\/span>/g, "***$1***");
+            text = text.replace(/<span class="component-highlight">(.*?)<\/span>/g, "**$1**");    
+            mnemonic.innerHTML = text.trim();
+        }
+
+        function changeToHtml() {
+            let text = mnemonic.textContent.trim();
+
+            let count = 1;
+
+            text = text.replace(/\*\*\*/g, () => {
+                count++;
+                return count % 2 === 0 ? "<span class=\"keyword-highlight\">" : "</span>";
+            });
+
+            count = 1;
+
+            text = text.replace(/\*\*/g, () => {
+                count++;
+                return count % 2 === 0 ? "<span class=\"component-highlight\">" : "</span>";
+            });
+            
+            mnemonic.innerHTML = text.trim();
+        }
+
+        changeToHtml();
+
+        function editEnabled() {
+            editButton.classList.remove("fa-edit");
+            editButton.classList.add("fa-check"); 
+
+            changeToMarkdown();
+
+            mnemonic.contentEditable = true; 
+            mnemonic.focus();
+
+            moveCaretToEnd();
+        }
+
+        function editDisabled() {
+            editButton.classList.remove("fa-check");
+            editButton.classList.add("fa-edit");
+            mnemonic.contentEditable = false; 
+
+            let text = mnemonic.textContent.trim();
+
+            pycmd(`kanji_splitter:edit_mnemonic:${text}`)
+
+            changeToHtml();
+        }
+
+        
+        editButton.addEventListener("click", () => {
+            editing = !editing;
+ 
+            if (editing) {
+                editEnabled();
+            } else {
+                editDisabled();
+            }
+        });
+
+        function moveCaretToEnd() {
+            const selection = window.getSelection();
+            const range = document.createRange();
+            
+            let node = mnemonic
+
+            while (node && node.lastChild) {
+                node = node.lastChild;
+            }
+
+             if (node && node.nodeType === Node.TEXT_NODE) {
+                range.setStart(node, node.textContent.length);
+            } else {
+                range.selectNodeContents(mnemonic);
+                range.collapse(false);
+            }
+
+            selection.removeAllRanges();
+            selection.addRange(range)
+        }
+
+        mnemonic.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                if (editing == true) {
+                    event.preventDefault();
+                    editing = false;
+                    editDisabled();
+                }
+            }
+
+            if (event.key === "Backspace") {
+                if (editing == false) return
+
+                const selection = window.getSelection();
+                const range = selection.getRangeAt(0);
+
+                if (!range.collapsed) {
+                    range.deleteContents()
+                    return;
+                }
+
+                const node = range.startContainer;
+                const offset = range.startOffset;
+
+                if (node.nodeType === Node.TEXT_NODE && offset > 0) {
+                    // Delete one
+                    const newRange = document.createRange();
+                    newRange.setStart(node, offset - 1);
+                    newRange.setEnd(node, offset);
+                    newRange.deleteContents();
+
+                    // Restore the caret
+                    const selection = window.getSelection();
+                    selection.removeAllRanges();
+                    
+                    const newCaret = document.createRange();
+                    newCaret.setStart(node, offset - 1);
+                    newCaret.collapse(true);
+                    selection.addRange(newCaret);
+                }
+            }
+        })
+        
+        mnemonic.addEventListener("blur", (event) => {
+            if (editing == true) {
+                setTimeout(function () { mnemonic.focus(); }, 20);
+            }
+        })
+    } ())
+</script>

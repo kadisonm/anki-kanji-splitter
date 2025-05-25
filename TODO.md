@@ -4,11 +4,12 @@
 - Add an undo to scanning the deck that uses Anki internally and update settings
 - When sorting set the first card to the next new card timestamp and build up from there. This should avoid duplicate timestamps.
 - Switch the default deck internally instead of through unreliable method
-- Remove irreversible message from mnemonic
-- Some keywords are out of date with JPDB due to the original list being old
-- investigate some kanji not being broken down properly
+- Some keywords are out of date with JPDB due to the original list being old (maybe introduce a way to rescrape it for updates)
 - Show keyword for each component in kanji's component list (might need to use JS api)
 - Build a card editor that can allow sections to be dragged around and placed wherever the user would like
-- Make editing keyword and mnemonic editable within the note (turn the edit button into a tick and add a caret)
 - 乡 could not find the Kanji VG
-- Settings image isnt loading
+- Settings image isnt loading (couldn't find a way to reproduce it)
+- scanning a deck with due cards made them all invalid date??
+
+- Caret deleting deletes characters and spaces for some reason, but now its only deleting spaces normally but it isnt restoring the caret position
+

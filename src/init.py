@@ -1,4 +1,4 @@
-from aqt import mw, gui_hooks, qt
+from aqt import mw, gui_hooks, qt, reviewer
 from aqt.utils import qconnect
 from anki.notes import Note
 from anki import hooks_gen
@@ -96,6 +96,31 @@ def start():
 
     gui_hooks.card_will_show.append(cardOpened)
     
-    gui_hooks.webview_did_receive_js_message.append(editing.buttonClicked)
+    # Listen for any fields being edited
+    def jsMessageReceived(handled, message: str, context):
+        if not message.startswith('kanji_splitter:'):
+            return handled
+        
+        message = message.removeprefix('kanji_splitter:')
+
+        if message.startswith('edit_mnemonic:'):
+            message = message.removeprefix('edit_mnemonic:')
+
+            if isinstance(context, reviewer.Reviewer):
+                editing.editMnemonic(context.card.note(), message)
+
+            return handled
+
+        if message.startswith('edit_keyword:'):
+            message = message.removeprefix('edit_keyword:')
+
+            if isinstance(context, reviewer.Reviewer):
+                editing.editKeyword(context.card.note(), message)
+
+            return handled
+
+        return handled
+
+    gui_hooks.webview_did_receive_js_message.append(jsMessageReceived)
 
     
