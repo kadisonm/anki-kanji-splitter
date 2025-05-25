@@ -10,3 +10,6 @@
 - 乡 could not find the Kanji VG
 - Settings image isnt loading (couldn't find a way to reproduce it)
 - scanning a deck with due cards made them all invalid date??
+- Add a grid to the drawing canvas
+
+- cards are being added to the deck twice (duplicates)

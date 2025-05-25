@@ -1,5 +1,4 @@
 from anki.notes import Note
-from aqt.utils import showInfo
 from aqt import mw
 
 from . import config
@@ -110,9 +109,18 @@ def scan_note(note: Note):
     newKanjiList = []
 
     for kanjiItem in foundKanji:
-        if not mw.col.find_notes(f"Kanji:{kanjiItem} deck:{deck['name']} tag:{tagName}"):
-            if kanjiItem not in newKanjiList:
-                newKanjiList.append(kanjiItem)
+        potentialDupes = mw.col.find_notes(f'"{kanjiItem}" deck:"{deck["name"]}" tag:"{tagName}"')
+        dupeFound = False
+
+        for dupeId in potentialDupes:
+            dupeNote = mw.col.get_note(dupeId)
+
+            if dupeNote['Kanji'] == kanjiItem:
+                dupeFound = True
+                break
+
+        if kanjiItem not in newKanjiList and not dupeFound:
+            newKanjiList.append(kanjiItem)
 
     # Push all cards after the scanned note forward
     newKanjiLength = len(newKanjiList)
