@@ -41,8 +41,6 @@
             const selection = window.getSelection();
             const range = document.createRange();
 
-            keyword.textContent = keyword.textContent.trim();
-
             range.selectNodeContents(keyword);
             range.collapse(false);
 
@@ -51,41 +49,13 @@
         }
 
         keyword.addEventListener("keydown", (event) => {
+            event.stopImmediatePropagation();
+
             if (event.key === "Enter") {
                 if (editing == true) {
                     event.preventDefault();
                     editing = false;
                     editDisabled();
-                }
-            }
-
-            if (event.key === "Backspace") {
-                if (editing == false) return
-
-                const selection = window.getSelection();
-                const range = selection.getRangeAt(0);
-
-                if (!range.collapsed) {
-                    range.deleteContents()
-                    return;
-                }
-
-                const node = range.startContainer;
-                const caretOffset = range.startOffset;
-
-                if (node.nodeType === Node.TEXT_NODE && caretOffset > 0) {
-                    const newRange = document.createRange();
-                    newRange.setStart(node, caretOffset - 1);
-                    newRange.setEnd(node, caretOffset);
-                    newRange.deleteContents();
-
-                    // Move caret back
-                    const selection = window.getSelection();
-                    selection.removeAllRanges();
-                    const newCaret = document.createRange();
-                    newCaret.setStart(node, caretOffset - 1);
-                    newCaret.collapse(true);
-                    selection.addRange(newCaret);
                 }
             }
         })
