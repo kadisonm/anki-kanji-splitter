@@ -12,4 +12,5 @@
 - scanning a deck with due cards made them all invalid date??
 - Add a grid to the drawing canvas
 
-- cards are being added to the deck twice (duplicates)
+- Figure out why in 至 that 厶 was skipped
+- Figure out how to get kanji like 𡗗 to have a stroke diagram

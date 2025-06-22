@@ -95,7 +95,7 @@ h5, h4, h3, h2, h1, p {
 
 /* ----------------  EDIT BUTTON ---------------- */
 
-#mnemonic-edit {
+#keyword-edit, #mnemonic-edit {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,7 +105,7 @@ h5, h4, h3, h2, h1, p {
     margin-bottom: 5px;
 }
 
-#mnemonic-edit:hover {
+#keyword-edit:hover, #mnemonic-edit:hover {
     color: var(--fg);
 }
 

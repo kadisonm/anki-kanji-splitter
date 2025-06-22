@@ -2,13 +2,21 @@
 
 <script>
     (function() {
+        let card = document.querySelector(".card"); 
+
         const editButton = document.getElementById('keyword-edit');
         const keyword = document.getElementById('keyword');
         const source = document.getElementById('source');
 
         let editing = false;
 
+        if (card.getAttribute('editing') == null) {
+            card.setAttribute("editing", "false");
+        }
+
         function editEnabled() {
+            editing = true;
+            card.setAttribute("editing", "true");
             editButton.classList.remove("fa-edit");
             editButton.classList.add("fa-check"); 
 
@@ -19,6 +27,8 @@
         }
 
         function editDisabled() {
+            editing = false;
+            card.setAttribute("editing", "false");
             editButton.classList.remove("fa-check");
             editButton.classList.add("fa-edit");
             keyword.contentEditable = false; 
@@ -30,10 +40,10 @@
         }
 
         editButton.addEventListener("click", () => {
-            editing = !editing;
- 
-            if (editing) {
-                editEnabled();
+            if (editing == false) {
+                if (card.getAttribute('editing') == "false") {
+                    editEnabled();
+                }
             } else {
                 editDisabled();
             }
