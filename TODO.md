@@ -14,3 +14,5 @@
 
 - Figure out why in 至 that 厶 was skipped
 - Figure out how to get kanji like 𡗗 to have a stroke diagram
+
+- When reordering deck dont change cards that dont have a new date

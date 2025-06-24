@@ -1,4 +1,5 @@
 from anki.notes import Note
+from anki.consts import CARD_TYPE_NEW
 from aqt import mw
 
 from . import config
@@ -34,6 +35,20 @@ def get_deck():
         return deck
     
     return None
+
+def get_new_cards():
+    subDeckIds = get_deck_and_subdeck_ids()
+
+    cardIds = mw.col.find_cards(f"deck:{deck['name']}")
+
+
+
+    cards = [mw.col.get_card(id) for id in cardIds]
+
+    filtered_cards = filter(lambda c: c.type == CARD_TYPE_NEW, cards)
+    sorted_cards = sorted(filtered_cards, key=lambda c: c.due)
+
+    return sorted_cards;
 
 def create_note(newKanji):
     originalCardModel = mw.col.conf["curModel"]
@@ -131,6 +146,13 @@ def scan_note(note: Note):
 
     mw.col.db.execute(query, due, *subDeckIds, originalDue)
 
+    # mw.col.sched.set_due_date(ids, "1")
+
+    # Might actually be able to use schedule_cards_as_new for this. 
+    # Create the new sub cards -> order it properly in an array -> schedule them as new with restore position (Does this work?)
+    # Stop reordering the deck manually
+    # Hopefully this solves a lot of problems
+
     # Add new cards
     for newKanji in newKanjiList:
         newNote = create_note(newKanji)
@@ -157,12 +179,9 @@ def reorder_deck():
 
     lowestDue = mw.col.get_card(lowestDueId[0]).due
 
-    cardIds = mw.col.find_cards(f"deck:{deck['name']}")
-    cards = [mw.col.get_card(id) for id in cardIds]
+    cards = get_new_cards()
 
-    sorted_cards = sorted(cards, key=lambda c: c.due)
-    
-    for i, card in enumerate(sorted_cards):
+    for i, card in enumerate(cards):
         card.due = lowestDue + i
         mw.col.update_card(card)
 
@@ -176,16 +195,11 @@ def scan_deck():
     if deck == None:
         return None
 
-    cards = mw.col.find_cards(f"deck:\"{deck['name']}\"", True)
+    cards = get_new_cards()
 
     notesAdded = 0
 
-    # Scan first due -> last due
-    reversedCards = reversed(cards)
-
-    for cardId in reversedCards:
-        card = mw.col.get_card(cardId)
-        
+    for card in cards:
         note = card.note()
 
         if note.has_tag(tagName) or card.type != 0:
