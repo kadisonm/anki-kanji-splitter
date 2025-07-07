@@ -37,15 +37,18 @@ def get_deck():
     return None
 
 def get_new_cards():
+    deck = get_deck()
+
+    if deck is None: return None
+
     subDeckIds = get_deck_and_subdeck_ids()
 
     cardIds = mw.col.find_cards(f"deck:{deck['name']}")
 
-
-
     cards = [mw.col.get_card(id) for id in cardIds]
 
     filtered_cards = filter(lambda c: c.type == CARD_TYPE_NEW, cards)
+
     sorted_cards = sorted(filtered_cards, key=lambda c: c.due)
 
     return sorted_cards;
@@ -109,9 +112,18 @@ def update_note(note):
 
     mw.col.update_note(note)
 
+def reorder_deck():
+    cards = get_new_cards()
+    card_ids = [card.id for card in cards]
+
+    mw.col.sched.reposition_new_cards(card_ids, 1, 1, False, True)
+
+    return
+
 def scan_note(note: Note):
     deck = get_deck()
-    deckId = get_deck_id()
+    if deck is None: return None
+
     subDeckIds = get_deck_and_subdeck_ids()
 
     # Create new cards for each kanij
@@ -146,13 +158,6 @@ def scan_note(note: Note):
 
     mw.col.db.execute(query, due, *subDeckIds, originalDue)
 
-    # mw.col.sched.set_due_date(ids, "1")
-
-    # Might actually be able to use schedule_cards_as_new for this. 
-    # Create the new sub cards -> order it properly in an array -> schedule them as new with restore position (Does this work?)
-    # Stop reordering the deck manually
-    # Hopefully this solves a lot of problems
-
     # Add new cards
     for newKanji in newKanjiList:
         newNote = create_note(newKanji)
@@ -165,35 +170,10 @@ def scan_note(note: Note):
 
         due -= 1
 
-def reorder_deck():
-    deck = get_deck()
-
-    subDeckIds = get_deck_and_subdeck_ids()
-    placeholders = ",".join("?" for _ in subDeckIds)
-    query = f"SELECT id FROM cards WHERE did IN ({placeholders}) AND queue = 0 ORDER BY due ASC"
-
-    lowestDueId = mw.col.db.first(query, *subDeckIds)
-
-    if lowestDueId == None:
-        return
-
-    lowestDue = mw.col.get_card(lowestDueId[0]).due
-
-    cards = get_new_cards()
-
-    for i, card in enumerate(cards):
-        card.due = lowestDue + i
-        mw.col.update_card(card)
-
-    return
+    reorder_deck()
 
 def scan_deck():
     reorder_deck()
-
-    deck = get_deck()
-
-    if deck == None:
-        return None
 
     cards = get_new_cards()
 
@@ -202,7 +182,7 @@ def scan_deck():
     for card in cards:
         note = card.note()
 
-        if note.has_tag(tagName) or card.type != 0:
+        if note.has_tag(tagName):
             continue
 
         scan_note(note)

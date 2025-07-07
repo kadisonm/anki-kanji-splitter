@@ -15,4 +15,6 @@
 - Figure out why in 至 that 厶 was skipped
 - Figure out how to get kanji like 𡗗 to have a stroke diagram
 
-- When reordering deck dont change cards that dont have a new date
+- Remove option for watching sub decks - Complicates reviews too much (maybe, check if it work stil)
+
+- Get having multiple cards working, make sure subnotes are added to the right card
