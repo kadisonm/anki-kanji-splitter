@@ -1,11 +1,58 @@
-<div class="strokes-box">
-    <div id="strokes">
-        {{Strokes}}
-    </div>    
+<div id="strokes-container">
+    <canvas id="strokes-canvas" width="300" height="300"></canvas>
+
+    {{Strokes}}
 </div>
 
 <script>
 (function() {
+    const isNightMode = document.body.classList.contains('nightMode');
+    const pixelRatio = window.devicePixelRatio ?? 2;
+    const canvasStroke = isNightMode ? 'white' : 'black'
+    const brushSize = 5 * pixelRatio;
+
+    const canvas = document.getElementById("strokes-canvas")
+    const svg = document.getElementsByTagName("svg")
+    const context = canvas.getContext('2d', { willReadFrequently: true });
+
+    const height = 300;
+    const width = 300;
+
+    function drawGrid() {
+        context.globalAlpha = 0.15;
+        context.strokeStyle = canvasStroke;
+        context.lineWidth = 1 * pixelRatio;
+
+        const segment = (width / 2) / 30;
+        context.setLineDash([segment]);
+
+        const drawToCenter = function(x, y) {
+            context.beginPath();
+            context.moveTo(x, y)
+            context.lineTo(width / 2, height / 2);
+            context.stroke();
+        };
+
+        drawToCenter(width / 2, 0);
+        drawToCenter(width / 2, height);
+
+        drawToCenter(0, height / 2);
+        drawToCenter(width, height / 2);
+
+        drawToCenter(0, 0);
+        drawToCenter(width, height);
+
+        drawToCenter(width, 0);
+        drawToCenter(0, height);
+    }
+
+    drawGrid();
+
+    const path = new Path2D();
+    path.src = svg.src;
+
+    context.stroke(path);
+
     function randomColor() {
         return `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
     }

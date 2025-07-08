@@ -1,4 +1,4 @@
-<canvas class="tappable" width="300" height="300"></canvas>
+<canvas id="drawing-canvas" class="tappable" width="300" height="300"></canvas>
 
 <div class="canvas-buttons">
     <button id="undo" class="tappable"><i class="fa fa-rotate-left"></i></button>
@@ -11,15 +11,14 @@
     const datastore = window.localStorage ?? window.sessionStorage
     const pixelRatio = window.devicePixelRatio ?? 2;
     const canvasStroke = isNightMode ? 'white' : 'black'
+    const brushSize = 5 * pixelRatio;
 
-    const canvas = document.getElementsByTagName("canvas")[0]
+    const canvas = document.getElementById("drawing-canvas")
     const context = canvas.getContext('2d', { willReadFrequently: true });
     const undoStack = [];
 
     const height = 300;
     const width = 300;
-
-    const brushSize = 5 * pixelRatio;
 
     let drawing = false;
     let mousedown = false;
