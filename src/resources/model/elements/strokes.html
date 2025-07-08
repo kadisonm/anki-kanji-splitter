@@ -11,8 +11,7 @@
     const canvasStroke = isNightMode ? 'white' : 'black'
     const brushSize = 5 * pixelRatio;
 
-    const canvas = document.getElementById("strokes-canvas")
-    const svg = document.getElementsByTagName("svg")
+    const canvas = document.getElementById("strokes-canvas");
     const context = canvas.getContext('2d', { willReadFrequently: true });
 
     const height = 300;
@@ -48,11 +47,6 @@
 
     drawGrid();
 
-    const path = new Path2D();
-    path.src = svg.src;
-
-    context.stroke(path);
-
     function randomColor() {
         return `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
     }
@@ -61,6 +55,6 @@
 
     paths.forEach(path => {
         path.setAttribute('stroke', randomColor());
-    });    
+    }); 
 } ())
 </script>

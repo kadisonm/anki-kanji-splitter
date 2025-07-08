@@ -8,7 +8,7 @@ currentDir = os.path.dirname(os.path.abspath(__file__))
 resourcesDir = os.path.join(currentDir, "resources")
 
 keywordsPath = os.path.join(resourcesDir, 'keywords.json')
-kanjiPath = os.path.join(resourcesDir, 'Kanji')
+kanjiPath = os.path.join(resourcesDir, 'kanji')
 
 keywords = None
 
@@ -122,6 +122,17 @@ def get_svg(kanji):
             
             if match:
                 return match.group(1)
+    else:
+        newPath = os.path.join(resourcesDir, 'unknown.svg')
+
+        if os.path.exists(newPath):
+            with open(newPath, 'r') as file:
+                svgContent = file.read()
+
+                match = re.search(r'(<svg[^>]*>.*?</svg>)', svgContent, re.DOTALL)
+                
+                if match:
+                    return match.group(1)
 
 def get_kanji(note: Note):
     foundKanji = []
