@@ -3,12 +3,14 @@
 - Write Anki add-on post
 - Fix the awful CSS
 
-# Deck
+# Settings
 - Build a card editor that can allow sections to be dragged around and placed wherever the user would like
+- Maybe check if settings can be built using html?
+
+# Decks
 - Remove option for watching sub decks - Complicates reviews too much (maybe, check if it work stil)
 - Get having multiple cards working, make sure subnotes are added to the right card
 - Add an undo to scanning the deck that uses Anki internally
-- Switch the default deck used when adding cards internally instead of through unreliable method
 
 # Kanji
 - 竜 adds itself as a component. Make sure to check this
@@ -20,5 +22,4 @@
 
 # Keyboard Shortcuts
 - Fix keyboard shortcuts to actually use the range of the selection and not just replace all the words
-- Add being able to use a shortcut to remove markdown
-- Fix CTRL B bolding text
+- Add being able to use a shortcut to remove highlights

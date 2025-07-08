@@ -1,6 +1,6 @@
 from anki.notes import Note
 from anki.consts import CARD_TYPE_NEW
-from aqt import mw
+from aqt import mw, dialogs
 
 from . import config
 from . import model
@@ -54,8 +54,6 @@ def get_new_cards():
     return sorted_cards;
 
 def create_note(newKanji):
-    originalCardModel = mw.col.conf["curModel"]
-
     cardModel = model.get_model()
 
     note = Note(mw.col, cardModel)
@@ -65,11 +63,8 @@ def create_note(newKanji):
     deckId = get_deck_id()
     mw.col.add_note(note, deckId)
 
-    if originalCardModel: # To stop anki from switching the default model to Kanji Splitter
-        dummyNote = Note(mw.col, originalCardModel)
-        dummyNote.tags = [tagName]
-        mw.col.add_note(dummyNote, deckId)
-        mw.col.remove_notes([dummyNote.id])
+    # Stop anki from switching to Kanji Splitter note type for Add Card Screen
+    mw.col.set_config("curModel", note.mid)
 
     return note
 
@@ -170,7 +165,17 @@ def scan_note(note: Note):
 
         due -= 1
 
+    # Only run the following is Kanji Splitter cards were added
+    if len(newKanjiList) == 0:
+        return
+    
     reorder_deck()
+
+    # Stop anki from switching to Kanji Splitter note type for Add Card Screen
+    dummyNote = Note(mw.col, mw.col.models.get(note.mid))
+    dummyNote.tags = [tagName]
+    mw.col.add_note(dummyNote, get_deck_id())
+    mw.col.remove_notes([dummyNote.id])
 
 def scan_deck():
     reorder_deck()

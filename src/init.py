@@ -2,7 +2,6 @@ from aqt import mw, gui_hooks, qt, reviewer
 from aqt.utils import qconnect
 from anki.notes import Note
 from anki import hooks_gen
-import time
 import os
 
 from . import config
