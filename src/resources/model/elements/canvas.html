@@ -16,11 +16,50 @@
     const context = canvas.getContext('2d', { willReadFrequently: true });
     const undoStack = [];
 
+    const height = 300;
+    const width = 300;
+
+    const brushSize = 5 * pixelRatio;
+
     let drawing = false;
     let mousedown = false;
 
-    context.lineWidth = 5 * pixelRatio;
-    context.strokeStyle = canvasStroke; 
+    function drawingStyle() {
+        context.globalAlpha = 1;
+        context.lineWidth = brushSize;
+        context.strokeStyle = canvasStroke;     
+        context.setLineDash([]);
+    }
+
+    function drawGrid() {
+        context.globalAlpha = 0.15;
+        context.strokeStyle = canvasStroke;
+        context.lineWidth = 1 * pixelRatio;
+
+        const segment = (width / 2) / 30;
+        context.setLineDash([segment]);
+
+        const drawToCenter = function(x, y) {
+            context.beginPath();
+            context.moveTo(x, y)
+            context.lineTo(width / 2, height / 2);
+            context.stroke();
+        };
+
+        drawToCenter(width / 2, 0);
+        drawToCenter(width / 2, height);
+
+        drawToCenter(0, height / 2);
+        drawToCenter(width, height / 2);
+
+        drawToCenter(0, 0);
+        drawToCenter(width, height);
+
+        drawToCenter(width, 0);
+        drawToCenter(0, height);
+
+        drawingStyle();
+    }
 
     function saveState() {
         const currentState = context.getImageData(0, 0, canvas.width, canvas.height)
@@ -42,8 +81,10 @@
 
     function clearCanvas() {
         context.clearRect(0, 0, canvas.width, canvas.height);
+        drawGrid();
     }
 
+    drawGrid();
     saveState()
 
     // Canvas events
@@ -53,7 +94,10 @@
         drawing = true;
         mousedown = true;
         context.beginPath();
+        context.moveTo(event.offsetX - brushSize / 2, event.offsetY - brushSize / 2);
+        context.lineTo(event.offsetX + brushSize / 2, event.offsetY + brushSize / 2)
         context.moveTo(event.offsetX, event.offsetY);
+        context.stroke();
     }
 
     function mouseMove() {
