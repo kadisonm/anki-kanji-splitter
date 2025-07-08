@@ -1,6 +1,10 @@
+from logging import warn
 import textwrap
 import aqt.qt as qt
 from aqt.theme import theme_manager
+import os
+
+currentDir = os.path.dirname(os.path.abspath(__file__))
 
 class H1(qt.QLabel):
     def __init__(self, text):
@@ -40,10 +44,10 @@ class Logo(qt.QVBoxLayout):
         super().__init__()
 
         if theme_manager.night_mode:
-            pixmap = qt.QPixmap("src/resources/icons/logo_night.png") 
+            pixmap = qt.QPixmap(os.path.join(currentDir, "resources", "icons", "logo_night.png")) 
         else:
-            pixmap = qt.QPixmap("src/resources/icons/logo_light.png") 
-       
+            pixmap = qt.QPixmap(os.path.join(currentDir, "resources", "icons", "logo_light.png")) 
+
         label = qt.QLabel()
         scaledPixmap = pixmap.scaledToWidth(size)
         label.setPixmap(scaledPixmap)
