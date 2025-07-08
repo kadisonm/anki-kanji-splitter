@@ -99,6 +99,32 @@
                     editDisabled();
                 }
             }
+
+            if (event.ctrlKey && event.key === "r") {
+                if (editing == true) {
+                    const selected = window.getSelection().toString().trim();
+                    
+                    if (selected.length > 0) {
+                        const newText = "**" + selected + "**";
+                        mnemonic.textContent = mnemonic.textContent.replace(new RegExp(selected, "g"), newText);    
+
+                        moveCaretToEnd();
+                    }             
+                }
+            }
+
+            if (event.ctrlKey && event.key === "R") {
+                if (editing == true) {
+                    const selected = window.getSelection().toString().trim();
+                    
+                    if (selected.length > 0) {
+                        const newText = "***" + selected + "***";
+                        mnemonic.textContent = mnemonic.textContent.replace(new RegExp(selected, "g"), newText);    
+
+                        moveCaretToEnd();
+                    }             
+                }
+            }
         })
         
         mnemonic.addEventListener("blur", (event) => {

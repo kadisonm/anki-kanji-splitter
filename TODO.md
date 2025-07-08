@@ -18,3 +18,11 @@
 - Remove option for watching sub decks - Complicates reviews too much (maybe, check if it work stil)
 
 - Get having multiple cards working, make sure subnotes are added to the right card
+
+- 竜 adds itself as a component. Make sure to check this
+
+- Kanji components are being added from right to left. Check this
+
+- Fix keyboard shortcuts to actually use the range of the selection and not just replace all the words
+- Add being able to use a shortcut to remove markdown
+- Fix CTRL B bolding text
