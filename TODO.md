@@ -10,7 +10,10 @@
 # Decks
 - Remove option for watching sub decks - Complicates reviews too much (maybe, check if it work stil)
 - Get having multiple cards working, make sure subnotes are added to the right card
-- Add an undo to scanning the deck that uses Anki internally
+- Create custom undo operations
+- Use [background operation](https://addon-docs.ankiweb.net/background-ops.html) to improve the performance 
+https://github.com/ankitects/anki/issues/2628
+https://forums.ankiweb.net/t/add-on-porting-notes-for-anki-2-1-45/11212
 
 # Kanji
 - 竜 adds itself as a component. Make sure to check this

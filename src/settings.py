@@ -99,12 +99,11 @@ class SettingsWindow(SettingsDialog):
                 response = ConfirmationBox("Are you sure you wish to delete all Kanji Splitter cards from your deck? This action cannot be undone.").exec()
 
                 if response == qt.QMessageBox.StandardButton.Yes:
-                    removed = deck.clear_deck()
-
-                    if removed == None:
+                    if (result := deck.clear_deck()) == None:
+                        print(result)
                         MessageBox("Warning", f"Please select a deck and save first before attempting to perform any actions.").exec()
-                    else:                
-                        MessageBox("", f"Done. {removed} cards removed.").exec()
+                    else:
+                        MessageBox("", f"Done. {result} notes removed.").exec()
         
         clear.button.clicked.connect(clear_action)
 

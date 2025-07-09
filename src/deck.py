@@ -1,12 +1,18 @@
-from anki.notes import Note
+from typing import Optional
+from aqt import QWidget, mw, dialogs
+from aqt.operations import CollectionOp
+from aqt.utils import tooltip
+
+from anki.notes import Note, NoteId
 from anki.consts import CARD_TYPE_NEW
-from aqt import mw, dialogs
+from anki.collection import Collection, OpChanges, OpChangesWithCount
 
 from . import config
 from . import model
 from . import kanji
 
 tagName = "kanji-splitter"
+custom_undo_entries = {}
 
 def get_tag():
     return tagName
@@ -51,7 +57,7 @@ def get_new_cards():
 
     sorted_cards = sorted(filtered_cards, key=lambda c: c.due)
 
-    return sorted_cards;
+    return sorted_cards
 
 def create_note(newKanji):
     cardModel = model.get_model()
@@ -176,7 +182,7 @@ def scan_note(note: Note):
     dummyNote.tags = [tagName]
     mw.col.add_note(dummyNote, get_deck_id())
     mw.col.remove_notes([dummyNote.id])
-
+    
 def scan_deck():
     reorder_deck()
 
@@ -196,15 +202,23 @@ def scan_deck():
 
     return notesAdded
 
-def clear_deck():
-    deck = get_deck()
-
-    if deck == None:
+def clear_deck() -> Optional[int]:
+    if not (deck := get_deck()):
         return None
-    
+
     cards = mw.col.find_cards(f"deck:\"{deck['name']}\" tag:{tagName}")
-    mw.col.remove_notes_by_card(cards)
 
-    reorder_deck()
+    to_remove = len(cards)
 
-    return len(cards)
+    def op(col: Collection):
+        entry = col.add_custom_undo_entry("Clear Deck")
+
+        mw.col.remove_notes_by_card(cards)
+
+        reorder_deck()
+
+        return col.merge_undo_entries(entry)
+
+    CollectionOp(mw, op).run_in_background()
+
+    return to_remove
