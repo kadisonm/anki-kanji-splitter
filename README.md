@@ -23,8 +23,6 @@ Kanji Splitter
     <img  src="https://img.shields.io/badge/Support-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white"></a>
   <a title="GitHub License" href="/LICENSE">
     <img src="https://img.shields.io/github/license/kadisonm/anki-kanji-splitter?style=for-the-badge&color=blue"></a>
-  
-  This add-on is **not** an official Anki add-on.
 </div>
 
 <hr>
