@@ -45,3 +45,6 @@ Note: chcp 65001 switches the console to UTF-8 which allows Kanji to be shown wi
 
 ## CSS Styling
 When possible prefer using Anki's in-built CSS variables. They can be found [here](https://github.com/ankitects/anki/blob/main/ts/lib/sass/_vars.scss).
+
+## Useful Links
+For a list of helpful resources click [here](./resources.md).

@@ -48,7 +48,7 @@ def start():
         if not model.get_model():
             model.create_model()
 
-        if note.has_tag(deck.get_tag()):
+        if note.has_tag(deck.TAG_NAME):
             return
         
         chosenDeck = deck.get_deck()
@@ -58,13 +58,13 @@ def start():
             parentDeck = mw.col.decks.get(parentDeckId)
 
             if parentDeck["name"] == chosenDeck["name"] or parentDeck["name"].startswith(chosenDeck["name"] + "::"):
-                deck.scan_note(note)
+                deck.scan_cards([note.cards()[0]], True)
             
     gui_hooks.add_cards_did_add_note.append(note_added)
 
     # For detecting cards being added through Yomitan.
     def internal_note_added(col, note: Note, deckId):
-        if note.has_tag(deck.tagName) or not note.has_tag("Yomitan"):
+        if note.has_tag(deck.TAG_NAME) or not note.has_tag("Yomitan"):
             return
         
         print("Note added by Yomitan")

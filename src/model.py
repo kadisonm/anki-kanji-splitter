@@ -5,6 +5,8 @@ import os
 import json
 from . import config
 
+from anki.models import NotetypeDict
+
 modelName = "Kanji Splitter"
 
 def getJSONContent(*paths):
@@ -138,7 +140,7 @@ def create_model():
                 if existingTemplate['afmt'] != template['afmt']:
                     existingTemplate['afmt'] = template['afmt']
     else:
-        existingModel = mm.new(modelName)
+        existingModel: NotetypeDict = mm.new(modelName)
 
         for fieldName in fields:
             mm.add_field(existingModel, mm.new_field(fieldName))
@@ -151,6 +153,8 @@ def create_model():
 
     # Save the updated model
     mm.save(existingModel)
+
+    return existingModel
 
 def get_model_id():
     global modelName

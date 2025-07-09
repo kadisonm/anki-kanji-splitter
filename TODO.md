@@ -2,18 +2,22 @@
 - Finish writing README features and installation instructions
 - Write Anki add-on post
 - Fix the awful CSS
+- Refactor other scripts to have better types and styling
+
+# Tests
+- Write them haha (actually really really need them)
 
 # Settings
 - Build a card editor that can allow sections to be dragged around and placed wherever the user would like
 - Maybe check if settings can be built using html?
 
 # Decks
-- Remove option for watching sub decks - Complicates reviews too much (maybe, check if it work stil)
+- Drop support for sub decks
 - Get having multiple cards working, make sure subnotes are added to the right card
-- Create custom undo operations
-- Use [background operation](https://addon-docs.ankiweb.net/background-ops.html) to improve the performance 
-https://github.com/ankitects/anki/issues/2628
-https://forums.ankiweb.net/t/add-on-porting-notes-for-anki-2-1-45/11212
+- Refactor getting the notes to create and update just to be a bit more readable
+
+# Model
+- Make sure that when getting the model, one is always returned (if not created yet)
 
 # Kanji
 - 竜 adds itself as a component. Make sure to check this

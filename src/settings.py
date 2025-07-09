@@ -64,14 +64,14 @@ class SettingsWindow(SettingsDialog):
         scan = ButtonLabel(
                 "Scan deck", 
                 "Scan", 
-                "This will scan the deck for kanji and add new cards for any found kanji/primitives. If cards already exist, that kanji/primitive will be skipped."
+                "This will scan the deck for kanji and add new cards for any found kanji/components. If cards already exist, that kanji/components will be skipped."
         )
         
         def scan_action():
             if self.deckChanged:
                 MessageBox("Warning", "You have unsaved changes to your selected deck. Please save before trying to perform any actions on it.").exec()
             else:
-                response = ConfirmationBox("Are you sure you wish to scan your deck and add new cards for each kanji found?\n\nPlease note:\n• This will scan ALL new cards within your deck (excluding cards from this add-on and due cards).\n• Any kanji not previously in your deck will be added as new cards.\n• If you dislike the results, you can reverse this change with the 'Clear Deck' button however all the timestamps will be changed. Which may cause issues when combining decks due to duplicate timestamps. Alternatively you can Ctrl-Z any changes this add-on makes to restore previous timestamps.").exec()
+                response = ConfirmationBox("Are you sure you wish to scan your deck and add new cards for each kanji found?\n\nPlease note:\n• This will scan all NEW cards within your deck (does not include cards from this add-on or learnt cards already in your deck).\n• Any kanji not previously in your deck will be added as new cards.\n• If you dislike the results, you can undo any changes this add-on makes with Ctrl-Z.").exec()
 
                 if response == qt.QMessageBox.StandardButton.Yes:
                     added = deck.scan_deck()
@@ -79,7 +79,7 @@ class SettingsWindow(SettingsDialog):
                     if added == None:
                         MessageBox("Warning", f"Please select a deck and save first before attempting to perform any actions.").exec()
                     else:
-                        MessageBox("", f"Done. {added} notes scanned.").exec()
+                        MessageBox("", f"Done. {added} Kanji Splitter cards added.").exec()
         
         scan.button.clicked.connect(scan_action)
 
@@ -89,7 +89,7 @@ class SettingsWindow(SettingsDialog):
         clear = ButtonLabel(
                 "Clear deck", 
                 "Clear", 
-                "This will delete any cards created by this plugin inside your deck. (This will not delete the original cards)"
+                "This will delete any cards created by this plugin inside your deck. (This will not delete your original cards)"
         )
         
         def clear_action():
@@ -210,21 +210,21 @@ class SettingsWindow(SettingsDialog):
         return widget
 
     def save_action(self):
-            for key, checkBox in self.checkboxes.items():
-                checked = checkBox.isChecked()
+        for key, checkBox in self.checkboxes.items():
+            checked = checkBox.isChecked()
 
-                if checked != self.data[key]:
-                    self.data[key] = checked
+            if checked != self.data[key]:
+                self.data[key] = checked
 
-            for key, dropdown in self.dropdowns.items():
-                result = dropdown.currentData()
+        for key, dropdown in self.dropdowns.items():
+            result = dropdown.currentData()
 
-                if result != self.data[key]:
-                    self.data[key] = result
+            if result != self.data[key]:
+                self.data[key] = result
 
-            config.update_config(self.data)
-            model.create_model()
-            self.close()
+        config.update_config(self.data)
+        model.create_model()
+        self.close()
         
     def close_action(self):
         unsavedChanges = False

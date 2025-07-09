@@ -26,7 +26,7 @@ def injectEditButtons(html: str):
 def shouldModifyCard(html: str, card):
     note = card.note()
 
-    if note.has_tag(deck.get_tag()):
+    if note.has_tag(deck.TAG_NAME):
             data = config.get_config()
 
             if data["show_edit_buttons"]:

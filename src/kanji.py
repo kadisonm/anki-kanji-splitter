@@ -75,7 +75,6 @@ def get_direct_components(kanji):
     getDirectElements(rootKanji)
 
     return elements
- 
 
 def get_all_components(kanji):
     elements = []
