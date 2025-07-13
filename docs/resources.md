@@ -1,4 +1,6 @@
 # Resources
+[Addon Docs](https://addon-docs.ankiweb.net/intro.html)
+
 ## CollectionOp
 Used for managing custom undo entries and running heavy processes in the background.
 

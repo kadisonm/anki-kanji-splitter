@@ -54,7 +54,6 @@ def reorder_new_cards():
 
 def create_note(new_kanji) -> Note:
     if not (model_id := model.get_model_id()):
-        model_dict = model.create_model()
         model_id = model.get_model_id()
 
     note = Note(mw.col, model_id)
@@ -109,7 +108,7 @@ def scan_cards(cards: list[Card], show_tooltip: bool) -> Optional[int]:
     new_cards_in_deck = get_new_cards()
 
     notes_to_create: list[tuple[Note, int]] = []
-    cards_to_update: list[tuple[CardId, int]] = [(card.id, card.due) for card in new_cards_in_deck] # edit due and odue
+    cards_to_update: list[tuple[CardId, int]] = [(card.id, card.due) for card in new_cards_in_deck]
 
     # Scan each card
     for card in cards:
@@ -166,7 +165,7 @@ def scan_cards(cards: list[Card], show_tooltip: bool) -> Optional[int]:
         nonlocal notes_to_create
         nonlocal cards_to_update
 
-        entry = col.add_custom_undo_entry(f"Create {len(notes_to_create)} Kanji Splitter Notes")
+        entry = col.add_custom_undo_entry(f"Add {len(notes_to_create)} Kanji Splitter Notes")
 
         # Add new notes
         deck_id = get_deck_id()
@@ -212,10 +211,7 @@ def scan_cards(cards: list[Card], show_tooltip: bool) -> Optional[int]:
     
     def success(out: OpChanges):
         if show_tooltip:
-            if added == 1:
-                message = "<b>Added</b> 1 Kanji Splitter card."
-            else:
-                message = f"<b>Added</b> {added} Kanji Splitter cards."
+            message = f"<b>Added</b> {added} Kanji Splitter Notes"
             
             tooltip(message, parent=mw)
 

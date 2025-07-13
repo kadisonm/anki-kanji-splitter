@@ -3,6 +3,7 @@
 - Write Anki add-on post
 - Fix the awful CSS
 - Refactor other scripts to have better types and styling
+- Add a release and build script (look into this)
 
 # Tests
 - Write them haha (actually really really need them)
@@ -15,6 +16,7 @@
 - Drop support for sub decks
 - Get having multiple cards working, make sure subnotes are added to the right card
 - Refactor getting the notes to create and update just to be a bit more readable
+- Check if Anki's findDupe function works
 
 # Model
 - Make sure that when getting the model, one is always returned (if not created yet)
@@ -30,3 +32,4 @@
 # Keyboard Shortcuts
 - Fix keyboard shortcuts to actually use the range of the selection and not just replace all the words
 - Add being able to use a shortcut to remove highlights
+- Write documentation to this somewhere

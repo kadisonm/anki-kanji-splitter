@@ -1,21 +1,19 @@
+import os
+
 from aqt import mw, gui_hooks, qt, reviewer
 from aqt.utils import qconnect
-from anki.notes import Note
+
 from anki import hooks_gen
-import os
+from anki.notes import Note
+from anki.cards import Card
+from anki.decks import DeckId
+from anki.collection import Collection
 
 from . import config
 from . import settings
 from . import model
 from . import deck
 from . import editing
-
-currentDir = os.path.dirname(os.path.abspath(__file__))
-resourcesDir = os.path.join(currentDir, "resources")
-
-iconsDir = os.path.join(resourcesDir, 'icons')
-jpdbIconPath = os.path.join(iconsDir, 'jpdb_icon.png')
-jishoIconPath = os.path.join(iconsDir, 'jisho_icon.png')
 
 def start():
     # Load config
@@ -35,8 +33,10 @@ def start():
         mw.form.menuTools.addAction(action)
 
         # Add icons
-        mw.col.media.add_file(jpdbIconPath)
-        mw.col.media.add_file(jishoIconPath)
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        
+        mw.col.media.add_file(os.path.join(current_dir, "resources", "icons", "jpdb_icon.png"))
+        mw.col.media.add_file(os.path.join(current_dir, "resources", "icons", "jisho_icon.png"))
 
         # Add settings to addon page
         mw.addonManager.setConfigAction(__name__, open_settings)
@@ -51,19 +51,19 @@ def start():
         if note.has_tag(deck.TAG_NAME):
             return
         
-        chosenDeck = deck.get_deck()
-        
-        if chosenDeck:
-            parentDeckId = mw.col.db.scalar("SELECT did FROM cards WHERE nid = ?", note.id)
-            parentDeck = mw.col.decks.get(parentDeckId)
+        parent_deck_id = mw.col.db.scalar("SELECT did FROM cards WHERE nid = ?", note.id)
+        parent_deck = mw.col.decks.get(parent_deck_id)
 
-            if parentDeck["name"] == chosenDeck["name"] or parentDeck["name"].startswith(chosenDeck["name"] + "::"):
-                deck.scan_cards([note.cards()[0]], True)
+        if parent_deck:
+            cards: list[Card] = note.cards()
+ 
+            if len(cards) >= 1:
+                deck.scan_cards([cards[0]], True)
             
     gui_hooks.add_cards_did_add_note.append(note_added)
 
     # For detecting cards being added through Yomitan.
-    def internal_note_added(col, note: Note, deckId):
+    def internal_note_added(col: Collection, note: Note, deckId: DeckId):
         if note.has_tag(deck.TAG_NAME) or not note.has_tag("Yomitan"):
             return
         
@@ -90,13 +90,13 @@ def start():
     hooks_gen.note_will_be_added.append(internal_note_added)
 
     # Listen for any cards being opened (to allow editing)
-    def cardOpened(html: str, card, context):
+    def card_opened(html: str, card, context):
         return editing.shouldModifyCard(html, card)
 
-    gui_hooks.card_will_show.append(cardOpened)
+    gui_hooks.card_will_show.append(card_opened)
     
     # Listen for any fields being edited
-    def jsMessageReceived(handled, message: str, context):
+    def js_message_received(handled: any, message: str, context: any) -> any:
         if not message.startswith('kanji_splitter:'):
             return handled
         
@@ -120,6 +120,6 @@ def start():
 
         return handled
 
-    gui_hooks.webview_did_receive_js_message.append(jsMessageReceived)
+    gui_hooks.webview_did_receive_js_message.append(js_message_received)
 
     
