@@ -4,6 +4,7 @@
 - Fix the awful CSS
 - Refactor other scripts to have better types and styling
 - Add a release and build script (look into this)
+- Specify no network calls but explain how each kanji diagram is included within the plugin
 
 # Tests
 - Write them haha (actually really really need them)

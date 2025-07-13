@@ -1,9 +1,6 @@
 name: Release Anki plugin
 
-on:
-  label:
-    types:
-      - created
+on: workflow_dispatch
 
 jobs:
   build:
