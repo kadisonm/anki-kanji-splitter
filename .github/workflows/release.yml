@@ -13,7 +13,7 @@ jobs:
         run: |
           zip -r ./anki-kanji-splitter.ankiaddon *
 
-      - name: Create release
+      - name: Create release draft
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
