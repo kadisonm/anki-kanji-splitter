@@ -1,9 +1,6 @@
 name: Release Anki plugin
 
-on:
-  push:
-    tags:
-      - "*"
+on: workflow_dispatch
 
 jobs:
   build:
@@ -12,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Build plugin
+      - name: Build add-on
         run: |
           zip -r ./anki-kanji-splitter.ankiaddon *
 
@@ -20,9 +17,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          tag="${GITHUB_REF#refs/tags/}"
-
-          gh release create "$tag"
-            --title="$tag" \
+          gh release create "draft"
             --draft \
-            anki-kanji-splitter.ankiaddon
+            ./anki-kanji-splitter.ankiaddon
