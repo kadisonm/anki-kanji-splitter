@@ -1,0 +1,28 @@
+name: Release Anki plugin
+
+on:
+  label:
+    types:
+      - created
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Build plugin
+        run: |
+          zip -r ./anki-kanji-splitter.ankiaddon *
+
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag="${GITHUB_REF#refs/tags/}"
+
+          gh release create "$tag" \
+            --title="$tag" \
+            --draft \
+            ./anki-kanji-splitter.ankiaddon
