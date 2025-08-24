@@ -7,7 +7,7 @@ from . import config
 
 from anki.models import NotetypeDict
 
-modelName = "Kanji Splitter"
+modelName = "Japanese Kanji Splitter"
 
 def getJSONContent(*paths):
     path = os.path.join(os.path.dirname(__file__), "resources", "model", *paths)
