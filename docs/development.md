@@ -12,7 +12,7 @@ Development for Anki within VSCode can be a bit tricky, so here are some contrib
 8. (env) Terminal -> `python -m pip install -r requirements.txt`
 9. Command Palette (Cmd/Ctrl+Shift+P) -> Python Select Interpreter -> `Python 3.9.0 ('env': venv)`
 
-Upon Anki updates, you must delete the existing environment and redo steps 6-9.
+Upon Anki updates, you must delete the existing environment and redo steps 6-9. Ensure you are also using the latest version of Anki.
 
 ## Debugging with VSCode
 It is recommended that you navigate to your Anki installation and run the `anki-console.bat` to gain access to the console while developing.
@@ -37,7 +37,7 @@ Note: chcp 65001 switches the console to UTF-8 which allows Kanji to be shown wi
             "command": "cmd",
             "args": [
               "/c",
-              "chcp 65001 && C:\\Users\\20McLelK\\AppData\\Local\\Programs\\Anki\\anki-console.bat"
+              "chcp 65001 && C:\\Users\\20McLelK\\AppData\\Local\\Programs\\Anki\\anki-console.exe"
             ],
             "problemMatcher": []
         }
