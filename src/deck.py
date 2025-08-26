@@ -86,7 +86,7 @@ def create_note(new_kanji) -> Note:
 
     if preferred_source == 0:
         note["Source"] = "jpdb keyword"
-    elif preferential_attachment == 1:
+    elif preferred_source == 1:
         note["Source"] = "RTK keyword"
     else:
         note["Source"] = "Custom keyword"
