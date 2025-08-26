@@ -125,7 +125,7 @@ def get_svg(kanji):
         newPath = os.path.join(resourcesDir, 'unknown.svg')
 
         if os.path.exists(newPath):
-            file = open(path, "r", errors="ignore")
+            file = open(newPath, "r", errors="ignore")
             svgContent = file.read()
 
             match = re.search(r'(<svg[^>]*>.*?</svg>)', svgContent, re.DOTALL)
