@@ -114,24 +114,24 @@ def get_svg(kanji):
     path = os.path.join(kanjiPath, f"{hexCode}.svg")
 
     if os.path.exists(path):
-        with open(path, 'r') as file:
-            svgContent = file.read()
-           
-            match = re.search(r'(<svg[^>]*>.*?</svg>)', svgContent, re.DOTALL)
-            
-            if match:
-                return match.group(1)
+        file = open(path, "r", errors="ignore")
+        svgContent = file.read()
+        
+        match = re.search(r'(<svg[^>]*>.*?</svg>)', svgContent, re.DOTALL)
+        
+        if match:
+            return match.group(1)
     else:
         newPath = os.path.join(resourcesDir, 'unknown.svg')
 
         if os.path.exists(newPath):
-            with open(newPath, 'r') as file:
-                svgContent = file.read()
+            file = open(path, "r", errors="ignore")
+            svgContent = file.read()
 
-                match = re.search(r'(<svg[^>]*>.*?</svg>)', svgContent, re.DOTALL)
-                
-                if match:
-                    return match.group(1)
+            match = re.search(r'(<svg[^>]*>.*?</svg>)', svgContent, re.DOTALL)
+            
+            if match:
+                return match.group(1)
 
 def get_kanji(note: Note):
     foundKanji = []
