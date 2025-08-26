@@ -12,6 +12,8 @@ Development for Anki within VSCode can be a bit tricky, so here are some contrib
 8. (env) Terminal -> `python -m pip install -r requirements.txt`
 9. Command Palette (Cmd/Ctrl+Shift+P) -> Python Select Interpreter -> `Python 3.9.0 ('env': venv)`
 
+Upon Anki updates, you must delete the existing environment and redo steps 6-9.
+
 ## Debugging with VSCode
 It is recommended that you navigate to your Anki installation and run the `anki-console.bat` to gain access to the console while developing.
 
