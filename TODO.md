@@ -33,3 +33,6 @@
 - Fix keyboard shortcuts to actually use the range of the selection and not just replace all the words
 - Add being able to use a shortcut to remove highlights
 - Write documentation to this somewhere
+
+- # Other
+One day add a radical search where it'll either show the JPDB or RTK keyword of a radical, or allow for the other way around. Will be useful for those trying to come up with a keyword for an unknown kanji.
