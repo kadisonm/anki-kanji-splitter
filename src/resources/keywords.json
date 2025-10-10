@@ -2516,7 +2516,7 @@
         "jpdbKeyword": "park"
     },
     "回": {
-        "heisigKeyword": "#NAME?",
+        "heisigKeyword": "-times",
         "jpdbKeyword": "going around"
     },
     "壇": {
@@ -4009,7 +4009,7 @@
     },
     "様": {
         "heisigKeyword": "Esq.",
-        "jpdbKeyword": "#NAME?"
+        "jpdbKeyword": "-sama"
     },
     "求": {
         "heisigKeyword": "request",
@@ -4988,7 +4988,7 @@
         "jpdbKeyword": "a pack (e.g. of dogs)"
     },
     "耐": {
-        "heisigKeyword": "#NAME?",
+        "heisigKeyword": "-proof",
         "jpdbKeyword": "withstand"
     },
     "需": {
